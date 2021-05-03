@@ -29,3 +29,6 @@
 
 @macro clsourcecode{system,path}
 @end macro
+
+@macro setup{things}
+@end macro
