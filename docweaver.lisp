@@ -59,8 +59,3 @@
                                       :if-does-not-exist :create
                                       :if-exists :supersede)
     (backend-weave-file backend file output)))
-
-#+nil(weave-file
- (asdf:system-relative-pathname :webinfo "test/webinfo.texi")
- (asdf:system-relative-pathname :webinfo "test/webinfo.processed.texi")
- :texinfo)

@@ -1,5 +1,5 @@
 (defpackage :docweaver/texinfo
-  (:use :cl :docweaver))
+  (:use :cl :docweaver :assoc-utils))
 
 (in-package :docweaver/texinfo)
 
@@ -99,3 +99,8 @@
         (regex line)
       (let ((source-file (asdf:system-relative-pathname system-name filepath)))
 	(generate-texinfo-source source-file stream)))))
+
+#+nil(weave-file
+ (asdf:system-relative-pathname :docweaver "test/webinfo.texi")
+ (asdf:system-relative-pathname :docweaver "test/webinfo.processed.texi")
+ :texinfo)
