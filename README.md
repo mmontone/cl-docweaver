@@ -3,6 +3,10 @@
 
 This is a project to do ... something.
 
+## TODO
+
+Consider using Shinmera's "definitions" library instead of "def-properties".
+
 ## License
 
 Specify license here
