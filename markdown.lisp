@@ -1,9 +1,9 @@
-(defpackage :docweaver/texinfo
+(defpackage :docweaver/markdown
   (:use :cl :docweaver :assoc-utils))
 
-(in-package :docweaver/texinfo)
+(in-package :docweaver/markdown)
 
-(defun texinfo-escape (string)
+(defun markdown-escape (string)
   (let ((chars
           (loop
             for char across string
@@ -13,24 +13,19 @@
               collect char)))
     (coerce chars 'string)))
 
-(defun source-anchor-name (source-file line-number)
-  (format nil "~aL~a" (pathname-name source-file)
-          line-number))
-
-(defun generate-texinfo-source (source-file output)
-  "Source code is serialized to a Texinfo node with an anchor for each line @anchor{<filename>L<linename>}"
+(defun generate-markdown-source (source-file output)
   (with-open-file (f source-file :direction :input
                                  :external-format :utf-8)
+    (write-line "```lisp" output)
     (loop for line := (read-line f nil nil)
           for line-number := 1 then (1+ line-number)
           while line
           do
-             (format output "@anchor{~a}" (source-anchor-name source-file line-number))
-             (write-string (texinfo-escape line) output)
-	     (write-string "@*" output)
-	     (terpri output))))
+	     (write-string (markdown-escape line) output)
+	     (terpri output))
+    (write-line "```" output)))
 
-(defmethod process-weaver-syntax ((backend (eql :texinfo))
+(defmethod process-weaver-syntax ((backend (eql :markdown))
                                   (syntax (eql :@clfunction)) line stream)
   (let ((regex (aget *weaver-syntax* :@clfunction)))
     (ppcre:do-register-groups (package-name symbol-name)
@@ -42,15 +37,14 @@
         (if (null function-info)
             (error "Function properties could not be read: ~s" function-symbol)
             (progn
-              (format stream "@cldefun {~a, ~a, ~a}"
+              (format stream "### function ~a:~a ~a"
                       package-name symbol-name (aget function-info :args))
               (terpri stream)
               (when (aget function-info :documentation)
                 (write-string (aget function-info :documentation) stream))
-              (terpri stream)
-              (write-string "@endcldefun" stream)))))))
+              (terpri stream)))))))
 
-(defmethod process-weaver-syntax ((backend (eql :texinfo))
+(defmethod process-weaver-syntax ((backend (eql :markdown))
                                   (syntax (eql :@clvariable)) line stream)
   (let ((regex (aget *weaver-syntax* :@clvariable)))
     (ppcre:do-register-groups (package-name symbol-name)
@@ -73,34 +67,20 @@
 (defun lget (list key)
   (second (find key list :key 'car)))
 
-(defmethod process-weaver-syntax ((backend (eql :texinfo))
+(defmethod process-weaver-syntax ((backend (eql :markdown))
 				  (syntax (eql :@clsourceref)) line stream)
-  (let ((regex (aget *weaver-syntax* :@clsourceref)))
-    (ppcre:do-register-groups (symbol-type package-name symbol-name)
-        (regex line)
-      (let* ((symbol (intern (string-upcase symbol-name)
-                             (or (find-package (string-upcase package-name))
-                                 (error "Package not found: ~a" package-name))))
-             (symbol-info (ecase (intern (string-upcase symbol-type) :keyword)
-                            (:function (def-properties:function-properties symbol)))))
-        (if (null symbol-info)
-            (error "Symbol properties could not be read: ~s" symbol)
-            (format stream "@xref{~a, Source}"
-                    (source-anchor-name (lget (rest (aget symbol-info :source))
-                                              :file)
-                                        ;; FIXME: we need the line, not the position here
-                                        (lget (rest (aget symbol-info :source))
-                                              :position))))))))
+  "TODO"
+  )
 
-(defmethod process-weaver-syntax ((backend (eql :texinfo))
+(defmethod process-weaver-syntax ((backend (eql :markdown))
 				  (syntax (eql :@clsourcecode)) line stream)
   (let ((regex (aget *weaver-syntax* :@clsourcecode)))
     (ppcre:do-register-groups (system-name filepath)
         (regex line)
       (let ((source-file (asdf:system-relative-pathname system-name filepath)))
-	(generate-texinfo-source source-file stream)))))
+	(generate-markdown-source source-file stream)))))
 
 #+nil(weave-file
- (asdf:system-relative-pathname :docweaver "test/webinfo.texi")
- (asdf:system-relative-pathname :docweaver "test/webinfo.weaved.texi")
- :texinfo)
+ (asdf:system-relative-pathname :docweaver "test/webinfo.md")
+ (asdf:system-relative-pathname :docweaver "test/webinfo.weaved.md")
+ :markdown)
