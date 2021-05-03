@@ -69,6 +69,10 @@
   (let ((source-file (asdf:system-relative-pathname system-name filepath)))
     (generate-markdown-source source-file stream)))
 
+(def-weaver-command-handler :clref (symbol &optional type)
+    (:backend (eql :markdown))
+  (princ symbol stream))
+
 #+nil(weave-file
  (asdf:system-relative-pathname :docweaver "test/webinfo.md")
  (asdf:system-relative-pathname :docweaver "test/webinfo.weaved.md")
