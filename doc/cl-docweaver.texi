@@ -21,11 +21,11 @@
 
 @node Introduction
 @chapter Introduction
-@anchor{#introduction}
+@anchor{introduction}
 
 @node API
 @chapter API
-@anchor{#api}
+@anchor{api}
 
 ($clpackage "docweaver")
 

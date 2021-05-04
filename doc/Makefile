@@ -1,2 +1,16 @@
+.PHONY: all clean
 cl-docweaver.weaved.texi:
 	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "cl-docweaver.texi" "cl-docweaver.weaved.texi" :backend :texinfo)' --quit
+
+cl-docweaver.pdf: cl-docweaver.weaved.texi
+	texi2any --pdf cl-docweaver.weaved.texi -o cl-docweaver.pdf
+
+cl-docweaver.html: cl-docweaver.weaved.texi
+	texi2any --html cl-docweaver.weaved.texi --no-split -o cl-docweaver.html
+
+clean:
+	rm -f cl-docweaver.weaved.texi
+	rm -f *.pdf
+	rm -f *.html
+
+all: cl-docweaver.weaved.texi cl-docweaver.pdf cl-docweaver.html
