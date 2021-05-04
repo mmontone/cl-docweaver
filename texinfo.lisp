@@ -55,9 +55,12 @@
 		     (error "Package not found: ~a" package-name))))
     (format stream "@majorheading ~a~%" (package-name package))
     (terpri stream)
+    (when (documentation package t)
+      (write-string (documentation package t) stream)
+      (terpri stream) (terpri stream))
     (do-external-symbols (symbol package)
       (texinfo-format-function symbol stream)
-      (terpri stream) (terpri stream))))    
+      (terpri stream) (terpri stream))))
 
 (defun lget (list key)
   (second (find key list :key 'car)))
