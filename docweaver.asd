@@ -8,5 +8,6 @@
   :serial t
   :components ((:file "package")
 	       (:file "docweaver")
-	       (:file "texinfo"))
+	       (:file "texinfo")
+	       (:file "markdown"))
   :depends-on (:assoc-utils))

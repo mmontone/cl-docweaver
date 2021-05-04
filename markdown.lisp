@@ -25,8 +25,7 @@
 	     (terpri output))
     (write-line "```" output)))
 
-(def-weaver-command-handler :clfunction (function-symbol)
-    (:backend (eql :markdown))
+(defun markdown-format-function (function-symbol stream)
   (let ((function-info (def-properties:function-properties function-symbol)))
     (if (null function-info)
 	(error "Function properties could not be read: ~s" function-symbol)
@@ -39,6 +38,10 @@
 	  (when (aget function-info :documentation)
 	    (write-string (aget function-info :documentation) stream))
 	  (terpri stream)))))
+
+(def-weaver-command-handler :clfunction (function-symbol)
+    (:backend (eql :markdown))
+  (markdown-format-function function-symbol stream))
 
 (def-weaver-command-handler :clvariable (variable-symbol)
     (:backend (eql :markdown))
@@ -72,6 +75,19 @@
 (def-weaver-command-handler :clref (symbol &optional type)
     (:backend (eql :markdown))
   (princ symbol stream))
+
+(def-weaver-command-handler :clpackage (package-name &rest options)
+    (:backend (eql :markdown))
+  (let ((package (or (find-package (string-upcase package-name))
+		     (error "Package not found: ~a" package-name))))
+    (format stream "## ~a~%" (package-name package))
+    (terpri stream)
+    (when (documentation package t)
+      (write-string (documentation package t) stream)
+      (terpri stream) (terpri stream))
+    (do-external-symbols (symbol package)
+      (markdown-format-function symbol stream)
+      (terpri stream) (terpri stream))))
 
 #+nil(weave-file
  (asdf:system-relative-pathname :docweaver "test/webinfo.md")
