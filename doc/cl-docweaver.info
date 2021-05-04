@@ -1,0 +1,70 @@
+This is cl-docweaver.info, produced by makeinfo version 6.7 from
+cl-docweaver.weaved.texi.
+
+INFO-DIR-SECTION Common Lisp
+START-INFO-DIR-ENTRY
+* CL-DocWeaver: (cl-docweaver). Common Lisp documentation weaver.
+END-INFO-DIR-ENTRY
+
+
+File: cl-docweaver.info,  Node: Top,  Next: Introduction,  Up: (dir)
+
+Top
+***
+
+* Menu:
+
+* Introduction::
+* API::
+
+
+File: cl-docweaver.info,  Node: Introduction,  Next: API,  Prev: Top,  Up: Top
+
+1 Introduction
+**************
+
+
+File: cl-docweaver.info,  Node: API,  Prev: Introduction,  Up: Top
+
+2 API
+*****
+
+DOCWEAVER
+*********
+
+ -- DOCWEAVER: DEF-WEAVER-COMMAND-HANDLER (command-name args (&key
+          backend) &body body)
+
+ -- DOCWEAVER: PROCESS-WEAVER-COMMAND (backend command args stream)
+
+ -- DOCWEAVER: WEAVE-FILE (file output-file &rest options &key backend
+          modules command-prefix
+     parse-docstrings) Weaves documentation source in FILE and writes
+     the result to OUTPUT-FILE.
+
+     Arguments: - BACKEND specify the documentation tool that is being
+     used (:texinfo, :markdown, etc.).  - MODULES is the list of
+     modules (or ASDF system names) that need to be loaded to be able
+     to read definition descriptions.  - COMMAND-PREFIX is the
+     character to use as prefix for commands.  The character 'at' is
+     the default.  - PARSE-DOCSTRINGS: if T, then docstings are parsed
+     and highlighted and references to code from it created.
+
+
+
+Tag Table:
+Node: Top228
+Node: Introduction344
+Ref: #introduction457
+Node: API457
+Ref: #api540
+Ref: DOCWEAVER-DEF-WEAVER-COMMAND-HANDLER561
+Ref: DOCWEAVER-PROCESS-WEAVER-COMMAND660
+Ref: DOCWEAVER-WEAVE-FILE729
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

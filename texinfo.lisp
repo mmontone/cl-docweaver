@@ -30,8 +30,7 @@
 	     (write-string "@*" output)
 	     (terpri output))))
 
-(def-weaver-command-handler clfunction (function-symbol)
-    (:backend (eql :texinfo))
+(defun texinfo-format-function (function-symbol stream)
   (let ((function-info (def-properties:function-properties function-symbol)))
     (if (null function-info)
 	(error "Function properties could not be read: ~s" function-symbol)
@@ -45,6 +44,20 @@
 	    (write-string (aget function-info :documentation) stream))
 	  (terpri stream)
 	  (write-string "@endcldefun" stream)))))
+
+(def-weaver-command-handler clfunction (function-symbol)
+    (:backend (eql :texinfo))
+  (texinfo-format-function function-symbol stream))
+
+(def-weaver-command-handler clpackage (package-name)
+    (:backend (eql :texinfo))
+  (let ((package (or (find-package (string-upcase package-name))
+		     (error "Package not found: ~a" package-name))))
+    (format stream "@majorheading ~a~%" (package-name package))
+    (terpri stream)
+    (do-external-symbols (symbol package)
+      (texinfo-format-function symbol stream)
+      (terpri stream) (terpri stream))))    
 
 (defun lget (list key)
   (second (find key list :key 'car)))

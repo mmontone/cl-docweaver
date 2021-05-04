@@ -7,6 +7,6 @@
   :version "0.0.1"
   :serial t
   :components ((:file "package")
-               (:file "docweaver")
+	       (:file "docweaver")
 	       (:file "texinfo"))
   :depends-on (:assoc-utils))

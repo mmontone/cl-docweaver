@@ -1,5 +1,7 @@
 ;;;; docweaver.lisp
 
+(require :def-properties (asdf:system-relative-pathname :docweaver "def-properties.lisp"))
+
 (in-package #:docweaver)
 
 ;; This embeds a CL function, reading its structure and documentation from Lisp process:
@@ -30,14 +32,6 @@
 		    (unread-char (pop chars) stream))
 		  (return read-chars))))
 
-(with-input-from-string (s "foobar")
-  (list (peek-n-chars 2 s)
-	(alexandria:read-stream-content-into-string s)))
-
-(with-input-from-string (s "a")
-  (list (peek-n-chars 2 s)
-	(alexandria:read-stream-content-into-string s)))
-  
 (defun process-weaver-commands (backend line stream)
   (let ((command-prefix `(#\( ,(or (getf *config* :command-prefix)
 				   #\@))))
@@ -100,3 +94,5 @@ Arguments:
 
 (defmethod process-weaver-command (backend (command (eql :setup)) args stream)
   (setf *config* args))
+
+(provide :docweaver)

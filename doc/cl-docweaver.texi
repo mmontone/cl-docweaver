@@ -1,0 +1,32 @@
+@setfilename cl-docweaver.info
+
+@dircategory Common Lisp
+@direntry
+* CL-DocWeaver: (cl-docweaver). Common Lisp documentation weaver.
+@end direntry
+
+@include ../common-lisp.texi
+
+@c Setup cl-docweaver
+(@setup :command-prefix #\$ :backend :texinfo)
+
+@node Top
+@top Top
+@cindex webinfo
+
+@menu
+* Introduction::
+* API::
+@end menu
+
+@node Introduction
+@chapter Introduction
+@anchor{#introduction}
+
+@node API
+@chapter API
+@anchor{#api}
+
+($clpackage "docweaver")
+
+@bye
