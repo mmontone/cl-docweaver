@@ -1,9 +1,9 @@
 .PHONY: all clean
 
-all: cl-docweaver.html cl-docweaver.pdf
+all: cl-docweaver.html cl-docweaver.pdf ../README.md
 
 cl-docweaver.pdf: cl-docweaver.weaved.texi
-	texi2any --pdf cl-docweaver.weaved.texi -o cl-docweaver.pdf
+# TODO: FIX texi2any --pdf cl-docweaver.weaved.texi -o cl-docweaver.pdf
 
 cl-docweaver.html: cl-docweaver.weaved.texi
 	texi2any --html cl-docweaver.weaved.texi --no-split -o cl-docweaver.html
