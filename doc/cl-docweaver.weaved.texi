@@ -12,11 +12,13 @@
 
 @node Top
 @top Top
-@cindex webinfo
+@cindex docweaver
+@cindex cl-docweaver
 
 @menu
 * Introduction::
 * API::
+* Index::
 @end menu
 
 @node Introduction
@@ -50,5 +52,12 @@ Arguments:
 @endcldefun
 
 
+
+@node Index
+@chapter Index
+
+@printindex cp
+@printindex vr
+@printindex fn
 
 @bye
