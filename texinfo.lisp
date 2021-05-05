@@ -39,9 +39,16 @@
 		  (package-name (symbol-package function-symbol))
 		  (symbol-name function-symbol)
 		  (aget function-info :args))
-	  (terpri stream)
+	  (terpri stream) (terpri stream)
 	  (when (aget function-info :documentation)
-	    (write-string (aget function-info :documentation) stream))
+	    (if (docweaver::read-config :parse-docstrings)
+		(texinfo-render-parsed-docstring
+		 (def-properties:parse-docstring
+		  (aget function-info :documentation)
+		  (def-properties:list-lambda-list-args (aget function-info :arglist)))
+		 stream)
+		;; else
+		(write-string (aget function-info :documentation) stream)))
 	  (terpri stream)
 	  (write-string "@endcldefun" stream)))))
 
@@ -86,6 +93,33 @@
 (def-weaver-command-handler :clref (symbol &optional type)
     (:backend (eql :texinfo))
   (princ symbol stream))
+
+(defun texinfo-render-parsed-docstring (docstring stream)
+  (loop for word in docstring
+        do
+           (cond
+             ((stringp word) (write-string word stream))
+             ((and (listp word) (eql (car word) :arg))
+              (format stream "@var{~a}" (second word)))
+             ((and (listp word) (eql (car word) :fn))
+	      ;; We would like to do this, but we have to make sure the referenced thing exists
+              ;;(format stream "@ref{~a}" (second word))
+	      (format stream "@code{~a}" (second word))
+	      )
+             ((and (listp word) (eql (car word) :var))
+	      ;; We would like to do create references, but we have to make sure the referenced thing exists.
+	      ;; makeinfo command can be called with --no-validate option for this.
+	      ;; in Emacs, customize makeinfo-options variable (add --no-validate option)
+              (format stream "@ref{~a}" (second word))
+	      ;;(format stream "@var{~a}" (second word))
+	      )
+             ((and (listp word) (eql (car word) :key))
+              (format stream "@var{~a}" (second word))))))
+
+;; (texinfo-render-parsed-docstring (def-properties::parse-docstring "lala :lolo" nil) t)
+;; (texinfo-render-parsed-docstring (def-properties::parse-docstring "funcall parse-docstring" nil) t)
+;; (texinfo-render-parsed-docstring (def-properties::parse-docstring "asdf" '(asdf)) t)
+
 
 #+nil(weave-file
  (asdf:system-relative-pathname :docweaver "test/webinfo.texi")

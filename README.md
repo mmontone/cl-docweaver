@@ -51,7 +51,7 @@ If INCLUDE-MEMBERS is T, then all external package definitions are shown.
 
 
 ### function DOCWEAVER:WEAVE-FILE (file output-file &rest options &key backend modules command-prefix
- parse-docstrings)
+ (parse-docstrings t))
 Weaves documentation source in FILE and writes the result to OUTPUT-FILE.
 
 Arguments:

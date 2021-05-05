@@ -33,8 +33,7 @@
 		  (return read-chars))))
 
 (defun process-weaver-commands (backend line stream)
-  (let ((command-prefix `(#\( ,(or (getf *config* :command-prefix)
-				   #\@))))
+  (let ((command-prefix `(#\( ,(read-config :command-prefix))))
     (with-input-from-string (s line)
       (loop
 	while (peek-char nil s nil nil)
@@ -73,7 +72,17 @@
 (defvar *config* nil
   "The current weaver configuration")
 
-(defun weave-file (file output-file &rest options &key backend modules command-prefix parse-docstrings)
+(defvar +default-config+ (list :backend :texinfo
+			       :parse-docstrings t
+			       :command-prefix #\@))
+
+(defun read-config (key)
+  "Reads KEY in current *CONFIG*. Returns default in +DEFAULT-CONFIG+ if KEY is not set."
+  (if (find key *config*)
+      (getf *config* key)
+      (getf +default-config+ key)))
+
+(defun weave-file (file output-file &rest options &key backend modules command-prefix (parse-docstrings t))
   "Weaves documentation source in FILE and writes the result to OUTPUT-FILE.
 
 Arguments:
@@ -90,7 +99,7 @@ Arguments:
     (let ((*config* options))
       (loop for module-name in (getf *config* :modules)
 	    do (require module-name))      
-      (backend-weave-file backend file output))))
+      (backend-weave-file (or backend (read-config :backend)) file output))))
 
 (defmethod process-weaver-command (backend (command (eql :setup)) args stream)
   (setf *config* args))
