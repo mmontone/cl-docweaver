@@ -162,14 +162,16 @@ If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defin
 	  (progn
 	    (format stream "@heading External definitions~%~%")
 	    (texinfo-format-definitions external-symbols stream)
-	    (format stream "~%@heading Internal definitions~%~%")
-	    (texinfo-format-definitions internal-symbols stream))
+	    (when include-internal-definitions
+	      (format stream "~%@heading Internal definitions~%~%")
+	      (texinfo-format-definitions internal-symbols stream)))
 	  ;; else, categorized
 	  (progn
 	    (format stream "@heading External definitions~%~%")
 	    (texinfo-format-definitions external-symbols stream :categorized t)
-	    (format stream "~%@heading Internal definitions~%~%")
-	    (texinfo-format-definitions internal-symbols stream :categorized t))))))      
+	    (when include-internal-definitions
+	      (format stream "~%@heading Internal definitions~%~%")
+	      (texinfo-format-definitions internal-symbols stream :categorized t)))))))
 
 (defun lget (list key)
   (second (find key list :key 'car)))
