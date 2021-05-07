@@ -434,22 +434,22 @@ PACKAGE: the package to use to read the docstring symbols.
 		      (let ((symbol (read-from-string word)))
 			(cond
 			  ((fboundp symbol)
-			   (list :fn word))
+			   (list :fn word symbol))
 			  ((boundp symbol)
-			   (list :var word))
+			   (list :var word symbol))
 			  (t ;; I don't know what this is
 			   word))))		  
                      ((aand
 		       (find-symbol word package)
 		       (fboundp it))
-                      (list :fn word))
+                      (list :fn word (find-symbol word package)))
 		     ((aand
 		       (find-symbol word package)
 		       (find-class it nil))
-		      (list :class word))
+		      (list :class word (find-symbol word package)))
                      ((aand (find-symbol word package)
 			    (boundp it))
-                      (list :var word))
+                      (list :var word (find-symbol word package)))
                      (t word))))))
 
 ;; (parse-docstring "asdf" nil)
