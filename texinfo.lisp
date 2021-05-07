@@ -196,9 +196,12 @@ If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defin
 
 
 
-(def-weaver-command-handler :clref (symbol &optional type)
+(def-weaver-command-handler :clref (symbol type)
     (:docsystem (eql :texinfo))
-  (format stream "@xref{~a, ~a}" (qualified-symbol-name symbol) (symbol-name symbol)))
+  (format stream "@clref{~a, ~a, ~a}"
+	  (package-name (symbol-package symbol))
+	  (symbol-name symbol)
+	  (string-downcase (princ-to-string type))))
 
 (defun texinfo-render-parsed-docstring (docstring stream)
   (loop for word in docstring
@@ -211,13 +214,17 @@ If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defin
              ((and (listp word) (eql (car word) :fn))
               ;; makeinfo command can be called with --no-validate option for this.
               ;; in Emacs, customize makeinfo-options variable (add --no-validate option)
-              (format stream "@ref{~a}" (second word))
+              (format stream "@clref{~a, ~a, function}"
+		      (package-name (symbol-package (third word)))
+		      (second word))
               ;;(format stream "@code{~a}" (second word))
               )
              ((and (listp word) (eql (car word) :var))
               ;; makeinfo command can be called with --no-validate option for this.
               ;; in Emacs, customize makeinfo-options variable (add --no-validate option)
-              (format stream "@ref{~a}" (second word))
+	      (format stream "@clref{~a, ~a, variable}"
+		      (package-name (symbol-package (third word)))
+		      (second word))
               ;;(format stream "@var{~a}" (second word))
               )
              ((and (listp word) (eql (car word) :key))

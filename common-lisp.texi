@@ -2,8 +2,8 @@
 
 @c Variable definition
 @macro cldefvar{package, name}
-@findex \package\:\name\
-@anchor{\package\:\name\}
+@vindex \package\:\name\
+@anchor{\package\:\name\ variable}
 @defvr \package\ \name\
 @end macro
 
@@ -14,7 +14,7 @@
 @c Function definition
 @macro cldefun{package, name, args}
 @findex \package\:\name\
-@anchor{\package\:\name\}
+@anchor{\package\:\name\ function}
 @deffn \package\ \name\ \args\
 @end macro
 
@@ -29,8 +29,8 @@
 
 @c Class definition
 @macro cldefclass{package, name}
-@findex \package\:\name\
-@anchor{\package\:\name\}
+@tindex \package\:\name\
+@anchor{\package\:\name\ class}
 @deftp \package\ \name\
 @end macro
 
@@ -39,8 +39,8 @@
 @end macro
 
 @c References
-@macro clref{package, name}
-@xref{\package\-\name\,\name\}
+@macro clref{package, name, type}
+@xref{\package\:\name\ \type\,\name\}
 @end macro
 
 @c Source references
