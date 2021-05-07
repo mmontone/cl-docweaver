@@ -1,5 +1,17 @@
 @c Macros for Common Lisp definitions
 
+@c Variable definition
+@macro cldefvar{package, name}
+@findex \package\:\name\
+@anchor{\package\:\name\}
+@defvr \package\ \name\
+@end macro
+
+@macro endcldefvar
+@end defvr
+@end macro
+
+@c Function definition
 @macro cldefun{package, name, args}
 @findex \package\:\name\
 @anchor{\package\:\name\}
@@ -15,15 +27,29 @@
 @c This is alexandria flatten function
 @c @endcldefun
 
+@c Class definition
+@macro cldefclass{package, name}
+@findex \package\:\name\
+@anchor{\package\:\name\}
+@deftp \package\ \name\
+@end macro
+
+@macro endcldefclass
+@end deftp
+@end macro
+
+@c References
 @macro clref{package, name}
 @xref{\package\-\name\,\name\}
 @end macro
 
+@c Source references
 @macro clsourceref{type,package,name}
 @end macro
 
 @c Use @clref{package, name} to reference cl definitions
 
+@c Weave Common Lisp function definition
 @macro clfunction{package, name}
 @end macro
 

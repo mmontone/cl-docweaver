@@ -45,7 +45,7 @@
 	 :ignore (lambda (word) (member (aref word 0) '(#\-)))
 	 args))
 
-(defun texinfo-format-function (function-symbol stream)
+(defun texinfo-define-function (function-symbol stream)
   (let ((function-info (def-properties:function-properties function-symbol)))
     (if (null function-info)
 	(error "Function properties could not be read: ~s" function-symbol)
@@ -67,22 +67,109 @@
 	  (terpri stream)
 	  (write-string "@endcldefun" stream)))))
 
+(defun texinfo-define-variable (variable-symbol stream)
+  (let ((variable-info (def-properties:variable-properties variable-symbol)))
+    (if (null variable-info)
+	(error "Variable properties could not be read: ~s" variable-symbol)
+	(progn
+	  (format stream "@cldefvar {~a, ~a}"
+		  (package-name (symbol-package variable-symbol))
+		  (symbol-name variable-symbol))
+	  (terpri stream) (terpri stream)
+	  (when (aget variable-info :documentation)
+	    (if (docweaver::read-config :parse-docstrings)
+		(texinfo-render-parsed-docstring
+		 (texinfo-parse-docstring
+		  (aget variable-info :documentation) nil)
+		  stream)
+		;; else
+		(write-string (aget variable-info :documentation) stream)))
+	  (terpri stream)
+	  (write-string "@endcldefvar" stream)))))
+
+(defun texinfo-define-class (class-symbol stream)
+  (let ((class-info (def-properties:class-properties class-symbol)))
+    (if (null class-info)
+	(error "Class properties could not be read: ~s" class-symbol)
+	(progn
+	  (format stream "@cldefclass {~a, ~a}"
+		  (package-name (symbol-package class-symbol))
+		  (symbol-name class-symbol))
+	  (terpri stream) (terpri stream)
+	  (when (aget class-info :documentation)
+	    (if (docweaver::read-config :parse-docstrings)
+		(texinfo-render-parsed-docstring
+		 (texinfo-parse-docstring
+		  (aget class-info :documentation) nil)
+		 stream)
+		;; else
+		(write-string (aget class-info :documentation) stream)))
+	  (terpri stream)
+	  (write-string "@endcldefclass" stream)))))
+
 (def-weaver-command-handler clfunction (function-symbol)
     (:docsystem (eql :texinfo))
-  (texinfo-format-function function-symbol stream))
+  (texinfo-define-function function-symbol stream))
 
-(def-weaver-command-handler clpackage (package-name)
+(defun texinfo-format-definitions (symbols stream &key categorized)
+  (let ((variables (remove-if-not 'def-properties:symbol-variable-p symbols)))
+    (when (and variables categorized)
+      (format stream "@heading Variables~%"))
+    (dolist (variable variables)
+      (texinfo-define-variable variable stream)
+      (terpri stream) (terpri stream)))
+
+  (let ((functions (remove-if-not 'def-properties:symbol-function-p symbols)))
+    (when (and functions categorized)
+      (format stream "@heading Functions~%"))
+    (dolist (function functions)
+      (texinfo-define-function function stream)
+      (terpri stream) (terpri stream)))
+
+  (let ((classes (remove-if-not 'def-properties:symbol-class-p symbols)))
+    (when (and classes categorized)
+      (format stream "@heading Classes~%"))
+    (dolist (class classes)
+      (texinfo-define-class class stream)
+      (terpri stream) (terpri stream))))
+
+(def-weaver-command-handler clpackage (package-name &key (include-external-definitions t) include-internal-definitions (categorized t))
     (:docsystem (eql :texinfo))
+  "Process a clpackage definition.
+Defines a package.
+If INCLUDE-EXTERNAL-DEFINITIONS is T, then the package external definitions are also defined.
+If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defined."
   (let ((package (or (find-package (string-upcase package-name))
 		     (error "Package not found: ~a" package-name))))
-    (format stream "@majorheading ~a~%" (package-name package))
+    (format stream "@deftp PACKAGE ~a~%" (package-name package))
     (terpri stream)
     (when (documentation package t)
       (write-string (documentation package t) stream)
       (terpri stream) (terpri stream))
-    (do-external-symbols (symbol package)
-      (texinfo-format-function symbol stream)
-      (terpri stream) (terpri stream))))
+    (format stream "@end deftp")
+    (terpri stream) (terpri stream)
+    (let (external-symbols internal-symbols)
+      (when (or include-internal-definitions
+		include-external-definitions)
+	(do-external-symbols (symbol package)
+	  (push symbol external-symbols)))
+      (when include-internal-definitions
+	(do-symbols (symbol package)
+	  (when (and (eql (symbol-package symbol) package)
+		     (not (member symbol external-symbols)))
+	    (push symbol internal-symbols))))
+      (if (not categorized)
+	  (progn
+	    (format stream "@heading External definitions~%~%")
+	    (texinfo-format-definitions external-symbols stream)
+	    (format stream "~%@heading Internal definitions~%~%")
+	    (texinfo-format-definitions internal-symbols stream))
+	  ;; else, categorized
+	  (progn
+	    (format stream "@heading External definitions~%~%")
+	    (texinfo-format-definitions external-symbols stream :categorized t)
+	    (format stream "~%@heading Internal definitions~%~%")
+	    (texinfo-format-definitions internal-symbols stream :categorized t))))))      
 
 (defun lget (list key)
   (second (find key list :key 'car)))
