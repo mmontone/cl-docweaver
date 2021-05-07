@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Top</title>
+
+<meta name="description" content="Top">
+<meta name="keywords" content="Top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="#Top" rel="start" title="Top">
+<link href="#Index" rel="index" title="Index">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="texinfo-klare.css">
+
+
+</head>
+
+<body lang="en">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span id="Top"></span><div class="header">
+<p>
+Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; [<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Top-1"></span><h1 class="top">Top</h1>
+<span id="index-docweaver"></span>
+<span id="index-cl_002ddocweaver"></span>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Installation" accesskey="2">Installation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Usage" accesskey="3">Usage</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#API" accesskey="4">API</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Index" rel="index" accesskey="5">Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="Introduction"></span><div class="header">
+<p>
+Next: <a href="#Installation" accesskey="n" rel="next">Installation</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Introduction-1"></span><h2 class="chapter">1 Introduction</h2>
+<span id="introduction"></span>
+<p>CL-DOCWEAVER is a document weaver for Common Lisp.
+</p>
+<p>Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+</p>
+<p>CL-DOCWEAVER is easy to extend to support different documentation tools.
+</p>
+<p>Texinfo and Markdown are the ones with best support at this moment.
+</p>
+<hr>
+<span id="Installation"></span><div class="header">
+<p>
+Next: <a href="#Usage" accesskey="n" rel="next">Usage</a>, Previous: <a href="#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Installation-1"></span><h2 class="chapter">2 Installation</h2>
+<span id="installation"></span>
+
+<hr>
+<span id="Usage"></span><div class="header">
+<p>
+Next: <a href="#API" accesskey="n" rel="next">API</a>, Previous: <a href="#Installation" accesskey="p" rel="prev">Installation</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Usage-1"></span><h2 class="chapter">3 Usage</h2>
+<span id="usage"></span>
+<p>Invoke See <a href="#DOCWEAVER_003aWEAVE_002dFILE">WEAVE-FILE</a> on your documentation source files.
+</p>
+<hr>
+<span id="API"></span><div class="header">
+<p>
+Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#Usage" accesskey="p" rel="prev">Usage</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="API-1"></span><h2 class="chapter">4 API</h2>
+<span id="api"></span>
+<span id="DOCWEAVER"></span><h2 class="majorheading">DOCWEAVER</h2>
+
+<span id="index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"></span>
+<span id="DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"></span><dl>
+<dt id="index-DEF_002dWEAVER_002dCOMMAND_002dHANDLER">DOCWEAVER: <strong>DEF-WEAVER-COMMAND-HANDLER</strong> <em>(command-name args (&amp;key docsystem) &amp;body body)</em></dt>
+</dl>
+
+<span id="index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"></span>
+<span id="DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"></span><dl>
+<dt id="index-PROCESS_002dWEAVER_002dCOMMAND">DOCWEAVER: <strong>PROCESS-WEAVER-COMMAND</strong> <em>(docsystem command args stream)</em></dt>
+</dl>
+
+<span id="index-DOCWEAVER_003aWEAVE_002dFILE"></span>
+<span id="DOCWEAVER_003aWEAVE_002dFILE"></span><dl>
+<dt id="index-WEAVE_002dFILE">DOCWEAVER: <strong>WEAVE-FILE</strong> <em>(file output-file &amp;rest options &amp;key docsystem modules command-prefix</em></dt>
+<dd><p>(parse-docstrings t))
+</p>
+<p>Weaves documentation source in <var>FILE</var> and writes the result to <var>OUTPUT-FILE</var>.
+</p>
+<p>Arguments:
+ <code>-</code> <var>DOCSYSTEM</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).
+<code>-</code> <var>MODULES</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.
+<code>-</code> <var>COMMAND-PREFIX</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.
+<code>-</code> PARSE-DOCSTRINGS: if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.
+</p>
+</dd></dl>
+
+
+
+<hr>
+<span id="Index"></span><div class="header">
+<p>
+Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Index-1"></span><h2 class="chapter">5 Index</h2>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Index_cp_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cl_002ddocweaver">cl-docweaver</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Index_cp_letter-D">D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-docweaver">docweaver</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+</td></tr></table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-W"><b>W</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Index_fn_letter-D">D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DEF_002dWEAVER_002dCOMMAND_002dHANDLER"><code>DEF-WEAVER-COMMAND-HANDLER</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"><code>DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"><code>DOCWEAVER:PROCESS-WEAVER-COMMAND</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aWEAVE_002dFILE"><code>DOCWEAVER:WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Index_fn_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PROCESS_002dWEAVER_002dCOMMAND"><code>PROCESS-WEAVER-COMMAND</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Index_fn_letter-W">W</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-WEAVE_002dFILE"><code>WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-W"><b>W</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<hr>
+
+
+
+</body>
+</html>
