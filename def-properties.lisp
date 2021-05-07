@@ -153,6 +153,7 @@ not available is DATA."
   (list (cons :name symbol)
         (cons :documentation (documentation symbol 'function))
         (cons :args (let ((*print-case* :downcase)
+			  (*print-pretty* nil)
                           (*package* (symbol-package symbol)))
                       #+nil(format nil "~{~a~^ ~}"
                                    (mapcar #'format-argument-to-string (swank-backend:arglist symbol))
@@ -170,6 +171,7 @@ not available is DATA."
   (list (cons :name symbol)
         (cons :documentation (documentation symbol 'function))
         (cons :args (let ((*print-case* :downcase)
+			  (*print-pretty* nil)
                           (*package* (symbol-package symbol)))
                       #+nil(format nil "~{~a~^ ~}"
                                    (mapcar #'format-argument-to-string (swank-backend:arglist symbol))
