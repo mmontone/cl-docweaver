@@ -193,20 +193,16 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#C
 
 <span id="index-DOCWEAVER_003aWEAVE_002dFILE"></span>
 <span id="DOCWEAVER_003aWEAVE_002dFILE"></span><dl>
-<dt id="index-WEAVE_002dFILE">DOCWEAVER: <strong>WEAVE-FILE</strong> <em>(file output-file &amp;rest options &amp;key docsystem modules command-prefix</em></dt>
-<dd><p>(parse-docstrings t))
-</p>
+<dt id="index-WEAVE_002dFILE">DOCWEAVER: <strong>WEAVE-FILE</strong> <em>(file output-file &amp;rest options &amp;key docsystem modules command-prefix (parse-docstrings t))</em></dt>
+<dd>
 <p>Weaves documentation source in <var>FILE</var> and writes the result to <var>OUTPUT-FILE</var>.<br>
 <br>
 Arguments:<br>
- &lsquo;-&rsquo; <var>DOCSYSTEM</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).<br>
-&lsquo;-&rsquo; <var>MODULES</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.<br>
-&lsquo;-&rsquo; <var>COMMAND-PREFIX</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.<br>
-&lsquo;-&rsquo; PARSE-DOCSTRINGS: if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.<br>
-<br>
-See: <a href="#DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND">DOCWEAVER:PROCESS-WEAVER-COMMAND</a><br>
-</p>
-</dd></dl>
+ - DOCSYSTEM: specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).<br>
+- MODULES: is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.<br>
+- COMMAND-PREFIX: is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.<br>
+- PARSE-DOCSTRINGS: if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.
+</p></dd></dl>
 
 
 

@@ -40,6 +40,11 @@
 	     (write-string "@*" output)
 	     (terpri output))))
 
+(defun texinfo-parse-docstring (docstring bound-args &rest args)
+  (apply #'def-properties:parse-docstring docstring bound-args
+	 :ignore (lambda (word) (member (aref word 0) '(#\-)))
+	 args))
+
 (defun texinfo-format-function (function-symbol stream)
   (let ((function-info (def-properties:function-properties function-symbol)))
     (if (null function-info)
@@ -53,7 +58,7 @@
 	  (when (aget function-info :documentation)
 	    (if (docweaver::read-config :parse-docstrings)
 		(texinfo-render-parsed-docstring
-		 (def-properties:parse-docstring
+		 (texinfo-parse-docstring
 		  (aget function-info :documentation)
 		  (def-properties:list-lambda-list-args (aget function-info :arglist)))
 		 stream)
