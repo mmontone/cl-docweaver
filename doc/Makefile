@@ -6,7 +6,7 @@ cl-docweaver.info: cl-docweaver.weaved.texi
 	makeinfo --no-validate cl-docweaver.weaved.texi
 
 cl-docweaver.pdf: cl-docweaver.weaved.texi
-# TODO: FIX texi2any --no-validate --pdf cl-docweaver.weaved.texi -o cl-docweaver.pdf
+	texi2any --force --no-validate --pdf cl-docweaver.weaved.texi -o cl-docweaver.pdf
 
 cl-docweaver.html: cl-docweaver.weaved.texi
 	texi2any --no-validate --html cl-docweaver.weaved.texi --css-ref texinfo-klare.css --no-split -o cl-docweaver.html
