@@ -16,7 +16,7 @@
 (defun texinfo-format (string)
   "Add linebreaks."
   (str:replace-all (coerce (list #\newline) 'string)
-		   (coerce (list #\@ #\* #\newline) 'string) string))
+                   (coerce (list #\@ #\* #\newline) 'string) string))
 
 (defun source-anchor-name (source-file line-number)
   (format nil "~aL~a" (pathname-name source-file)
@@ -24,8 +24,8 @@
 
 (defun qualified-symbol-name (symbol)
   (format nil "~a:~a"
-	  (package-name (symbol-package symbol))
-	  (symbol-name symbol)))
+          (package-name (symbol-package symbol))
+          (symbol-name symbol)))
 
 (defun generate-texinfo-source (source-file output)
   "Source code is serialized to a Texinfo node with an anchor for each line @anchor{<filename>L<linename>}"
@@ -37,75 +37,75 @@
           do
              (format output "@anchor{~a}" (source-anchor-name source-file line-number))
              (write-string (texinfo-escape line) output)
-	     (write-string "@*" output)
-	     (terpri output))))
+             (write-string "@*" output)
+             (terpri output))))
 
 (defun texinfo-parse-docstring (docstring bound-args &rest args)
   (apply #'def-properties:parse-docstring docstring bound-args
-	 :ignore (lambda (word) (member (aref word 0) '(#\-)))
-	 args))
+         :ignore (lambda (word) (member (aref word 0) '(#\-)))
+         args))
 
 (defun texinfo-define-function (function-symbol stream)
   (let ((function-info (def-properties:function-properties function-symbol)))
     (if (null function-info)
-	(error "Function properties could not be read: ~s" function-symbol)
-	(progn
-	  (format stream "@cldefun {~a, ~a, ~a}"
-		  (package-name (symbol-package function-symbol))
-		  (symbol-name function-symbol)
-		  (aget function-info :args))
-	  (terpri stream) (terpri stream)
-	  (when (aget function-info :documentation)
-	    (if (docweaver::read-config :parse-docstrings)
-		(texinfo-render-parsed-docstring
-		 (texinfo-parse-docstring
-		  (aget function-info :documentation)
-		  (def-properties:list-lambda-list-args (aget function-info :arglist)))
-		 stream)
-		;; else
-		(write-string (aget function-info :documentation) stream)))
-	  (terpri stream)
-	  (write-string "@endcldefun" stream)))))
+        (error "Function properties could not be read: ~s" function-symbol)
+        (progn
+          (format stream "@cldefun {~a, ~a, ~a}"
+                  (package-name (symbol-package function-symbol))
+                  (symbol-name function-symbol)
+                  (aget function-info :args))
+          (terpri stream) (terpri stream)
+          (when (aget function-info :documentation)
+            (if (docweaver::read-config :parse-docstrings)
+                (texinfo-render-parsed-docstring
+                 (texinfo-parse-docstring
+                  (aget function-info :documentation)
+                  (def-properties:list-lambda-list-args (aget function-info :arglist)))
+                 stream)
+                ;; else
+                (write-string (aget function-info :documentation) stream)))
+          (terpri stream)
+          (write-string "@endcldefun" stream)))))
 
 (defun texinfo-define-variable (variable-symbol stream)
   (let ((variable-info (def-properties:variable-properties variable-symbol)))
     (if (null variable-info)
-	(error "Variable properties could not be read: ~s" variable-symbol)
-	(progn
-	  (format stream "@cldefvar {~a, ~a}"
-		  (package-name (symbol-package variable-symbol))
-		  (symbol-name variable-symbol))
-	  (terpri stream) (terpri stream)
-	  (when (aget variable-info :documentation)
-	    (if (docweaver::read-config :parse-docstrings)
-		(texinfo-render-parsed-docstring
-		 (texinfo-parse-docstring
-		  (aget variable-info :documentation) nil)
-		  stream)
-		;; else
-		(write-string (aget variable-info :documentation) stream)))
-	  (terpri stream)
-	  (write-string "@endcldefvar" stream)))))
+        (error "Variable properties could not be read: ~s" variable-symbol)
+        (progn
+          (format stream "@cldefvar {~a, ~a}"
+                  (package-name (symbol-package variable-symbol))
+                  (symbol-name variable-symbol))
+          (terpri stream) (terpri stream)
+          (when (aget variable-info :documentation)
+            (if (docweaver::read-config :parse-docstrings)
+                (texinfo-render-parsed-docstring
+                 (texinfo-parse-docstring
+                  (aget variable-info :documentation) nil)
+                 stream)
+                ;; else
+                (write-string (aget variable-info :documentation) stream)))
+          (terpri stream)
+          (write-string "@endcldefvar" stream)))))
 
 (defun texinfo-define-class (class-symbol stream)
   (let ((class-info (def-properties:class-properties class-symbol)))
     (if (null class-info)
-	(error "Class properties could not be read: ~s" class-symbol)
-	(progn
-	  (format stream "@cldefclass {~a, ~a}"
-		  (package-name (symbol-package class-symbol))
-		  (symbol-name class-symbol))
-	  (terpri stream) (terpri stream)
-	  (when (aget class-info :documentation)
-	    (if (docweaver::read-config :parse-docstrings)
-		(texinfo-render-parsed-docstring
-		 (texinfo-parse-docstring
-		  (aget class-info :documentation) nil)
-		 stream)
-		;; else
-		(write-string (aget class-info :documentation) stream)))
-	  (terpri stream)
-	  (write-string "@endcldefclass" stream)))))
+        (error "Class properties could not be read: ~s" class-symbol)
+        (progn
+          (format stream "@cldefclass {~a, ~a}"
+                  (package-name (symbol-package class-symbol))
+                  (symbol-name class-symbol))
+          (terpri stream) (terpri stream)
+          (when (aget class-info :documentation)
+            (if (docweaver::read-config :parse-docstrings)
+                (texinfo-render-parsed-docstring
+                 (texinfo-parse-docstring
+                  (aget class-info :documentation) nil)
+                 stream)
+                ;; else
+                (write-string (aget class-info :documentation) stream)))
+          (terpri stream)
+          (write-string "@endcldefclass" stream)))))
 
 (def-weaver-command-handler clfunction (function-symbol)
     (:docsystem (eql :texinfo))
@@ -140,7 +140,7 @@ Defines a package.
 If INCLUDE-EXTERNAL-DEFINITIONS is T, then the package external definitions are also defined.
 If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defined."
   (let ((package (or (find-package (string-upcase package-name))
-		     (error "Package not found: ~a" package-name))))
+                     (error "Package not found: ~a" package-name))))
     (format stream "@deftp PACKAGE ~a~%" (package-name package))
     (terpri stream)
     (when (documentation package t)
@@ -150,44 +150,44 @@ If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defin
     (terpri stream) (terpri stream)
     (let (external-symbols internal-symbols)
       (when (or include-internal-definitions
-		include-external-definitions)
-	(do-external-symbols (symbol package)
-	  (push symbol external-symbols)))
+                include-external-definitions)
+        (do-external-symbols (symbol package)
+          (push symbol external-symbols)))
       (when include-internal-definitions
-	(do-symbols (symbol package)
-	  (when (and (eql (symbol-package symbol) package)
-		     (not (member symbol external-symbols)))
-	    (push symbol internal-symbols))))
+        (do-symbols (symbol package)
+          (when (and (eql (symbol-package symbol) package)
+                     (not (member symbol external-symbols)))
+            (push symbol internal-symbols))))
       (if (not categorized)
-	  (progn
-	    (format stream "@heading External definitions~%~%")
-	    (texinfo-format-definitions external-symbols stream)
-	    (when include-internal-definitions
-	      (format stream "~%@heading Internal definitions~%~%")
-	      (texinfo-format-definitions internal-symbols stream)))
-	  ;; else, categorized
-	  (progn
-	    (format stream "@heading External definitions~%~%")
-	    (texinfo-format-definitions external-symbols stream :categorized t)
-	    (when include-internal-definitions
-	      (format stream "~%@heading Internal definitions~%~%")
-	      (texinfo-format-definitions internal-symbols stream :categorized t)))))))
+          (progn
+            (format stream "@heading External definitions~%~%")
+            (texinfo-format-definitions external-symbols stream)
+            (when include-internal-definitions
+              (format stream "~%@heading Internal definitions~%~%")
+              (texinfo-format-definitions internal-symbols stream)))
+          ;; else, categorized
+          (progn
+            (format stream "@heading External definitions~%~%")
+            (texinfo-format-definitions external-symbols stream :categorized t)
+            (when include-internal-definitions
+              (format stream "~%@heading Internal definitions~%~%")
+              (texinfo-format-definitions internal-symbols stream :categorized t)))))))
 
 (defun lget (list key)
   (second (find key list :key 'car)))
 
 (def-weaver-command-handler :clsourceref (symbol &optional type)
-    (:docsystem (eql :texinfo))  
+    (:docsystem (eql :texinfo))
   (let ((symbol-info (ecase (intern (string-upcase type) :keyword)
-		       (:function (def-properties:function-properties symbol)))))
+                       (:function (def-properties:function-properties symbol)))))
     (if (null symbol-info)
-	(error "Symbol properties could not be read: ~s" symbol)
-	(format stream "@xref{~a, Source}"
-		(source-anchor-name (lget (rest (aget symbol-info :source))
-					  :file)
-				    ;; FIXME: we need the line, not the position here
-				    (lget (rest (aget symbol-info :source))
-					  :position))))))
+        (error "Symbol properties could not be read: ~s" symbol)
+        (format stream "@xref{~a, Source}"
+                (source-anchor-name (lget (rest (aget symbol-info :source))
+                                          :file)
+                                    ;; FIXME: we need the line, not the position here
+                                    (lget (rest (aget symbol-info :source))
+                                          :position))))))
 
 (def-weaver-command-handler :clsourcecode (system-name filepath)
     (:docsystem (eql :texinfo))
@@ -205,21 +205,21 @@ If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defin
         do
            (cond
              ((stringp word)
-	      (write-string (texinfo-format word) stream))
+              (write-string (texinfo-format word) stream))
              ((and (listp word) (eql (car word) :arg))
               (format stream "@var{~a}" (second word)))
              ((and (listp word) (eql (car word) :fn))
-	      ;; makeinfo command can be called with --no-validate option for this.
-	      ;; in Emacs, customize makeinfo-options variable (add --no-validate option)
-	      (format stream "@ref{~a}" (second word))
-	      ;;(format stream "@code{~a}" (second word))
-	      )
-             ((and (listp word) (eql (car word) :var))
-	      ;; makeinfo command can be called with --no-validate option for this.
-	      ;; in Emacs, customize makeinfo-options variable (add --no-validate option)
+              ;; makeinfo command can be called with --no-validate option for this.
+              ;; in Emacs, customize makeinfo-options variable (add --no-validate option)
               (format stream "@ref{~a}" (second word))
-	      ;;(format stream "@var{~a}" (second word))
-	      )
+              ;;(format stream "@code{~a}" (second word))
+              )
+             ((and (listp word) (eql (car word) :var))
+              ;; makeinfo command can be called with --no-validate option for this.
+              ;; in Emacs, customize makeinfo-options variable (add --no-validate option)
+              (format stream "@ref{~a}" (second word))
+              ;;(format stream "@var{~a}" (second word))
+              )
              ((and (listp word) (eql (car word) :key))
               (format stream "@var{~a}" (second word))))))
 
@@ -229,6 +229,6 @@ If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defin
 
 
 #+nil(weave-file
- (asdf:system-relative-pathname :docweaver "test/webinfo.texi")
- (asdf:system-relative-pathname :docweaver "test/webinfo.weaved.texi")
- :docsystem :texinfo)
+      (asdf:system-relative-pathname :docweaver "test/webinfo.texi")
+      (asdf:system-relative-pathname :docweaver "test/webinfo.weaved.texi")
+      :docsystem :texinfo)
