@@ -32,7 +32,7 @@ cl-docweaver-internals.weaved.texi:
 	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "README.md" "../README.md" :docsystem :markdown)' --quit
 
 clean:
-	rm -f cl-docweaver.weaved.texi
+	rm -f *.weaved
 	rm -f *.pdf
 	rm -f *.html
 	rm -f ../README.md

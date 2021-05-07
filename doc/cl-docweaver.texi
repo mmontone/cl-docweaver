@@ -47,7 +47,7 @@ Texts.  A copy of the license is included in the section entitled
 
 CL-DOCWEAVER is a document weaver for Common Lisp.
 
-Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using weaving commands.
 
 @menu
 * Introduction::
@@ -95,9 +95,15 @@ Example:
 
 @end deffn
 
-@deffn Command @@clpackage (package-name &rest args)
+@deffn Command @@clpackage (package-name &key (include-external-definitions t) include-internal-definitions (categorized t))
 
-Displays package with name PACKAGE-NAME.
+Displays PACKAGE-NAME package description.
+
+If INCLUDE-EXTERNAL-DEFINITIONS is T, then all package external definitions are shown.
+
+If INCLUDE-INTERNAL-DEFINITIONS is T, then all package internals definitions are shown.
+
+If CATEGORIZED is T, then definitions appear categorized in sections (variables, functions, etc).
 
 Example:
 
@@ -105,9 +111,13 @@ Example:
 
 @end deffn
 
-@deffn Command @@clref (symbol &optional type)
+@deffn Command @@clref (symbol type)
 
-Creates a reference to SYMBOL. TYPE can be used to disambiguate (the symbol is bound to several types of definitions, for example, function and variable).
+Creates a reference to SYMBOL. TYPE should be one of 'variable', 'function', 'class', etc.
+
+Example:
+
+@code{(@@clref alexandria:flatten, function)}
 
 @end deffn
 

@@ -61,6 +61,10 @@ ul.no-bullet {list-style: none}
 
 
 
+
+
+
+
 <span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
@@ -87,7 +91,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; [
 
 <p>CL-DOCWEAVER is a document weaver for Common Lisp.
 </p>
-<p>Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+<p>Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using weaving commands.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -134,7 +138,7 @@ Next: <a href="#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a hr
 </div>
 <span id="Usage-1"></span><h2 class="chapter">3 Usage</h2>
 <span id="usage"></span>
-<p>Invoke See <a href="#DOCWEAVER_003aWEAVE_002dFILE">WEAVE-FILE</a> on your documentation source files.
+<p>Invoke See <a href="#DOCWEAVER_003aWEAVE_002dFILE-function">WEAVE-FILE</a> on your documentation source files.
 </p>
 <hr>
 <span id="Commands"></span><div class="header">
@@ -155,9 +159,15 @@ Next: <a href="#API" accesskey="n" rel="next">API</a>, Previous: <a href="#Usage
 </dd></dl>
 
 <dl>
-<dt id="index-_0040clpackage">Command: <strong>@clpackage</strong> <em>(package-name &amp;rest args)</em></dt>
+<dt id="index-_0040clpackage">Command: <strong>@clpackage</strong> <em>(package-name &amp;key (include-external-definitions t) include-internal-definitions (categorized t))</em></dt>
 <dd>
-<p>Displays package with name PACKAGE-NAME.
+<p>Displays PACKAGE-NAME package description.
+</p>
+<p>If INCLUDE-EXTERNAL-DEFINITIONS is T, then all package external definitions are shown.
+</p>
+<p>If INCLUDE-INTERNAL-DEFINITIONS is T, then all package internals definitions are shown.
+</p>
+<p>If CATEGORIZED is T, then definitions appear categorized in sections (variables, functions, etc).
 </p>
 <p>Example:
 </p>
@@ -166,9 +176,13 @@ Next: <a href="#API" accesskey="n" rel="next">API</a>, Previous: <a href="#Usage
 </dd></dl>
 
 <dl>
-<dt id="index-_0040clref">Command: <strong>@clref</strong> <em>(symbol &amp;optional type)</em></dt>
+<dt id="index-_0040clref">Command: <strong>@clref</strong> <em>(symbol type)</em></dt>
 <dd>
-<p>Creates a reference to SYMBOL. TYPE can be used to disambiguate (the symbol is bound to several types of definitions, for example, function and variable).
+<p>Creates a reference to SYMBOL. TYPE should be one of &rsquo;variable&rsquo;, &rsquo;function&rsquo;, &rsquo;class&rsquo;, etc.
+</p>
+<p>Example:
+</p>
+<p><code>(@clref alexandria:flatten, function)</code>
 </p>
 </dd></dl>
 
@@ -179,20 +193,15 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#C
 </div>
 <span id="API-1"></span><h2 class="chapter">5 API</h2>
 <span id="api"></span>
-<span id="DOCWEAVER"></span><h2 class="majorheading">DOCWEAVER</h2>
-
-<span id="index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"></span>
-<span id="DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"></span><dl>
-<dt id="index-DEF_002dWEAVER_002dCOMMAND_002dHANDLER">DOCWEAVER: <strong>DEF-WEAVER-COMMAND-HANDLER</strong> <em>(command-name args (&amp;key docsystem) &amp;body body)</em></dt>
+<dl>
+<dt id="index-DOCWEAVER">PACKAGE: <strong>DOCWEAVER</strong></dt>
 </dl>
 
-<span id="index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"></span>
-<span id="DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"></span><dl>
-<dt id="index-PROCESS_002dWEAVER_002dCOMMAND">DOCWEAVER: <strong>PROCESS-WEAVER-COMMAND</strong> <em>(docsystem command args stream)</em></dt>
-</dl>
+<span id="External-definitions"></span><h3 class="heading">External definitions</h3>
 
+<span id="Functions"></span><h3 class="heading">Functions</h3>
 <span id="index-DOCWEAVER_003aWEAVE_002dFILE"></span>
-<span id="DOCWEAVER_003aWEAVE_002dFILE"></span><dl>
+<span id="DOCWEAVER_003aWEAVE_002dFILE-function"></span><dl>
 <dt id="index-WEAVE_002dFILE">DOCWEAVER: <strong>WEAVE-FILE</strong> <em>(file output-file &amp;rest options &amp;key docsystem modules command-prefix (parse-docstrings t))</em></dt>
 <dd>
 <p>Weaves documentation source in <var>FILE</var> and writes the result to <var>OUTPUT-FILE</var>.<br>
@@ -238,8 +247,6 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <br>
 <a class="summary-letter" href="#Index_fn_letter-D"><b>D</b></a>
  &nbsp; 
-<a class="summary-letter" href="#Index_fn_letter-P"><b>P</b></a>
- &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-W"><b>W</b></a>
  &nbsp; 
 </td></tr></table>
@@ -252,13 +259,7 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td></td><td valign="top"><a href="#index-_0040clref"><code>@clref</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-D">D</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-DEF_002dWEAVER_002dCOMMAND_002dHANDLER"><code>DEF-WEAVER-COMMAND-HANDLER</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"><code>DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"><code>DOCWEAVER:PROCESS-WEAVER-COMMAND</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aWEAVE_002dFILE"><code>DOCWEAVER:WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="Index_fn_letter-P">P</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-PROCESS_002dWEAVER_002dCOMMAND"><code>PROCESS-WEAVER-COMMAND</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-W">W</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-WEAVE_002dFILE"><code>WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
@@ -268,8 +269,6 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
  &nbsp; 
 <br>
 <a class="summary-letter" href="#Index_fn_letter-D"><b>D</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_fn_letter-P"><b>P</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-W"><b>W</b></a>
  &nbsp; 
