@@ -17,6 +17,11 @@
   (format nil "~aL~a" (pathname-name source-file)
           line-number))
 
+(defun qualified-symbol-name (symbol)
+  (format nil "~a:~a"
+	  (package-name (symbol-package symbol))
+	  (symbol-name symbol)))
+
 (defun generate-texinfo-source (source-file output)
   "Source code is serialized to a Texinfo node with an anchor for each line @anchor{<filename>L<linename>}"
   (with-open-file (f source-file :direction :input
@@ -53,11 +58,11 @@
 	  (write-string "@endcldefun" stream)))))
 
 (def-weaver-command-handler clfunction (function-symbol)
-    (:backend (eql :texinfo))
+    (:docsystem (eql :texinfo))
   (texinfo-format-function function-symbol stream))
 
 (def-weaver-command-handler clpackage (package-name)
-    (:backend (eql :texinfo))
+    (:docsystem (eql :texinfo))
   (let ((package (or (find-package (string-upcase package-name))
 		     (error "Package not found: ~a" package-name))))
     (format stream "@majorheading ~a~%" (package-name package))
@@ -73,7 +78,7 @@
   (second (find key list :key 'car)))
 
 (def-weaver-command-handler :clsourceref (symbol &optional type)
-    (:backend (eql :texinfo))  
+    (:docsystem (eql :texinfo))  
   (let ((symbol-info (ecase (intern (string-upcase type) :keyword)
 		       (:function (def-properties:function-properties symbol)))))
     (if (null symbol-info)
@@ -86,13 +91,15 @@
 					  :position))))))
 
 (def-weaver-command-handler :clsourcecode (system-name filepath)
-    (:backend (eql :texinfo))
+    (:docsystem (eql :texinfo))
   (let ((source-file (asdf:system-relative-pathname system-name filepath)))
     (generate-texinfo-source source-file stream)))
 
+
+
 (def-weaver-command-handler :clref (symbol &optional type)
-    (:backend (eql :texinfo))
-  (princ symbol stream))
+    (:docsystem (eql :texinfo))
+  (format stream "@xref{~a, ~a}" (qualified-symbol-name symbol) (symbol-name symbol)))
 
 (defun texinfo-render-parsed-docstring (docstring stream)
   (loop for word in docstring
@@ -124,4 +131,4 @@
 #+nil(weave-file
  (asdf:system-relative-pathname :docweaver "test/webinfo.texi")
  (asdf:system-relative-pathname :docweaver "test/webinfo.weaved.texi")
- :backend :texinfo)
+ :docsystem :texinfo)

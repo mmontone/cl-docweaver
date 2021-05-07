@@ -40,11 +40,11 @@
 	  (terpri stream)))))
 
 (def-weaver-command-handler :clfunction (function-symbol)
-    (:backend (eql :markdown))
+    (:docsystem (eql :markdown))
   (markdown-format-function function-symbol stream))
 
 (def-weaver-command-handler :clvariable (variable-symbol)
-    (:backend (eql :markdown))
+    (:docsystem (eql :markdown))
   (let ((variable-info (def-properties:variable-properties variable-symbol)))
         (if (null variable-info)
             (error "Variable properties could not be read: ~s" variable-symbol)
@@ -63,21 +63,21 @@
   (second (find key list :key 'car)))
 
 (def-weaver-command-handler :clsourceref (symbol)
-    (:backend (eql :markdown))
+    (:docsystem (eql :markdown))
   "TODO"
   )
 
 (def-weaver-command-handler :clsourcecode (system-name filepath)
-  (:backend (eql :markdown))
+  (:docsystem (eql :markdown))
   (let ((source-file (asdf:system-relative-pathname system-name filepath)))
     (generate-markdown-source source-file stream)))
 
 (def-weaver-command-handler :clref (symbol &optional type)
-    (:backend (eql :markdown))
+    (:docsystem (eql :markdown))
   (princ symbol stream))
 
 (def-weaver-command-handler :clpackage (package-name &rest options)
-    (:backend (eql :markdown))
+    (:docsystem (eql :markdown))
   (let ((package (or (find-package (string-upcase package-name))
 		     (error "Package not found: ~a" package-name))))
     (format stream "## ~a~%" (package-name package))
@@ -92,4 +92,4 @@
 #+nil(weave-file
  (asdf:system-relative-pathname :docweaver "test/webinfo.md")
  (asdf:system-relative-pathname :docweaver "test/webinfo.weaved.md")
- :backend :markdown)
+ :docsystem :markdown)

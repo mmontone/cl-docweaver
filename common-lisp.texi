@@ -2,7 +2,7 @@
 
 @macro cldefun{package, name, args}
 @findex \package\:\name\
-@anchor{\package\-\name\}
+@anchor{\package\:\name\}
 @deffn \package\ \name\ \args\
 @end macro
 

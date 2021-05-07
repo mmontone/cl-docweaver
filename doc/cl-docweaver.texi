@@ -8,7 +8,7 @@
 @include ../common-lisp.texi
 
 @c Setup cl-docweaver
-(@setup :command-prefix #\$ :backend :texinfo)
+(@setup :command-prefix #\$ :docsystem :texinfo)
 
 @node Top
 @top Top
@@ -17,6 +17,8 @@
 
 @menu
 * Introduction::
+* Installation::
+* Usage::
 * API::
 * Index::
 @end menu
@@ -24,6 +26,25 @@
 @node Introduction
 @chapter Introduction
 @anchor{introduction}
+
+CL-DOCWEAVER is a document weaver for Common Lisp.
+
+Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+
+CL-DOCWEAVER is easy to extend to support different documentation tools.
+
+Texinfo and Markdown are the ones with best support at this moment.
+
+@node Installation
+@chapter Installation
+@anchor{installation}
+
+
+@node Usage
+@chapter Usage
+@anchor{usage}
+
+Invoke ($clref docweaver:weave-file :function)  on your documentation source files.
 
 @node API
 @chapter API

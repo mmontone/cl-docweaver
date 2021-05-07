@@ -17,6 +17,8 @@
 
 @menu
 * Introduction::
+* Installation::
+* Usage::
 * API::
 * Index::
 @end menu
@@ -25,29 +27,48 @@
 @chapter Introduction
 @anchor{introduction}
 
+CL-DOCWEAVER is a document weaver for Common Lisp.
+
+Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+
+CL-DOCWEAVER is easy to extend to support different documentation tools.
+
+Texinfo and Markdown are the ones with best support at this moment.
+
+@node Installation
+@chapter Installation
+@anchor{installation}
+
+
+@node Usage
+@chapter Usage
+@anchor{usage}
+
+Invoke @xref{DOCWEAVER:WEAVE-FILE, WEAVE-FILE} on your documentation source files.
+
 @node API
 @chapter API
 @anchor{api}
 
 @majorheading DOCWEAVER
 
-@cldefun {DOCWEAVER, DEF-WEAVER-COMMAND-HANDLER, (command-name args (&key backend) &body body)}
+@cldefun {DOCWEAVER, DEF-WEAVER-COMMAND-HANDLER, (command-name args (&key docsystem) &body body)}
 
 
 @endcldefun
 
-@cldefun {DOCWEAVER, PROCESS-WEAVER-COMMAND, (backend command args stream)}
+@cldefun {DOCWEAVER, PROCESS-WEAVER-COMMAND, (docsystem command args stream)}
 
 
 @endcldefun
 
-@cldefun {DOCWEAVER, WEAVE-FILE, (file output-file &rest options &key backend modules command-prefix
+@cldefun {DOCWEAVER, WEAVE-FILE, (file output-file &rest options &key docsystem modules command-prefix
  (parse-docstrings t))}
 
 Weaves documentation source in @var{FILE} and writes the result to @var{OUTPUT-FILE}.
 
 Arguments:
- @code{-} @var{BACKEND} specify the documentation tool that is being used (@var{:texinfo}, @var{:markdown}, etc.).
+ @code{-} @var{DOCSYSTEM} specify the documentation tool that is being used (@var{:texinfo}, @var{:markdown}, etc.).
 @code{-} @var{MODULES} is the list of @var{modules} (or ASDF system names) that need to be loaded to be able to read definition descriptions.
 @code{-} @var{COMMAND-PREFIX} is the character to use as prefix for commands. The character `at` is the default.
 @code{-} PARSE-DOCSTRINGS: if @var{T}, then docstings are parsed and highlighted and references to code from it created.

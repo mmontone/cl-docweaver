@@ -12,10 +12,10 @@ cl-docweaver.html: cl-docweaver.weaved.texi
 	texi2any --no-validate --html cl-docweaver.weaved.texi --no-split -o cl-docweaver.html
 
 cl-docweaver.weaved.texi:
-	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "cl-docweaver.texi" "cl-docweaver.weaved.texi" :backend :texinfo)' --quit
+	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "cl-docweaver.texi" "cl-docweaver.weaved.texi" :docsystem :texinfo)' --quit
 
 ../README.md:
-	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "README.md" "../README.md" :backend :markdown)' --quit
+	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "README.md" "../README.md" :docsystem :markdown)' --quit
 
 clean:
 	rm -f cl-docweaver.weaved.texi

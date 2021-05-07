@@ -46,11 +46,11 @@
 	  (write-string "@endcldefun" stream)))))
 
 (def-weaver-command-handler clfunction (function-symbol)
-    (:backend (eql :latex))
+    (:docsystem (eql :latex))
   (latex-format-function function-symbol stream))
 
 (def-weaver-command-handler clpackage (package-name)
-    (:backend (eql :latex))
+    (:docsystem (eql :latex))
   (let ((package (or (find-package (string-upcase package-name))
 		     (error "Package not found: ~a" package-name))))
     (format stream "@majorheading ~a~%" (package-name package))
@@ -66,7 +66,7 @@
   (second (find key list :key 'car)))
 
 (def-weaver-command-handler :clsourceref (symbol &optional type)
-    (:backend (eql :latex))  
+    (:docsystem (eql :latex))  
   (let ((symbol-info (ecase (intern (string-upcase type) :keyword)
 		       (:function (def-properties:function-properties symbol)))))
     (if (null symbol-info)
@@ -79,15 +79,15 @@
 					  :position))))))
 
 (def-weaver-command-handler :clsourcecode (system-name filepath)
-    (:backend (eql :latex))
+    (:docsystem (eql :latex))
   (let ((source-file (asdf:system-relative-pathname system-name filepath)))
     (generate-latex-source source-file stream)))
 
 (def-weaver-command-handler :clref (symbol &optional type)
-    (:backend (eql :latex))
+    (:docsystem (eql :latex))
   (princ symbol stream))
 
 #+nil(weave-file
  (asdf:system-relative-pathname :docweaver "test/webinfo.tex")
  (asdf:system-relative-pathname :docweaver "test/webinfo.weaved.tex")
- :backend :latex)
+ :docsystem :latex)
