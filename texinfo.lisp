@@ -60,7 +60,8 @@
                 (texinfo-render-parsed-docstring
                  (texinfo-parse-docstring
                   (aget function-info :documentation)
-                  (def-properties:list-lambda-list-args (aget function-info :arglist)))
+                  (def-properties:list-lambda-list-args (aget function-info :arglist))
+		  :package (symbol-package function-symbol))
                  stream)
                 ;; else
                 (write-string (aget function-info :documentation) stream)))
@@ -80,7 +81,8 @@
             (if (docweaver::read-config :parse-docstrings)
                 (texinfo-render-parsed-docstring
                  (texinfo-parse-docstring
-                  (aget variable-info :documentation) nil)
+                  (aget variable-info :documentation) nil
+		  :package (symbol-package variable-symbol))
                  stream)
                 ;; else
                 (write-string (aget variable-info :documentation) stream)))
