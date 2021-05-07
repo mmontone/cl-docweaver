@@ -15,6 +15,10 @@
 @cindex docweaver
 @cindex cl-docweaver
 
+CL-DOCWEAVER is a document weaver for Common Lisp.
+
+Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+
 @menu
 * Introduction::
 * Installation::

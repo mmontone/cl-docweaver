@@ -58,6 +58,10 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; [
 <span id="index-docweaver"></span>
 <span id="index-cl_002ddocweaver"></span>
 
+<p>CL-DOCWEAVER is a document weaver for Common Lisp.
+</p>
+<p>Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+</p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -130,10 +134,12 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#U
 <p>Weaves documentation source in <var>FILE</var> and writes the result to <var>OUTPUT-FILE</var>.
 </p>
 <p>Arguments:
- <code>-</code> <var>DOCSYSTEM</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).
-<code>-</code> <var>MODULES</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.
-<code>-</code> <var>COMMAND-PREFIX</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.
-<code>-</code> PARSE-DOCSTRINGS: if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.
+ &lsquo;-&rsquo; <var>DOCSYSTEM</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).
+&lsquo;-&rsquo; <var>MODULES</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.
+&lsquo;-&rsquo; <var>COMMAND-PREFIX</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.
+&lsquo;-&rsquo; PARSE-DOCSTRINGS: if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.
+</p>
+<p>See: <a href="#DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND">DOCWEAVER:PROCESS-WEAVER-COMMAND</a>
 </p>
 </dd></dl>
 

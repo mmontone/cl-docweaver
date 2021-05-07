@@ -58,6 +58,8 @@ Arguments:
 - COMMAND-PREFIX is the character to use as prefix for commands. The character `at` is the default.
 - PARSE-DOCSTRINGS: if T, then docstings are parsed and highlighted and references to code from it created.
 
+See: DOCWEAVER:PROCESS-WEAVER-COMMAND
+
 
 
 
