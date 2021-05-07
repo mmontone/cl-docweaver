@@ -13,6 +13,11 @@
               collect char)))
     (coerce chars 'string)))
 
+(defun texinfo-format (string)
+  "Add linebreaks."
+  (str:replace-all (coerce (list #\newline) 'string)
+		   (coerce (list #\@ #\* #\newline) 'string) string))
+
 (defun source-anchor-name (source-file line-number)
   (format nil "~aL~a" (pathname-name source-file)
           line-number))
@@ -105,7 +110,8 @@
   (loop for word in docstring
         do
            (cond
-             ((stringp word) (write-string word stream))
+             ((stringp word)
+	      (write-string (texinfo-format word) stream))
              ((and (listp word) (eql (car word) :arg))
               (format stream "@var{~a}" (second word)))
              ((and (listp word) (eql (car word) :fn))

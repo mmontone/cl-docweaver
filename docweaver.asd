@@ -10,4 +10,4 @@
 	       (:file "docweaver")
 	       (:file "texinfo")
 	       (:file "markdown"))
-  :depends-on (:assoc-utils))
+  :depends-on (:assoc-utils :str))
