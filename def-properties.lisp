@@ -397,6 +397,9 @@ the CADR of the list."
   `(let ((it ,arg1))
      (and it ,@args)))
 
+;; TODO: consider elisp style docstring parsing.
+;; See: https://www.gnu.org/software/emacs/manual/html_node/elisp/Documentation-Tips.html
+;; For example, option to only parse quoted words as function/variable references, like `my-function`. Also, consider using `(type)symbol` syntax to disambiguate, like `(function)my-function`.
 (defun parse-docstring (docstring bound-args &key case-sensitive ignore (package *package*))
   "Parse a docstring.
 BOUND-ARGS: when parsing a function/macro/generic function docstring, BOUND-ARGS contains the names of the arguments. That means the function arguments are detected by the parser.
