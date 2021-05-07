@@ -1,0 +1,127 @@
+\input texinfo   @c -*-texinfo-*-
+@comment $Id@w{$}
+@comment %**start of header
+@settitle Common Lisp Documentation Weaver
+@syncodeindex pg cp
+@setfilename cl-docweaver.info
+@include ../common-lisp.texi
+
+@copying
+
+Copyright @copyright{} 2021 Mariano Montone
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+``GNU Free Documentation License''.
+@end quotation
+@end copying
+
+
+@dircategory Common Lisp
+@direntry
+* CL-DocWeaver: (cl-docweaver)Common Lisp documentation weaver.
+@end direntry
+
+@titlepage
+@title Common Lisp Documentation Weaver
+
+@c Setup cl-docweaver
+(@setup :command-prefix #\$ :docsystem :texinfo)
+
+@author Mariano Montone (@email{marianomontone@@gmail.com})
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@node Top
+@top Top
+@cindex docweaver
+@cindex cl-docweaver
+
+CL-DOCWEAVER is a document weaver for Common Lisp.
+
+Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+
+@menu
+* Introduction::
+* Installation::
+* Usage::
+* Commands::
+* API::
+* Index::
+@end menu
+
+@node Introduction
+@chapter Introduction
+@anchor{introduction}
+
+CL-DOCWEAVER is a document weaver for Common Lisp.
+
+Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+
+CL-DOCWEAVER is easy to extend to support different documentation tools.
+
+Texinfo and Markdown are the ones with best support at this moment.
+
+@node Installation
+@chapter Installation
+@anchor{installation}
+
+
+@node Usage
+@chapter Usage
+@anchor{usage}
+
+Invoke ($clref docweaver:weave-file :function)  on your documentation source files.
+
+@node Commands
+@chapter Commands
+@anchor{commands}
+
+@deffn Command @@clfunction (function-symbol &rest args)
+
+Displays function bound to FUNCTION-SYMBOL.
+
+Example:
+
+@code{Have a look at (@@clfunction alexandria:flatten) function}
+
+@end deffn
+
+@deffn Command @@clpackage (package-name &rest args)
+
+Displays package with name PACKAGE-NAME.
+
+Example:
+
+@code{(@@clpackage :alexandria)}
+
+@end deffn
+
+@deffn Command @@clref (symbol &optional type)
+
+Creates a reference to SYMBOL. TYPE can be used to disambiguate (the symbol is bound to several types of definitions, for example, function and variable).
+
+@end deffn
+
+@node API
+@chapter API
+@anchor{api}
+
+($clpackage :docweaver :include-internal-definitions t)
+
+@node Index
+@chapter Index
+
+@printindex cp
+@printindex vr
+@printindex fn
+
+@bye
