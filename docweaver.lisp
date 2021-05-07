@@ -9,6 +9,20 @@
 ;; Same for macros and other CL stuff:
 ;; @clmacro{cl:with-open-file}
 
+(defun package-symbols (package)
+  "Return all symbols that belong to PACKAGE (both internal and external)."
+  (let (symbols)
+    (do-symbols (symbol package)
+      (when (eql (symbol-package symbol) package)
+	(push symbol symbols)))
+    symbols))
+
+(defun package-variables (package)
+  (remove-if-not 'boundp (package-symbols package)))
+
+(defun package-functions (package)
+  (remove-if-not 'fboundp (package-symbols package)))
+
 (defgeneric docsystem-weave-file (docsystem file stream))
 
 (defmethod docsystem-weave-file (docsystem file stream)
