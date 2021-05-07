@@ -23,6 +23,7 @@ Documentation for a Lisp project can be written using (potentially) any tool cho
 * Introduction::
 * Installation::
 * Usage::
+* Commands::
 * API::
 * Index::
 @end menu
@@ -50,11 +51,41 @@ Texinfo and Markdown are the ones with best support at this moment.
 
 Invoke ($clref docweaver:weave-file :function)  on your documentation source files.
 
+@node Commands
+@chapter Commands
+@anchor{commands}
+
+@deffn Command @@clfunction (function-symbol &rest args)
+
+Displays function bound to FUNCTION-SYMBOL.
+
+Example:
+
+@code{Have a look at (@@clfunction alexandria:flatten) function}
+
+@end deffn
+
+@deffn Command @@clpackage (package-name &rest args)
+
+Displays package with name PACKAGE-NAME.
+
+Example:
+
+@code{(@@clpackage :alexandria)}
+
+@end deffn
+
+@deffn Command @@clref (symbol &optional type)
+
+Creates a reference to SYMBOL. TYPE can be used to disambiguate (the symbol is bound to several types of definitions, for example, function and variable).
+
+@end deffn
+
 @node API
 @chapter API
 @anchor{api}
 
-($clpackage "docweaver")
+($clpackage :docweaver)
 
 @node Index
 @chapter Index

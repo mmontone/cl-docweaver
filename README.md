@@ -26,9 +26,9 @@ Some of the parameters are:
 - `:docsystem`: Especify the documentation system to use. This same option can be specified when invoking WEAVE-FILE.
 - `:command-prefix`: The command prefix character to use. `@` is the default, but it could be useful to use another one depending on the tools being used and the user needs. For example, Texinfo uses `@` for macros, so it could be better to use some other character for docweaver commands.
 
-#### (@clfunction function-name &rest args)
+#### (@clfunction function-symbol &rest args)
 
-Displays function FUNCTION-NAME.
+Displays function bound to FUNCTION-SYMBOL.
 
 #### (@clpackage package-name &key include-members)
 
