@@ -1,0 +1,2 @@
+* Consider using `(type)name` syntax in docstrings for referencing parts of the manual. For example, `(node)My node` to reference Texinfo node "My node" from docstrings.
+* Implement a test document that tests the output of every weaving command.
