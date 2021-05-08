@@ -14,7 +14,7 @@ THIS IS WORK IN PROGRESS.
 
 ## Use
 
-Plase have a look at the [manual](doc/cl-docweaver.html "manual").
+Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
 
 ## API
 
