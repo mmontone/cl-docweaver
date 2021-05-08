@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-all: cl-docweaver.info cl-docweaver.html cl-docweaver.pdf ../README.md
+all: cl-docweaver.info cl-docweaver.html index.html cl-docweaver-internals.html cl-docweaver.pdf ../README.md
 
 cl-docweaver.info: cl-docweaver.weaved.texi
 	makeinfo --no-validate cl-docweaver.weaved.texi
@@ -10,6 +10,9 @@ cl-docweaver.pdf: cl-docweaver.weaved.texi
 
 cl-docweaver.html: cl-docweaver.weaved.texi
 	texi2any --no-validate --html cl-docweaver.weaved.texi --css-ref texinfo-klare.css --no-split -o cl-docweaver.html
+
+index.html: cl-docweaver.weaved.texi
+	texi2any --no-validate --html cl-docweaver.weaved.texi --css-ref texinfo-klare.css --no-split -o index.html
 
 cl-docweaver.weaved.texi:
 	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "cl-docweaver.texi" "cl-docweaver.weaved.texi" :docsystem :texinfo)' --quit
@@ -32,7 +35,7 @@ cl-docweaver-internals.weaved.texi:
 	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "README.md" "../README.md" :docsystem :markdown)' --quit
 
 clean:
-	rm -f *.weaved
+	rm -f *.weaved*
 	rm -f *.pdf
 	rm -f *.html
 	rm -f ../README.md
