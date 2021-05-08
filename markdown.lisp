@@ -30,7 +30,7 @@
     (if (null function-info)
 	(error "Function properties could not be read: ~s" function-symbol)
 	(progn
-	  (format stream "### function ~a:~a ~a"
+	  (format stream "- [function] **~a:~a** *~a*"
 		  (package-name (symbol-package function-symbol))
 		  (symbol-name function-symbol)
 		  (aget function-info :args))

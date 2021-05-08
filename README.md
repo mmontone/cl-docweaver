@@ -20,15 +20,15 @@ Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
 
 ## DOCWEAVER
 
-### function DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER (command-name args (&key docsystem) &body body)
+- [function] **DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER** *(command-name args (&key docsystem) &body body)*
 
 
 
-### function DOCWEAVER:PROCESS-WEAVER-COMMAND (docsystem command args stream)
+- [function] **DOCWEAVER:PROCESS-WEAVER-COMMAND** *(docsystem command args stream)*
 
 
 
-### function DOCWEAVER:WEAVE-FILE (file output-file &rest options &key docsystem modules command-prefix (parse-docstrings t))
+- [function] **DOCWEAVER:WEAVE-FILE** *(file output-file &rest options &key docsystem modules command-prefix (parse-docstrings t))*
 Weaves documentation source in FILE and writes the result to OUTPUT-FILE.
 
 Arguments:
