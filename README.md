@@ -24,19 +24,23 @@ Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
 
 
 
+
 - [function] **DOCWEAVER:PROCESS-WEAVER-COMMAND** *(docsystem command args stream)*
 
 
 
+
 - [function] **DOCWEAVER:WEAVE-FILE** *(file output-file &rest options &key docsystem modules command-prefix (parse-docstrings t))*
-Weaves documentation source in FILE and writes the result to OUTPUT-FILE.
 
-Arguments:
+    Weaves documentation source in FILE and writes the result to OUTPUT-FILE.
+    
+    Arguments:
+    
+    - DOCSYSTEM: specify the documentation tool that is being used (:texinfo, :markdown, etc.).
+    - MODULES: is the list of modules (or ASDF system names) that need to be loaded to be able to read definition descriptions.
+    - COMMAND-PREFIX: is the character to use as prefix for commands. The character `at` is the default.
+    - PARSE-DOCSTRINGS: if T, then docstings are parsed and highlighted and references to code from it created.
 
-- DOCSYSTEM: specify the documentation tool that is being used (:texinfo, :markdown, etc.).
-- MODULES: is the list of modules (or ASDF system names) that need to be loaded to be able to read definition descriptions.
-- COMMAND-PREFIX: is the character to use as prefix for commands. The character `at` is the default.
-- PARSE-DOCSTRINGS: if T, then docstings are parsed and highlighted and references to code from it created.
 
 
 

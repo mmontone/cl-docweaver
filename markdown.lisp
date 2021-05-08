@@ -25,18 +25,28 @@
 	     (terpri output))
     (write-line "```" output)))
 
+(defun indent-text (text indentation)
+  (with-output-to-string (output)
+    (with-input-from-string (input text)
+      (loop for line := (read-line input nil nil)
+	    while line
+	    do (dotimes (i indentation)
+		 (write-char #\space output))
+	       (write-line line output)
+	       ))))
+
 (defun markdown-format-function (function-symbol stream)
   (let ((function-info (def-properties:function-properties function-symbol)))
     (if (null function-info)
 	(error "Function properties could not be read: ~s" function-symbol)
 	(progn
-	  (format stream "- [function] **~a:~a** *~a*"
+	  (format stream "- [function] **~a:~a** *~a*~%"
 		  (package-name (symbol-package function-symbol))
 		  (symbol-name function-symbol)
 		  (aget function-info :args))
 	  (terpri stream)
 	  (when (aget function-info :documentation)
-	    (write-string (aget function-info :documentation) stream))
+	    (write-string (indent-text (aget function-info :documentation) 4) stream))
 	  (terpri stream)))))
 
 (def-weaver-command-handler :clfunction (function-symbol)
@@ -49,15 +59,14 @@
         (if (null variable-info)
             (error "Variable properties could not be read: ~s" variable-symbol)
             (progn
-              (format stream "@cldefvar {~a, ~a, ~a}"
+              (format stream "- [variable] **~a:~a**~%"
                       (package-name (symbol-package variable-symbol))
-		      (symbol-name variable-symbol)
-		      (aget variable-info :args))
+		      (symbol-name variable-symbol))
               (terpri stream)
               (when (aget variable-info :documentation)
-                (write-string (aget variable-info :documentation) stream))
+                (write-string (indent-text (aget variable-info :documentation) 4) stream))
               (terpri stream)
-              (write-string "@endcldefvar" stream)))))
+              ))))
 
 (defun lget (list key)
   (second (find key list :key 'car)))
