@@ -13,10 +13,27 @@
               collect char)))
     (coerce chars 'string)))
 
+(defvar +url-regex+ (ppcre:parse-string "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)")
+  "Regular expression for matching URLs. Taken from https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url.")
+
+(defun texinfo-format-urls (string)
+  (ppcre:regex-replace-all
+   +url-regex+
+   string
+   "@url{\\&}"))
+
+;;(texinfo-format-urls "foo bar http://google.com lala")
+
 (defun texinfo-format (string)
-  "Add linebreaks."
-  (str:replace-all (coerce (list #\newline) 'string)
-                   (coerce (list #\@ #\* #\newline) 'string) string))
+  "Add linebreaks and parse urls."
+  (let (formatted)
+    (setq formatted string)
+    (setq formatted (texinfo-format-urls formatted))
+    (setq formatted
+      (str:replace-all (coerce (list #\newline) 'string)
+		       (coerce (list #\@ #\* #\newline) 'string)
+		       formatted))
+    formatted))
 
 (defun source-anchor-name (source-file line-number)
   (format nil "~aL~a" (pathname-name source-file)
@@ -146,7 +163,7 @@ If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defin
     (format stream "@deftp PACKAGE ~a~%" (package-name package))
     (terpri stream)
     (when (documentation package t)
-      (write-string (documentation package t) stream)
+      (write-string (texinfo-format (documentation package t)) stream)
       (terpri stream) (terpri stream))
     (format stream "@end deftp")
     (terpri stream) (terpri stream)
