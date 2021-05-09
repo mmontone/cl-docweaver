@@ -54,6 +54,7 @@ Documentation for a Lisp project can be written using (potentially) any tool cho
 * Installation::
 * Usage::
 * Commands::
+* Documentation systems::
 * API::
 * Index::
 @end menu
@@ -133,13 +134,13 @@ Looks like this:
 
 @deffn Command @@clpackage (package-name &key (include-external-definitions t) include-internal-definitions (categorized t))
 
-Displays PACKAGE-NAME package description.
+Expands definition for Common Lisp package named @var{PACKAGE-NAME}.
 
-If INCLUDE-EXTERNAL-DEFINITIONS is T, then all package external definitions are shown.
+If @var{INCLUDE-EXTERNAL-DEFINITIONS} is @code{T}, then all package external definitions are expanded.
 
-If INCLUDE-INTERNAL-DEFINITIONS is T, then all package internals definitions are shown.
+If @var{INCLUDE-INTERNAL-DEFINITIONS} is @code{T}, then all package internals definitions are expanded.
 
-If CATEGORIZED is T, then definitions appear categorized in sections (variables, functions, etc).
+If @var{CATEGORIZED} is @code{T}, then package definitions appear categorized in sections (variables, functions, etc).
 
 Example:
 
@@ -149,7 +150,7 @@ Example:
 
 @deffn Command @@clref (symbol type)
 
-Creates a reference to SYMBOL. TYPE should be one of 'variable', 'function', 'class', etc.
+Creates a reference to @var{SYMBOL}. @var{TYPE} should be one of @code{variable}, @code{function}, @code{class}, etc.
 
 For example, to reference ALEXANDRIA:FLATTEN function, do this:
 
@@ -158,6 +159,18 @@ For example, to reference ALEXANDRIA:FLATTEN function, do this:
 And this is the resulting link: ($clref alexandria:flatten function)
 
 @end deffn
+
+@node Documentation systems
+@chapter Documentation systems
+
+@node Texinfo
+@section Texinfo
+
+The Texinfo output needs to include @code{common-lisp.texi} file, that is shipped with CL-DOCWEAVER.
+
+The @code{common-lisp.texi} file contains a set of Texinfo macros that are used by CL-DOCWEAVER for expanding Common Lisp definitons.
+
+You can have a look at CL-DOCWEAVER own documentation in @code{docs/cl-docweaver.texi} for an example for how this should be used.
 
 @node API
 @chapter API
