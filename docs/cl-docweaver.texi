@@ -64,7 +64,9 @@ Documentation for a Lisp project can be written using (potentially) any tool cho
 
 CL-DOCWEAVER is a document weaver for Common Lisp.
 
-Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using some commands.
+Documentation for a Lisp project is written with the user's tool of choice (like Texinfo, Markdown, etc). Then, Common Lisp definitions are expanded into the documentation source using DocWeaver commands.
+
+DOCWEAVER commands give the user control on how definitions are to be expanded, either via command options or by choosing a different set of commands.
 
 CL-DOCWEAVER is easy to extend to support different documentation tools.
 
@@ -79,19 +81,53 @@ Texinfo and Markdown are the ones with best support at this moment.
 @chapter Usage
 @anchor{usage}
 
-Invoke ($clref docweaver:weave-file :function)  on your documentation source files.
+First choose your documentation system (either Texinfo or Markdown at this moment).
+
+Write your documentation as you normally would for the chosen documentation system; then, whenever you need to reference to something in your Common Lisp system, use DocWeaver commands to expand Lisp definitions.
+
+Commands have the following syntax: @verb{|(@command-name &rest args)|}.
+
+For example, use @verb{|(@clfunction alexandria:flatten)|} to expand the definition of @code{ALEXANDRIA:FLATTEN} function.
+
+That looks like this:
+
+($clfunction alexandria:flatten)
+
+Note that commands usually receive options in order to be able to control different aspects of the expanded definition.
+
+By default, docstrings are parsed to extract possible references to other parts of the code; then those references are formatted as links that can be used to navigate the source code.
+
+Finally, use ($clref docweaver:weave-file :function) to weave your documentation system source files.
 
 @node Commands
 @chapter Commands
 @anchor{commands}
 
+@deffn Command @@clvariable (function-symbol &rest args)
+
+Expands definition for variable bound to FUNCTION-SYMBOL.
+
+For example,
+
+@code{(@@clvariable cl:*standard-output*)}
+
+Looks like this:
+
+($clvariable cl:*standard-output*)
+
+@end deffn
+
 @deffn Command @@clfunction (function-symbol &rest args)
 
-Displays function bound to FUNCTION-SYMBOL.
+Expands definition for function bound to FUNCTION-SYMBOL.
 
-Example:
+For example,
 
-@code{Have a look at (@@clfunction alexandria:flatten) function}
+@code{(@@clfunction alexandria:map-permutations)}
+
+Looks like this:
+
+($clfunction alexandria:map-permutations)
 
 @end deffn
 

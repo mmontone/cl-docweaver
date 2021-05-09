@@ -130,6 +130,10 @@
     (:docsystem (eql :texinfo))
   (texinfo-define-function function-symbol stream))
 
+(def-weaver-command-handler clvariable (variable-symbol)
+    (:docsystem (eql :texinfo))
+  (texinfo-define-variable variable-symbol stream))
+
 (defun texinfo-format-definitions (symbols stream &key categorized)
   (let ((variables (remove-if-not 'def-properties:symbol-variable-p symbols)))
     (when (and variables categorized)
