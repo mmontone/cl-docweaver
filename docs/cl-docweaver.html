@@ -274,6 +274,10 @@ Up: <a href="#Documentation-systems" accesskey="u" rel="up">Documentation system
 </p>
 <p>You can have a look at CL-DOCWEAVER own documentation in <code>docs/cl-docweaver.texi</code> for an example for how this should be used.
 </p>
+<p>Also you may want to invoke <code>makeinfo</code> and <code>texi2any</code> Texinfo commands with <code>--no-validate</code> option, as some of the generated references in docstrings may not appear in your final document, and without that option you would get an error.
+</p>
+<p>See <code>docs/Makefile</code> in CL-DOCWEAVER source for an example of how Texinfo tools should be used.
+</p>
 <hr>
 <span id="API"></span><div class="header">
 <p>

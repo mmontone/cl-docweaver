@@ -172,6 +172,10 @@ The @code{common-lisp.texi} file contains a set of Texinfo macros that are used 
 
 You can have a look at CL-DOCWEAVER own documentation in @code{docs/cl-docweaver.texi} for an example for how this should be used.
 
+Also you may want to invoke @code{makeinfo} and @code{texi2any} Texinfo commands with @code{--no-validate} option, as some of the generated references in docstrings may not appear in your final document, and without that option you would get an error.
+
+See @code{docs/Makefile} in CL-DOCWEAVER source for an example of how Texinfo tools should be used.
+
 @node API
 @chapter API
 @anchor{api}
