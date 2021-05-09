@@ -151,9 +151,11 @@ Example:
 
 Creates a reference to SYMBOL. TYPE should be one of 'variable', 'function', 'class', etc.
 
-Example:
+For example, to reference ALEXANDRIA:FLATTEN function, do this:
 
 @code{(@@clref alexandria:flatten, function)}
+
+And this is the resulting link: ($clref alexandria:flatten function)
 
 @end deffn
 

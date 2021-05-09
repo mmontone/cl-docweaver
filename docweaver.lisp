@@ -54,11 +54,13 @@
 	do
 	(let ((chars (peek-n-chars 2 s)))
 	  (if (equalp chars command-prefix)
+	      ;; a command invocation was found, use CL:READ function to read it
 	      (let ((command (read s)))
 		(destructuring-bind (command-name &rest args) command
 		  (process-weaver-command docsystem 
 		   (intern (subseq (symbol-name command-name) 1) :keyword)
 		   args stream)))
+	      ;; else, continue
 	      (write-char (read-char s) stream)))))))
 
 (defgeneric process-weaver-command (docsystem command args stream))
