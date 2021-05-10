@@ -152,7 +152,7 @@ Next: <a href="#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a hr
 </p>
 <p>For example, use <code>(@clfunction alexandria:flatten)</code> to expand the definition of <code>ALEXANDRIA:FLATTEN</code> function.
 </p>
-<p>The expanded function definition expands to this:
+<p>The expanded function definition looks like this:
 </p>
 <span id="index-ALEXANDRIA_003aFLATTEN"></span>
 <span id="ALEXANDRIA_003aFLATTEN-function"></span><dl>
@@ -177,7 +177,7 @@ Next: <a href="#Documentation-systems" accesskey="n" rel="next">Documentation sy
 <span id="Commands-1"></span><h2 class="chapter">4 Commands</h2>
 <span id="commands"></span>
 <dl>
-<dt id="index-_0040setup">Command: <strong>@setup</strong> <em>(&amp;rest options)</em></dt>
+<dt id="index-_0040setup">Command: <strong>@setup</strong> <em>&amp;rest options</em></dt>
 <dd>
 <p>Configures <em>cl-docweaver</em>.
 </p>
@@ -201,7 +201,7 @@ Default is the <code>#\@</code> character.
 </dd></dl>
 
 <dl>
-<dt id="index-_0040clvariable">Command: <strong>@clvariable</strong> <em>(function-symbol &amp;rest args)</em></dt>
+<dt id="index-_0040clvariable">Command: <strong>@clvariable</strong> <em>function-symbol &amp;rest args</em></dt>
 <dd>
 <p>Expands definition for variable bound to FUNCTION-SYMBOL.
 </p>
@@ -221,7 +221,7 @@ Default is the <code>#\@</code> character.
 </dd></dl>
 
 <dl>
-<dt id="index-_0040clfunction">Command: <strong>@clfunction</strong> <em>(function-symbol &amp;rest args)</em></dt>
+<dt id="index-_0040clfunction">Command: <strong>@clfunction</strong> <em>function-symbol &amp;rest args</em></dt>
 <dd>
 <p>Expands definition for function bound to <var>FUNCTION-SYMBOL</var>.
 </p>
@@ -244,7 +244,7 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </dd></dl>
 
 <dl>
-<dt id="index-_0040clpackage">Command: <strong>@clpackage</strong> <em>(package-name &amp;key (include-external-definitions t) include-internal-definitions (categorized t))</em></dt>
+<dt id="index-_0040clpackage">Command: <strong>@clpackage</strong> <em>package-name &amp;key (include-external-definitions t) include-internal-definitions (categorized t)</em></dt>
 <dd>
 <p>Expands definition for Common Lisp package named <var>PACKAGE-NAME</var>.
 </p>
@@ -261,7 +261,7 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </dd></dl>
 
 <dl>
-<dt id="index-_0040clref">Command: <strong>@clref</strong> <em>(symbol type)</em></dt>
+<dt id="index-_0040clref">Command: <strong>@clref</strong> <em>symbol type</em></dt>
 <dd>
 <p>Creates a reference to <var>SYMBOL</var>. <var>TYPE</var> should be one of <code>variable</code>, <code>function</code>, <code>class</code>, etc.
 </p>

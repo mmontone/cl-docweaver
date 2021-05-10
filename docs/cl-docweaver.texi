@@ -88,7 +88,7 @@ Commands have the following syntax: @verb{|(@command-name &rest args)|}.
 
 For example, use @code{(@@clfunction alexandria:flatten)} to expand the definition of @code{ALEXANDRIA:FLATTEN} function.
 
-The expanded function definition expands to this:
+The expanded function definition looks like this:
 
 ($clfunction alexandria:flatten)
 
@@ -104,7 +104,7 @@ Have a look at @emph{cl-docweaver} documentation in @code{docs} directory for an
 @chapter Commands
 @anchor{commands}
 
-@deffn Command @@setup (&rest options)
+@deffn Command @@setup &rest options
 
 Configures @emph{cl-docweaver}.
 
@@ -128,7 +128,7 @@ Default is the @code{#\@@} character.
 
 @end deffn
 
-@deffn Command @@clvariable (function-symbol &rest args)
+@deffn Command @@clvariable function-symbol &rest args
 
 Expands definition for variable bound to FUNCTION-SYMBOL.
 
@@ -142,7 +142,7 @@ Expands to this:
 
 @end deffn
 
-@deffn Command @@clfunction (function-symbol &rest args)
+@deffn Command @@clfunction function-symbol &rest args
 
 Expands definition for function bound to @var{FUNCTION-SYMBOL}.
 
@@ -156,7 +156,7 @@ Expands to this:
 
 @end deffn
 
-@deffn Command @@clpackage (package-name &key (include-external-definitions t) include-internal-definitions (categorized t))
+@deffn Command @@clpackage package-name &key (include-external-definitions t) include-internal-definitions (categorized t)
 
 Expands definition for Common Lisp package named @var{PACKAGE-NAME}.
 
@@ -172,7 +172,7 @@ Example:
 
 @end deffn
 
-@deffn Command @@clref (symbol type)
+@deffn Command @@clref symbol type
 
 Creates a reference to @var{SYMBOL}. @var{TYPE} should be one of @code{variable}, @code{function}, @code{class}, etc.
 
