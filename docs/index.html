@@ -201,9 +201,9 @@ Default is the <code>#\@</code> character.
 </dd></dl>
 
 <dl>
-<dt id="index-_0040clvariable">Command: <strong>@clvariable</strong> <em>function-symbol &amp;rest args</em></dt>
+<dt id="index-_0040clvariable">Command: <strong>@clvariable</strong> <em>variable-symbol &amp;rest args</em></dt>
 <dd>
-<p>Expands definition for variable bound to FUNCTION-SYMBOL.
+<p>Expands definition for variable bound to <var>VARIABLE-SYMBOL</var>.
 </p>
 <p>For example,
 </p>
@@ -217,6 +217,28 @@ Default is the <code>#\@</code> character.
 <dd>
 <p>default output stream
 </p></dd></dl>
+
+<p>A list of symbols is also accepted; variable definitions are expanded in sequence.
+</p>
+<p>For example,
+</p>
+<p><code>(@clvariable (cl:*compile-print* cl:*compile-verbose*))</code>
+</p>
+<p>expands to this:
+</p>
+<span id="index-COMMON_002dLISP_003a_002aCOMPILE_002dPRINT_002a"></span>
+<span id="COMMON_002dLISP_003a_002aCOMPILE_002dPRINT_002a-variable"></span><dl>
+<dt id="index-_002aCOMPILE_002dPRINT_002a">COMMON-LISP: <strong>*COMPILE-PRINT*</strong></dt>
+<dd>
+<p>The default for the <var>:PRINT</var> argument to See &lsquo;COMPILE-FILE&rsquo;.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a"></span>
+<span id="COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a-variable"></span><dl>
+<dt id="index-_002aCOMPILE_002dVERBOSE_002a">COMMON-LISP: <strong>*COMPILE-VERBOSE*</strong></dt>
+<dd>
+<p>The default for the <var>:VERBOSE</var> argument to See &lsquo;COMPILE-FILE&rsquo;.
+</p></dd></dl>
+
 
 </dd></dl>
 
@@ -241,6 +263,8 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 <var>length</var> of the delimited subsequence.
 </p></dd></dl>
 
+<p>Like with See &lsquo;@clvariable&rsquo;, a list of symbols is also accepted and definitions are expanded in sequence.
+</p>
 </dd></dl>
 
 <dl>
@@ -369,9 +393,13 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_vr_symbol-1">*</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002aCOMPILE_002dPRINT_002a"><code>*COMPILE-PRINT*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002aCOMPILE_002dVERBOSE_002a"><code>*COMPILE-VERBOSE*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002aSTANDARD_002dOUTPUT_002a"><code>*STANDARD-OUTPUT*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_vr_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003a_002aCOMPILE_002dPRINT_002a"><code>COMMON-LISP:*COMPILE-PRINT*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a"><code>COMMON-LISP:*COMPILE-VERBOSE*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a"><code>COMMON-LISP:*STANDARD-OUTPUT*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

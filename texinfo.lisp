@@ -128,11 +128,19 @@
 
 (def-weaver-command-handler clfunction (function-symbol)
     (:docsystem (eql :texinfo))
-  (texinfo-define-function function-symbol stream))
+  (etypecase function-symbol
+    (symbol (texinfo-define-function function-symbol stream))
+    (list (dolist (fun-symbol function-symbol)
+	    (texinfo-define-function fun-symbol stream)
+	    (terpri stream)))))
 
 (def-weaver-command-handler clvariable (variable-symbol)
     (:docsystem (eql :texinfo))
-  (texinfo-define-variable variable-symbol stream))
+  (etypecase variable-symbol
+    (symbol (texinfo-define-variable variable-symbol stream))
+    (list (dolist (var-symbol variable-symbol)
+	    (texinfo-define-variable var-symbol stream)
+	    (terpri stream)))))
 
 (defun texinfo-format-definitions (symbols stream &key categorized)
   (let ((variables (remove-if-not 'def-properties:symbol-variable-p symbols)))

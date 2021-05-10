@@ -128,9 +128,9 @@ Default is the @code{#\@@} character.
 
 @end deffn
 
-@deffn Command @@clvariable function-symbol &rest args
+@deffn Command @@clvariable variable-symbol &rest args
 
-Expands definition for variable bound to FUNCTION-SYMBOL.
+Expands definition for variable bound to @var{VARIABLE-SYMBOL}.
 
 For example,
 
@@ -139,6 +139,16 @@ For example,
 Expands to this:
 
 ($clvariable cl:*standard-output*)
+
+A list of symbols is also accepted; variable definitions are expanded in sequence.
+
+For example,
+
+@code{(@@clvariable (cl:*compile-print* cl:*compile-verbose*))}
+
+expands to this:
+
+($clvariable (cl:*compile-print* cl:*compile-verbose*))
 
 @end deffn
 
@@ -153,6 +163,8 @@ For example,
 Expands to this:
 
 ($clfunction alexandria:map-permutations)
+
+Like with @xref{@@clvariable}, a list of symbols is also accepted and definitions are expanded in sequence.
 
 @end deffn
 
