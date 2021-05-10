@@ -88,7 +88,7 @@ Commands have the following syntax: @verb{|(@command-name &rest args)|}.
 
 For example, use @code{(@@clfunction alexandria:flatten)} to expand the definition of @code{ALEXANDRIA:FLATTEN} function.
 
-The expanded function definition looks like this:
+The expanded function definition expands to this:
 
 ($clfunction alexandria:flatten)
 
@@ -136,7 +136,7 @@ For example,
 
 @code{(@@clvariable cl:*standard-output*)}
 
-Looks like this:
+Expands to this:
 
 ($clvariable cl:*standard-output*)
 
@@ -150,7 +150,7 @@ For example,
 
 @code{(@@clfunction alexandria:map-permutations)}
 
-Looks like this:
+Expands to this:
 
 ($clfunction alexandria:map-permutations)
 
