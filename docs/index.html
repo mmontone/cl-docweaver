@@ -93,9 +93,9 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; [
 <span id="index-docweaver"></span>
 <span id="index-cl_002ddocweaver"></span>
 
-<p>CL-DOCWEAVER is a document weaver for Common Lisp.
+<p><em>CL-DOCWEAVER</em> is a document weaver for Common Lisp.
 </p>
-<p>Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using weaving commands.
+<p>Documentation for a Lisp project is written with the user&rsquo;s tool of choice (like Texinfo, Markdown, etc). Then, Common Lisp definitions are expanded into the documentation source using DocWeaver commands.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -121,13 +121,13 @@ Next: <a href="#Installation" accesskey="n" rel="next">Installation</a>, Previou
 </div>
 <span id="Introduction-1"></span><h2 class="chapter">1 Introduction</h2>
 <span id="introduction"></span>
-<p>CL-DOCWEAVER is a document weaver for Common Lisp.
+<p><em>CL-DOCWEAVER</em> is a document weaver for Common Lisp.
 </p>
 <p>Documentation for a Lisp project is written with the user&rsquo;s tool of choice (like Texinfo, Markdown, etc). Then, Common Lisp definitions are expanded into the documentation source using DocWeaver commands.
 </p>
-<p>DOCWEAVER commands give the user control on how definitions are to be expanded, either via command options or by choosing a different set of commands.
+<p>DocWeaver commands give the user control on how definitions are to be expanded, either via command options or by choosing a different set of commands.
 </p>
-<p>CL-DOCWEAVER is easy to extend to support different documentation tools.
+<p><em>CL-DOCWEAVER</em> is easy to extend to support different documentation tools.
 </p>
 <p>Texinfo and Markdown are the ones with best support at this moment.
 </p>
@@ -146,15 +146,13 @@ Next: <a href="#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a hr
 </div>
 <span id="Usage-1"></span><h2 class="chapter">3 Usage</h2>
 <span id="usage"></span>
-<p>First choose your documentation system (either Texinfo or Markdown at this moment).
-</p>
-<p>Write your documentation as you normally would for the chosen documentation system; then, whenever you need to reference to something in your Common Lisp system, use DocWeaver commands to expand Lisp definitions.
+<p>Write documentation for your Common Lisp project in your documentation tool of your choice (either Texinfo or Markdown at this moment). Then invoke <em>cl-docweaver</em> commands to expand Lisp definitions for either variables, functions, macros, classes, or even whole packages.
 </p>
 <p>Commands have the following syntax: <tt>(@command-name &amp;rest args)</tt>.
 </p>
-<p>For example, use <tt>(@clfunction alexandria:flatten)</tt> to expand the definition of <code>ALEXANDRIA:FLATTEN</code> function.
+<p>For example, use <code>(@clfunction alexandria:flatten)</code> to expand the definition of <code>ALEXANDRIA:FLATTEN</code> function.
 </p>
-<p>That looks like this:
+<p>The expanded function definition looks like this:
 </p>
 <span id="index-ALEXANDRIA_003aFLATTEN"></span>
 <span id="ALEXANDRIA_003aFLATTEN-function"></span><dl>
@@ -165,9 +163,11 @@ Next: <a href="#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a hr
 
 <p>Note that commands usually receive options in order to be able to control different aspects of the expanded definition.
 </p>
-<p>By default, docstrings are parsed to extract possible references to other parts of the code; then those references are formatted as links that can be used to navigate the source code.
+<p>By default, docstrings are interpreted to extract possible references to other parts of the code; then those references are formatted as links that can be used to navigate the definitions documentations.
 </p>
 <p>Finally, use See <a href="#DOCWEAVER_003aWEAVE_002dFILE-function">WEAVE-FILE</a>to weave your documentation system source files.
+</p>
+<p>Have a look at <em>cl-docweaver</em> documentation in <code>docs</code> directory for an example of how all this works.
 </p>
 <hr>
 <span id="Commands"></span><div class="header">
@@ -176,6 +176,30 @@ Next: <a href="#Documentation-systems" accesskey="n" rel="next">Documentation sy
 </div>
 <span id="Commands-1"></span><h2 class="chapter">4 Commands</h2>
 <span id="commands"></span>
+<dl>
+<dt id="index-_0040setup">Command: <strong>@setup</strong> <em>(&amp;rest options)</em></dt>
+<dd>
+<p>Configures <em>cl-docweaver</em>.
+</p>
+<p><var>OPTIONS</var> is a <em>plist</em> with members:
+</p>
+<ul>
+<li> <code>:docsystem</code>
+The documentation system to use. Either <code>:texinfo</code> or <code>:markdown</code>.
+Default is <code>:texinfo</code>.
+
+</li><li> <code>:parse-docstrings</code>
+A boolean that indicates if docstrings should be parsed or not.
+Default is T.
+
+</li><li> <code>:command-prefix</code>
+The prefix character to use for commands.
+Default is the <code>#\@</code> character.
+
+</li></ul>
+
+</dd></dl>
+
 <dl>
 <dt id="index-_0040clvariable">Command: <strong>@clvariable</strong> <em>(function-symbol &amp;rest args)</em></dt>
 <dd>
@@ -199,7 +223,7 @@ Next: <a href="#Documentation-systems" accesskey="n" rel="next">Documentation sy
 <dl>
 <dt id="index-_0040clfunction">Command: <strong>@clfunction</strong> <em>(function-symbol &amp;rest args)</em></dt>
 <dd>
-<p>Expands definition for function bound to FUNCTION-SYMBOL.
+<p>Expands definition for function bound to <var>FUNCTION-SYMBOL</var>.
 </p>
 <p>For example,
 </p>
@@ -243,7 +267,7 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </p>
 <p>For example, to reference ALEXANDRIA:FLATTEN function, do this:
 </p>
-<p><code>(@clref alexandria:flatten, function)</code>
+<p><code>(@clref alexandria:flatten function)</code>
 </p>
 <p>And this is the resulting link: See <a href="#ALEXANDRIA_003aFLATTEN-function">FLATTEN</a>
 </p>
@@ -268,15 +292,15 @@ Up: <a href="#Documentation-systems" accesskey="u" rel="up">Documentation system
 </div>
 <span id="Texinfo-1"></span><h3 class="section">5.1 Texinfo</h3>
 
-<p>The Texinfo output needs to include <code>common-lisp.texi</code> file, that is shipped with CL-DOCWEAVER.
+<p>The Texinfo output needs to include <code>common-lisp.texi</code> file, that is shipped with <em>CL-DOCWEAVER</em>.
 </p>
-<p>The <code>common-lisp.texi</code> file contains a set of Texinfo macros that are used by CL-DOCWEAVER for expanding Common Lisp definitons.
+<p>The <code>common-lisp.texi</code> file contains a set of Texinfo macros that are used by <em>CL-DOCWEAVER</em> for expanding Common Lisp definitons.
 </p>
-<p>You can have a look at CL-DOCWEAVER own documentation in <code>docs/cl-docweaver.texi</code> for an example for how this should be used.
+<p>You can have a look at <em>CL-DOCWEAVER</em> own documentation in <code>docs/cl-docweaver.texi</code> for an example for how this should be used.
 </p>
 <p>Also you may want to invoke <code>makeinfo</code> and <code>texi2any</code> Texinfo commands with <code>--no-validate</code> option, as some of the generated references in docstrings may not appear in your final document, and without that option you would get an error.
 </p>
-<p>See <code>docs/Makefile</code> in CL-DOCWEAVER source for an example of how Texinfo tools should be used.
+<p>See <code>docs/Makefile</code> in <em>CL-DOCWEAVER</em> source for an example of how Texinfo tools should be used.
 </p>
 <hr>
 <span id="API"></span><div class="header">
@@ -379,6 +403,7 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td></td><td valign="top"><a href="#index-_0040clpackage"><code>@clpackage</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0040clref"><code>@clref</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0040clvariable"><code>@clvariable</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0040setup"><code>@setup</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ALEXANDRIA_003aFLATTEN"><code>ALEXANDRIA:FLATTEN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Usage">Usage</a></td></tr>

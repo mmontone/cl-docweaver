@@ -118,6 +118,7 @@ Arguments:
       (docsystem-weave-file (or docsystem (read-config :docsystem)) file output))))
 
 (defmethod process-weaver-command (docsystem (command (eql :setup)) args stream)
+  "Configure cl-docweaver."
   (setf *config* args))
 
 (provide :docweaver)

@@ -45,9 +45,9 @@ Texts.  A copy of the license is included in the section entitled
 @cindex docweaver
 @cindex cl-docweaver
 
-CL-DOCWEAVER is a document weaver for Common Lisp.
+@emph{CL-DOCWEAVER} is a document weaver for Common Lisp.
 
-Documentation for a Lisp project can be written using (potentially) any tool choosen by the user (like Texinfo, Markdown, etc). Then, Common Lisp definitions are referenced and embedded from the documentation source using weaving commands.
+Documentation for a Lisp project is written with the user's tool of choice (like Texinfo, Markdown, etc). Then, Common Lisp definitions are expanded into the documentation source using DocWeaver commands.
 
 @menu
 * Introduction::
@@ -63,13 +63,13 @@ Documentation for a Lisp project can be written using (potentially) any tool cho
 @chapter Introduction
 @anchor{introduction}
 
-CL-DOCWEAVER is a document weaver for Common Lisp.
+@emph{CL-DOCWEAVER} is a document weaver for Common Lisp.
 
 Documentation for a Lisp project is written with the user's tool of choice (like Texinfo, Markdown, etc). Then, Common Lisp definitions are expanded into the documentation source using DocWeaver commands.
 
-DOCWEAVER commands give the user control on how definitions are to be expanded, either via command options or by choosing a different set of commands.
+DocWeaver commands give the user control on how definitions are to be expanded, either via command options or by choosing a different set of commands.
 
-CL-DOCWEAVER is easy to extend to support different documentation tools.
+@emph{CL-DOCWEAVER} is easy to extend to support different documentation tools.
 
 Texinfo and Markdown are the ones with best support at this moment.
 
@@ -82,27 +82,51 @@ Texinfo and Markdown are the ones with best support at this moment.
 @chapter Usage
 @anchor{usage}
 
-First choose your documentation system (either Texinfo or Markdown at this moment).
-
-Write your documentation as you normally would for the chosen documentation system; then, whenever you need to reference to something in your Common Lisp system, use DocWeaver commands to expand Lisp definitions.
+Write documentation for your Common Lisp project in your documentation tool of your choice (either Texinfo or Markdown at this moment). Then invoke @emph{cl-docweaver} commands to expand Lisp definitions for either variables, functions, macros, classes, or even whole packages.
 
 Commands have the following syntax: @verb{|(@command-name &rest args)|}.
 
-For example, use @verb{|(@clfunction alexandria:flatten)|} to expand the definition of @code{ALEXANDRIA:FLATTEN} function.
+For example, use @code{(@@clfunction alexandria:flatten)} to expand the definition of @code{ALEXANDRIA:FLATTEN} function.
 
-That looks like this:
+The expanded function definition looks like this:
 
 ($clfunction alexandria:flatten)
 
 Note that commands usually receive options in order to be able to control different aspects of the expanded definition.
 
-By default, docstrings are parsed to extract possible references to other parts of the code; then those references are formatted as links that can be used to navigate the source code.
+By default, docstrings are interpreted to extract possible references to other parts of the code; then those references are formatted as links that can be used to navigate the definitions documentations.
 
 Finally, use ($clref docweaver:weave-file :function) to weave your documentation system source files.
+
+Have a look at @emph{cl-docweaver} documentation in @code{docs} directory for an example of how all this works.
 
 @node Commands
 @chapter Commands
 @anchor{commands}
+
+@deffn Command @@setup (&rest options)
+
+Configures @emph{cl-docweaver}.
+
+@var{OPTIONS} is a @emph{plist} with members:
+
+@itemize @bullet
+
+@item @code{:docsystem}
+The documentation system to use. Either @code{:texinfo} or @code{:markdown}.
+Default is @code{:texinfo}.
+
+@item @code{:parse-docstrings}
+A boolean that indicates if docstrings should be parsed or not.
+Default is T.
+
+@item @code{:command-prefix}
+The prefix character to use for commands.
+Default is the @code{#\@@} character.
+
+@end itemize
+
+@end deffn
 
 @deffn Command @@clvariable (function-symbol &rest args)
 
@@ -120,7 +144,7 @@ Looks like this:
 
 @deffn Command @@clfunction (function-symbol &rest args)
 
-Expands definition for function bound to FUNCTION-SYMBOL.
+Expands definition for function bound to @var{FUNCTION-SYMBOL}.
 
 For example,
 
@@ -154,7 +178,7 @@ Creates a reference to @var{SYMBOL}. @var{TYPE} should be one of @code{variable}
 
 For example, to reference ALEXANDRIA:FLATTEN function, do this:
 
-@code{(@@clref alexandria:flatten, function)}
+@code{(@@clref alexandria:flatten function)}
 
 And this is the resulting link: ($clref alexandria:flatten function)
 
@@ -166,15 +190,15 @@ And this is the resulting link: ($clref alexandria:flatten function)
 @node Texinfo
 @section Texinfo
 
-The Texinfo output needs to include @code{common-lisp.texi} file, that is shipped with CL-DOCWEAVER.
+The Texinfo output needs to include @code{common-lisp.texi} file, that is shipped with @emph{CL-DOCWEAVER}.
 
-The @code{common-lisp.texi} file contains a set of Texinfo macros that are used by CL-DOCWEAVER for expanding Common Lisp definitons.
+The @code{common-lisp.texi} file contains a set of Texinfo macros that are used by @emph{CL-DOCWEAVER} for expanding Common Lisp definitons.
 
-You can have a look at CL-DOCWEAVER own documentation in @code{docs/cl-docweaver.texi} for an example for how this should be used.
+You can have a look at @emph{CL-DOCWEAVER} own documentation in @code{docs/cl-docweaver.texi} for an example for how this should be used.
 
 Also you may want to invoke @code{makeinfo} and @code{texi2any} Texinfo commands with @code{--no-validate} option, as some of the generated references in docstrings may not appear in your final document, and without that option you would get an error.
 
-See @code{docs/Makefile} in CL-DOCWEAVER source for an example of how Texinfo tools should be used.
+See @code{docs/Makefile} in @emph{CL-DOCWEAVER} source for an example of how Texinfo tools should be used.
 
 @node API
 @chapter API

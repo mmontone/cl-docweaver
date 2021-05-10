@@ -4,3 +4,4 @@
 Options to:
 - Parse urls
 - Force explicit elisp type references `(type)name`; normal words are not parsed as function/variable references in that case.
+- Texinfo:  Try to recognize unnumbered lists? and output an @itemize block containing the itemized entries. Try to recognize lisp code blocks? and puts them in @lisp blocks. (see sb-texinfo library).
