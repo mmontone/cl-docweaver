@@ -79,8 +79,12 @@ ul.no-bullet {list-style: none}
   <ul class="no-bullet">
     <li><a id="toc-Texinfo-1" href="#Texinfo">5.1 Texinfo</a></li>
   </ul></li>
-  <li><a id="toc-API-1" href="#API">6 API</a></li>
-  <li><a id="toc-Index-1" href="#Index" rel="index">7 Index</a></li>
+  <li><a id="toc-Tips-and-tricks-1" href="#Tips-and-tricks">6 Tips and tricks</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lisp-evaluation-1" href="#Lisp-evaluation">6.1 Lisp evaluation</a></li>
+  </ul></li>
+  <li><a id="toc-API-1" href="#API">7 API</a></li>
+  <li><a id="toc-Index-1" href="#Index" rel="index">8 Index</a></li>
 </ul>
 </div>
 
@@ -108,9 +112,11 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; [
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Documentation-systems" accesskey="5">Documentation systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#API" accesskey="6">API</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Tips-and-tricks" accesskey="6">Tips and tricks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Index" rel="index" accesskey="7">Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#API" accesskey="7">API</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Index" rel="index" accesskey="8">Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -230,13 +236,13 @@ Default is the <code>#\@</code> character.
 <span id="COMMON_002dLISP_003a_002aCOMPILE_002dPRINT_002a-variable"></span><dl>
 <dt id="index-_002aCOMPILE_002dPRINT_002a">COMMON-LISP: <strong>*COMPILE-PRINT*</strong></dt>
 <dd>
-<p>The default for the <var>:PRINT</var> argument to See &lsquo;COMPILE-FILE&rsquo;.
+<p>The default for the <var>:PRINT</var> argument to See <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a>.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a"></span>
 <span id="COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a-variable"></span><dl>
 <dt id="index-_002aCOMPILE_002dVERBOSE_002a">COMMON-LISP: <strong>*COMPILE-VERBOSE*</strong></dt>
 <dd>
-<p>The default for the <var>:VERBOSE</var> argument to See &lsquo;COMPILE-FILE&rsquo;.
+<p>The default for the <var>:VERBOSE</var> argument to See <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a>.
 </p></dd></dl>
 
 
@@ -300,7 +306,7 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 <hr>
 <span id="Documentation-systems"></span><div class="header">
 <p>
-Next: <a href="#API" accesskey="n" rel="next">API</a>, Previous: <a href="#Commands" accesskey="p" rel="prev">Commands</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Tips-and-tricks" accesskey="n" rel="next">Tips and tricks</a>, Previous: <a href="#Commands" accesskey="p" rel="prev">Commands</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Documentation-systems-1"></span><h2 class="chapter">5 Documentation systems</h2>
 
@@ -327,11 +333,183 @@ Up: <a href="#Documentation-systems" accesskey="u" rel="up">Documentation system
 <p>See <code>docs/Makefile</code> in <em>CL-DOCWEAVER</em> source for an example of how Texinfo tools should be used.
 </p>
 <hr>
+<span id="Tips-and-tricks"></span><div class="header">
+<p>
+Next: <a href="#API" accesskey="n" rel="next">API</a>, Previous: <a href="#Documentation-systems" accesskey="p" rel="prev">Documentation systems</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Tips-and-tricks-1"></span><h2 class="chapter">6 Tips and tricks</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Lisp-evaluation" accesskey="1">Lisp evaluation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="Lisp-evaluation"></span><div class="header">
+<p>
+Up: <a href="#Tips-and-tricks" accesskey="u" rel="up">Tips and tricks</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Lisp-evaluation-1"></span><h3 class="section">6.1 Lisp evaluation</h3>
+
+<p>It is possible to take advantage of Lisp evaluation to handle the list of symbols to expand. As commands are parsed using standard <code>CL:READ</code> function, reader syntax <code>#.</code> can be used to evaluate arbitrary Lisp code.
+</p>
+<span id="index-COMMON_002dLISP_003aREAD"></span>
+<span id="COMMON_002dLISP_003aREAD-function"></span><dl>
+<dt id="index-READ">COMMON-LISP: <strong>READ</strong> <em>(&amp;optional (stream *standard-input*) (sb-impl::eof-error-p t) (sb-impl::eof-value nil) (sb-impl::recursive-p nil))</em></dt>
+<dd>
+<p>Read the next Lisp value from <var>STREAM</var>, and return it.
+</p></dd></dl>
+
+<p>We can take advantage of that and expand all functions that match some term.
+</p>
+<span id="Symbols-matching"></span><h3 class="heading">Symbols matching</h3>
+
+<p>For example, to expand all functions in <code>CL</code> package that have &rsquo;file&rsquo; in their name:
+</p>
+<p><code>(@clfunction #.(docweaver/utils:symbols-matching :cl &quot;FILE&quot; :function))</code>
+</p>
+<p>Results in this expansion:
+</p>
+<span id="index-COMMON_002dLISP_003aPROBE_002dFILE"></span>
+<span id="COMMON_002dLISP_003aPROBE_002dFILE-function"></span><dl>
+<dt id="index-PROBE_002dFILE">COMMON-LISP: <strong>PROBE-FILE</strong> <em>(sb-impl::pathspec)</em></dt>
+<dd>
+<p>Return the truename of <var>PATHSPEC</var> if the truename can be found,<br>
+or NIL otherwise.  See See &lsquo;TRUENAME&rsquo; for more information.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aFILE_002dAUTHOR"></span>
+<span id="COMMON_002dLISP_003aFILE_002dAUTHOR-function"></span><dl>
+<dt id="index-FILE_002dAUTHOR">COMMON-LISP: <strong>FILE-AUTHOR</strong> <em>(sb-impl::pathspec)</em></dt>
+<dd>
+<p>Return the author of the file specified by <var>PATHSPEC</var>. Signal an<br>
+error of type  if no such file exists, or if <var>PATHSPEC</var><br>
+is a wild pathname.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aRENAME_002dFILE"></span>
+<span id="COMMON_002dLISP_003aRENAME_002dFILE-function"></span><dl>
+<dt id="index-RENAME_002dFILE">COMMON-LISP: <strong>RENAME-FILE</strong> <em>(sb-impl::file sb-impl::new-name)</em></dt>
+<dd>
+<p>Rename <var>FILE</var> to have the specified <var>NEW-NAME</var>. If <var>FILE</var> is a stream open to a<br>
+<var>file</var>, then the associated <var>file</var> is renamed.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aFILE_002dLENGTH"></span>
+<span id="COMMON_002dLISP_003aFILE_002dLENGTH-function"></span><dl>
+<dt id="index-FILE_002dLENGTH">COMMON-LISP: <strong>FILE-LENGTH</strong> <em>(stream)</em></dt>
+</dl>
+<span id="index-COMMON_002dLISP_003aFILE_002dPOSITION"></span>
+<span id="COMMON_002dLISP_003aFILE_002dPOSITION-function"></span><dl>
+<dt id="index-FILE_002dPOSITION">COMMON-LISP: <strong>FILE-POSITION</strong> <em>(stream &amp;optional position)</em></dt>
+</dl>
+<span id="index-COMMON_002dLISP_003aFILE_002dNAMESTRING"></span>
+<span id="COMMON_002dLISP_003aFILE_002dNAMESTRING-function"></span><dl>
+<dt id="index-FILE_002dNAMESTRING">COMMON-LISP: <strong>FILE-NAMESTRING</strong> <em>(pathname)</em></dt>
+<dd>
+<p>Return a string representation of the name in <var>PATHNAME</var>.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aDELETE_002dFILE"></span>
+<span id="COMMON_002dLISP_003aDELETE_002dFILE-function"></span><dl>
+<dt id="index-DELETE_002dFILE">COMMON-LISP: <strong>DELETE-FILE</strong> <em>(sb-impl::file)</em></dt>
+<dd>
+<p>Delete the specified <var>FILE</var>.<br>
+<br>
+If <var>FILE</var> is a stream, on Windows the stream is closed immediately. On Unix<br>
+platforms the stream remains open, allowing IO to continue: the OS resources<br>
+associated with the deleted <var>file</var> remain available till the stream is closed as<br>
+per standard Unix unlink() behaviour.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME"></span>
+<span id="COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-function"></span><dl>
+<dt id="index-COMPILE_002dFILE_002dPATHNAME">COMMON-LISP: <strong>COMPILE-FILE-PATHNAME</strong> <em>(sb-c::input-file &amp;key (sb-c::output-file nil sb-c::output-file-p) &amp;allow-other-keys)</em></dt>
+<dd>
+<p>Return a pathname describing what file See <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> would write to given<br>
+   these arguments.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aCOMPILE_002dFILE"></span>
+<span id="COMMON_002dLISP_003aCOMPILE_002dFILE-function"></span><dl>
+<dt id="index-COMPILE_002dFILE">COMMON-LISP: <strong>COMPILE-FILE</strong> <em>(sb-c::input-file &amp;key (sb-c::output-file (sb-c::cfp-output-file-default sb-c::input-file)) ((:verbose *compile-verbose*) *compile-verbose*) ((:print *compile-print*) *compile-print*) (sb-c::external-format :default) (sb-c::trace-file nil) ((:block-compile sb-c::*block-compile-arg*) nil) (sb-c::emit-cfasl sb-c::*emit-cfasl*))</em></dt>
+<dd>
+<p>Compile <var>INPUT-FILE</var>, producing a corresponding fasl file and<br>
+returning its filename.<br>
+<br>
+  <var>:PRINT</var><br>
+     If true, a message per non-macroexpanded top level form is printed<br>
+     to See <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>. Top level forms that whose subforms are<br>
+     processed as top level forms (eg. See &lsquo;EVAL-WHEN&rsquo;, See &lsquo;MACROLET&rsquo;, See &lsquo;PROGN&rsquo;) receive<br>
+     no such message, but their subforms do.<br>
+<br>
+     As an extension to ANSI, if <var>:PRINT</var> is <var>:top-level-forms</var>, a message<br>
+     per top level form after macroexpansion is printed to See <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>.<br>
+     For example, compiling an See &lsquo;IN-PACKAGE&rsquo; form will result in a message about<br>
+     a top level See &lsquo;SETQ&rsquo; in addition to the message about the See &lsquo;IN-PACKAGE&rsquo; form&rsquo;<br>
+     itself.<br>
+<br>
+     Both forms of reporting obey the See &lsquo;SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*&rsquo;.<br>
+<br>
+  <var>:BLOCK-COMPILE</var><br>
+     Though See <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> accepts an additional <var>:BLOCK-COMPILE</var><br>
+     argument, it is not currently supported. (non-standard)<br>
+<br>
+  <var>:TRACE-FILE</var><br>
+     If given, internal data structures are dumped to the specified<br>
+     file, or if a value of  is given, to a file of See &lsquo;*&rsquo;.trace type<br>
+     derived from the input file name. (non-standard)<br>
+<br>
+  <var>:EMIT-CFASL</var><br>
+     (Experimental). If true, outputs the toplevel compile-time effects<br>
+     of this file into a separate .cfasl file.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME"></span>
+<span id="COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME-function"></span><dl>
+<dt id="index-FILE_002dERROR_002dPATHNAME">COMMON-LISP: <strong>FILE-ERROR-PATHNAME</strong> <em>(condition)</em></dt>
+</dl>
+<span id="index-COMMON_002dLISP_003aFILE_002dWRITE_002dDATE"></span>
+<span id="COMMON_002dLISP_003aFILE_002dWRITE_002dDATE-function"></span><dl>
+<dt id="index-FILE_002dWRITE_002dDATE">COMMON-LISP: <strong>FILE-WRITE-DATE</strong> <em>(sb-impl::pathspec)</em></dt>
+<dd>
+<p>Return the write date of the file specified by <var>PATHSPEC</var>.<br>
+An error of type  is signaled if no such file exists,<br>
+or if <var>PATHSPEC</var> is a wild pathname.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH"></span>
+<span id="COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH-function"></span><dl>
+<dt id="index-FILE_002dSTRING_002dLENGTH">COMMON-LISP: <strong>FILE-STRING-LENGTH</strong> <em>(stream sb-impl::object)</em></dt>
+</dl>
+
+
+<span id="Categorized-definitions"></span><h3 class="heading">Categorized definitions</h3>
+
+<p>We can also go a bit further and use evaluation to fetch a list of symbols with docstrings matching a certain category. When the syntax <code>Category: &lt;category-name&gt;</code> is used in definition docstrings, it is detected by See &lsquo;docweaver/utils:symbols-categorized&rsquo;.
+</p>
+<p>For example:
+</p>
+<p><code>(@clfunction #.(docweaver/utils:symbols-categorized :docweaver/utils &quot;foobar&quot; :function))</code>
+</p>
+<p>Expands the categorized functions:
+</p>
+<span id="index-DOCWEAVER_002fUTILS_003aBAR"></span>
+<span id="DOCWEAVER_002fUTILS_003aBAR-function"></span><dl>
+<dt id="index-BAR">DOCWEAVER/UTILS: <strong>BAR</strong> <em>nil</em></dt>
+<dd>
+<p>See <a href="#DOCWEAVER_002fUTILS_003aBAR-function">BAR</a> function.<br>
+<br>
+Category: foobar.
+</p></dd></dl>
+<span id="index-DOCWEAVER_002fUTILS_003aFOO"></span>
+<span id="DOCWEAVER_002fUTILS_003aFOO-function"></span><dl>
+<dt id="index-FOO">DOCWEAVER/UTILS: <strong>FOO</strong> <em>nil</em></dt>
+<dd>
+<p>See <a href="#DOCWEAVER_002fUTILS_003aFOO-function">FOO</a> function.<br>
+<br>
+Category: foobar.
+</p></dd></dl>
+
+
+<hr>
 <span id="API"></span><div class="header">
 <p>
-Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#Documentation-systems" accesskey="p" rel="prev">Documentation systems</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#Tips-and-tricks" accesskey="p" rel="prev">Tips and tricks</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="API-1"></span><h2 class="chapter">6 API</h2>
+<span id="API-1"></span><h2 class="chapter">7 API</h2>
 <span id="api"></span>
 <dl>
 <dt id="index-DOCWEAVER">PACKAGE: <strong>DOCWEAVER</strong></dt>
@@ -361,7 +539,7 @@ Arguments:<br>
 <p>
 Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Index-1"></span><h2 class="chapter">7 Index</h2>
+<span id="Index-1"></span><h2 class="chapter">8 Index</h2>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-C"><b>C</b></a>
  &nbsp; 
@@ -414,11 +592,19 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <br>
 <a class="summary-letter" href="#Index_fn_letter-A"><b>A</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-D"><b>D</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-F"><b>F</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-R"><b>R</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-W"><b>W</b></a>
  &nbsp; 
@@ -437,14 +623,52 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td></td><td valign="top"><a href="#index-ALEXANDRIA_003aFLATTEN"><code>ALEXANDRIA:FLATTEN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Usage">Usage</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ALEXANDRIA_003aMAP_002dPERMUTATIONS"><code>ALEXANDRIA:MAP-PERMUTATIONS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Index_fn_letter-B">B</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-BAR"><code>BAR</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Index_fn_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aCOMPILE_002dFILE"><code>COMMON-LISP:COMPILE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME"><code>COMMON-LISP:COMPILE-FILE-PATHNAME</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aDELETE_002dFILE"><code>COMMON-LISP:DELETE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aFILE_002dAUTHOR"><code>COMMON-LISP:FILE-AUTHOR</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME"><code>COMMON-LISP:FILE-ERROR-PATHNAME</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aFILE_002dLENGTH"><code>COMMON-LISP:FILE-LENGTH</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aFILE_002dNAMESTRING"><code>COMMON-LISP:FILE-NAMESTRING</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aFILE_002dPOSITION"><code>COMMON-LISP:FILE-POSITION</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH"><code>COMMON-LISP:FILE-STRING-LENGTH</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aFILE_002dWRITE_002dDATE"><code>COMMON-LISP:FILE-WRITE-DATE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aPROBE_002dFILE"><code>COMMON-LISP:PROBE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aREAD"><code>COMMON-LISP:READ</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMMON_002dLISP_003aRENAME_002dFILE"><code>COMMON-LISP:RENAME-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMPILE_002dFILE"><code>COMPILE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COMPILE_002dFILE_002dPATHNAME"><code>COMPILE-FILE-PATHNAME</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-D">D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DELETE_002dFILE"><code>DELETE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_002fUTILS_003aBAR"><code>DOCWEAVER/UTILS:BAR</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_002fUTILS_003aFOO"><code>DOCWEAVER/UTILS:FOO</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aWEAVE_002dFILE"><code>DOCWEAVER:WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FILE_002dAUTHOR"><code>FILE-AUTHOR</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FILE_002dERROR_002dPATHNAME"><code>FILE-ERROR-PATHNAME</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FILE_002dLENGTH"><code>FILE-LENGTH</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FILE_002dNAMESTRING"><code>FILE-NAMESTRING</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FILE_002dPOSITION"><code>FILE-POSITION</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FILE_002dSTRING_002dLENGTH"><code>FILE-STRING-LENGTH</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FILE_002dWRITE_002dDATE"><code>FILE-WRITE-DATE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-FLATTEN"><code>FLATTEN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Usage">Usage</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FOO"><code>FOO</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-M">M</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-MAP_002dPERMUTATIONS"><code>MAP-PERMUTATIONS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Index_fn_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PROBE_002dFILE"><code>PROBE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Index_fn_letter-R">R</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-READ"><code>READ</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-RENAME_002dFILE"><code>RENAME-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-W">W</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-WEAVE_002dFILE"><code>WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
@@ -455,11 +679,19 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <br>
 <a class="summary-letter" href="#Index_fn_letter-A"><b>A</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-D"><b>D</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-F"><b>F</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_fn_letter-R"><b>R</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_fn_letter-W"><b>W</b></a>
  &nbsp; 

@@ -55,6 +55,7 @@ Documentation for a Lisp project is written with the user's tool of choice (like
 * Usage::
 * Commands::
 * Documentation systems::
+* Tips and tricks::
 * API::
 * Index::
 @end menu
@@ -211,6 +212,40 @@ You can have a look at @emph{CL-DOCWEAVER} own documentation in @code{docs/cl-do
 Also you may want to invoke @code{makeinfo} and @code{texi2any} Texinfo commands with @code{--no-validate} option, as some of the generated references in docstrings may not appear in your final document, and without that option you would get an error.
 
 See @code{docs/Makefile} in @emph{CL-DOCWEAVER} source for an example of how Texinfo tools should be used.
+
+@node Tips and tricks
+@chapter Tips and tricks
+
+@node Lisp evaluation
+@section Lisp evaluation
+
+It is possible to take advantage of Lisp evaluation to handle the list of symbols to expand. As commands are parsed using standard @code{CL:READ} function, reader syntax @code{#.} can be used to evaluate arbitrary Lisp code.
+
+($clfunction cl:read)
+
+We can take advantage of that and expand all functions that match some term.
+
+@heading Symbols matching
+
+For example, to expand all functions in @code{CL} package that have 'file' in their name:
+
+@code{(@@clfunction #.(docweaver/utils:symbols-matching :cl "FILE" :function))}
+
+Results in this expansion:
+
+($clfunction #.(docweaver/utils:symbols-matching :cl "FILE" :function))
+
+@heading Categorized definitions
+
+We can also go a bit further and use evaluation to fetch a list of symbols with docstrings matching a certain category. When the syntax @code{Category: <category-name>} is used in definition docstrings, it is detected by @xref{docweaver/utils:symbols-categorized}.
+
+For example:
+
+@code{(@@clfunction #.(docweaver/utils:symbols-categorized :docweaver/utils "foobar" :function))}
+
+Expands the categorized functions:
+
+($clfunction #.(docweaver/utils:symbols-categorized :docweaver/utils "foobar" :function))
 
 @node API
 @chapter API

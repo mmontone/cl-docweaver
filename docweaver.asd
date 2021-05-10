@@ -9,5 +9,6 @@
   :components ((:file "package")
 	       (:file "docweaver")
 	       (:file "texinfo")
-	       (:file "markdown"))
-  :depends-on (:assoc-utils :str))
+	       (:file "markdown")
+	       (:file "utils"))
+  :depends-on (:assoc-utils :str :cl-ppcre))
