@@ -43,6 +43,17 @@
 @c This is alexandria with-gensyms macro
 @c @endcldefmacro
 
+@c Generic function definition
+@macro cldefgeneric{package, name, args}
+@findex \package\:\name\
+@anchor{\package\:\name\ function}
+@deffn \package\ \name\ \args\
+@end macro
+
+@macro endcldefgeneric
+@end deffn
+@end macro
+
 @c Class definition
 @macro cldefclass{package, name}
 @tindex \package\:\name\

@@ -63,7 +63,8 @@
 	      ;; else, continue
 	      (write-char (read-char s) stream)))))))
 
-(defgeneric process-weaver-command (docsystem command args stream))
+(defgeneric process-weaver-command (docsystem command args stream)
+  (:documentation "The generic function to specialize for implementing weaving commands for the different documentation systems."))
 
 (defmacro def-weaver-command-handler (command-name args (&key docsystem) &body body)
   "Define a weaver command handler.

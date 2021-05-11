@@ -68,6 +68,8 @@ ul.no-bullet {list-style: none}
 
 
 
+
+
 <span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
@@ -214,6 +216,14 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#C
 <var>BODY</var> should write to an implicit  variable, to expand the command.
 </p></dd></dl>
 
+<span id="Generic-functions"></span><h3 class="heading">Generic functions</h3>
+<span id="index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"></span>
+<span id="DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function"></span><dl>
+<dt id="index-PROCESS_002dWEAVER_002dCOMMAND">DOCWEAVER: <strong>PROCESS-WEAVER-COMMAND</strong> <em>(docsystem command args stream)</em></dt>
+<dd>
+<p>The generic function to specialize for implementing weaving commands for the different documentation systems.
+</p></dd></dl>
+
 <span id="Functions"></span><h3 class="heading">Functions</h3>
 <span id="index-DOCWEAVER_003aWEAVE_002dFILE"></span>
 <span id="DOCWEAVER_003aWEAVE_002dFILE-function"></span><dl>
@@ -246,6 +256,12 @@ Arguments:<br>
 <dd>
 <p>The current weaver configuration
 </p></dd></dl>
+
+<span id="Generic-functions-1"></span><h3 class="heading">Generic functions</h3>
+<span id="index-DOCWEAVER_003aDOCSYSTEM_002dWEAVE_002dFILE"></span>
+<span id="DOCWEAVER_003aDOCSYSTEM_002dWEAVE_002dFILE-function"></span><dl>
+<dt id="index-DOCSYSTEM_002dWEAVE_002dFILE">DOCWEAVER: <strong>DOCSYSTEM-WEAVE-FILE</strong> <em>(docsystem file stream)</em></dt>
+</dl>
 
 <span id="Functions-1"></span><h3 class="heading">Functions</h3>
 <span id="index-DOCWEAVER_003aPACKAGE_002dSYMBOLS"></span>
@@ -370,12 +386,15 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-D">D</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DEF_002dWEAVER_002dCOMMAND_002dHANDLER"><code>DEF-WEAVER-COMMAND-HANDLER</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCSYSTEM_002dWEAVE_002dFILE"><code>DOCSYSTEM-WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"><code>DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aDOCSYSTEM_002dWEAVE_002dFILE"><code>DOCWEAVER:DOCSYSTEM-WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aGENERATE_002dTEXINFO_002dREFERENCE_002dFOR_002dPACKAGE"><code>DOCWEAVER:GENERATE-TEXINFO-REFERENCE-FOR-PACKAGE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPACKAGE_002dFUNCTIONS"><code>DOCWEAVER:PACKAGE-FUNCTIONS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPACKAGE_002dSYMBOLS"><code>DOCWEAVER:PACKAGE-SYMBOLS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPACKAGE_002dVARIABLES"><code>DOCWEAVER:PACKAGE-VARIABLES</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPEEK_002dN_002dCHARS"><code>DOCWEAVER:PEEK-N-CHARS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"><code>DOCWEAVER:PROCESS-WEAVER-COMMAND</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMANDS"><code>DOCWEAVER:PROCESS-WEAVER-COMMANDS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aREAD_002dCONFIG"><code>DOCWEAVER:READ-CONFIG</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aWEAVE_002dFILE"><code>DOCWEAVER:WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
@@ -388,6 +407,7 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td></td><td valign="top"><a href="#index-PACKAGE_002dSYMBOLS"><code>PACKAGE-SYMBOLS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PACKAGE_002dVARIABLES"><code>PACKAGE-VARIABLES</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PEEK_002dN_002dCHARS"><code>PEEK-N-CHARS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PROCESS_002dWEAVER_002dCOMMAND"><code>PROCESS-WEAVER-COMMAND</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PROCESS_002dWEAVER_002dCOMMANDS"><code>PROCESS-WEAVER-COMMANDS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-R">R</th><td></td><td></td></tr>

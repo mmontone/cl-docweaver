@@ -68,6 +68,8 @@ ul.no-bullet {list-style: none}
 
 
 
+
+
 <span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
@@ -413,6 +415,17 @@ Traverses the @var{tree} in order, collecting non-null leaves into a list.
 @c This is alexandria with-gensyms macro
 @c @endcldefmacro
 
+@c Generic function definition
+@macro cldefgeneric{package, name, args}
+@findex \package\:\name\
+@anchor{\package\:\name\ function}
+@deffn \package\ \name\ \args\
+@end macro
+
+@macro endcldefgeneric
+@end deffn
+@end macro
+
 @c Class definition
 @macro cldefclass{package, name}
 @tindex \package\:\name\
@@ -644,6 +657,14 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#T
 <var>BODY</var> should write to an implicit  variable, to expand the command.
 </p></dd></dl>
 
+<span id="Generic-functions"></span><h3 class="heading">Generic functions</h3>
+<span id="index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"></span>
+<span id="DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function"></span><dl>
+<dt id="index-PROCESS_002dWEAVER_002dCOMMAND">DOCWEAVER: <strong>PROCESS-WEAVER-COMMAND</strong> <em>(docsystem command args stream)</em></dt>
+<dd>
+<p>The generic function to specialize for implementing weaving commands for the different documentation systems.
+</p></dd></dl>
+
 <span id="Functions"></span><h3 class="heading">Functions</h3>
 <span id="index-DOCWEAVER_003aWEAVE_002dFILE"></span>
 <span id="DOCWEAVER_003aWEAVE_002dFILE-function"></span><dl>
@@ -776,6 +797,7 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_002fUTILS_003aBAR"><code>DOCWEAVER/UTILS:BAR</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_002fUTILS_003aFOO"><code>DOCWEAVER/UTILS:FOO</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"><code>DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"><code>DOCWEAVER:PROCESS-WEAVER-COMMAND</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aWEAVE_002dFILE"><code>DOCWEAVER:WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-F">F</th><td></td><td></td></tr>
@@ -794,6 +816,7 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-P">P</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PROBE_002dFILE"><code>PROBE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PROCESS_002dWEAVER_002dCOMMAND"><code>PROCESS-WEAVER-COMMAND</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_letter-R">R</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-READ"><code>READ</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Lisp-evaluation">Lisp evaluation</a></td></tr>

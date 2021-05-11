@@ -129,6 +129,29 @@
           (terpri stream)
           (write-string "@endcldefvar" stream)))))
 
+(defun texinfo-define-generic-function (function-symbol stream)
+  (let ((function-info (def-properties:function-properties function-symbol)))
+    (if (null function-info)
+        (error "Generic function properties could not be read: ~s" function-symbol)
+        (progn
+          (format stream "@cldefgeneric {~a, ~a, ~a}"
+                  (package-name (symbol-package function-symbol))
+                  (symbol-name function-symbol)
+                  (aget function-info :args))
+          (terpri stream) (terpri stream)
+          (when (aget function-info :documentation)
+            (if (docweaver::read-config :parse-docstrings)
+                (texinfo-render-parsed-docstring
+                 (texinfo-parse-docstring
+                  (aget function-info :documentation)
+                  (def-properties:list-lambda-list-args (aget function-info :arglist))
+		  :package (symbol-package function-symbol))
+                 stream)
+                ;; else
+                (write-string (aget function-info :documentation) stream)))
+          (terpri stream)
+          (write-string "@endcldefgeneric" stream)))))
+
 ;; Copied from sb-texinfo:
 
 (defparameter *undocumented-packages* '(sb-pcl sb-int sb-kernel sb-sys sb-c))
@@ -253,6 +276,13 @@
       (format stream "@heading Macros~%"))
     (dolist (macro macros)
       (texinfo-define-macro macro stream)
+      (terpri stream) (terpri stream)))
+
+  (let ((functions (remove-if-not 'def-properties:symbol-generic-function-p symbols)))
+    (when (and functions categorized)
+      (format stream "@heading Generic functions~%"))
+    (dolist (function functions)
+      (texinfo-define-generic-function function stream)
       (terpri stream) (terpri stream)))
 
   (let ((functions (remove-if-not 'def-properties:symbol-function-p symbols)))

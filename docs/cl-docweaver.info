@@ -315,6 +315,17 @@ Common Lisp definitions manually, without using CL-DOCWEAVER expanders.
 @c This is alexandria with-gensyms macro
 @c @endcldefmacro
 
+@c Generic function definition
+@macro cldefgeneric{package, name, args}
+@findex \package\:\name\
+@anchor{\package\:\name\ function}
+@deffn \package\ \name\ \args\
+@end macro
+
+@macro endcldefgeneric
+@end deffn
+@end macro
+
 @c Class definition
 @macro cldefclass{package, name}
 @tindex \package\:\name\
@@ -541,6 +552,14 @@ Macros
      example, (eql :TEXINFO).
      BODY should write to an implicit variable, to expand the command.
 
+Generic functions
+=================
+
+ -- DOCWEAVER: PROCESS-WEAVER-COMMAND (docsystem command args stream)
+
+     The generic function to specialize for implementing weaving
+     commands for the different documentation systems.
+
 Functions
 =========
 
@@ -614,7 +633,8 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * DOCWEAVER/UTILS:BAR:                   Lisp evaluation.     (line 143)
 * DOCWEAVER/UTILS:FOO:                   Lisp evaluation.     (line 148)
 * DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER:  API.                 (line  14)
-* DOCWEAVER:WEAVE-FILE:                  API.                 (line  29)
+* DOCWEAVER:PROCESS-WEAVER-COMMAND:      API.                 (line  29)
+* DOCWEAVER:WEAVE-FILE:                  API.                 (line  37)
 * FILE-AUTHOR:                           Lisp evaluation.     (line  36)
 * FILE-ERROR-PATHNAME:                   Lisp evaluation.     (line 119)
 * FILE-LENGTH:                           Lisp evaluation.     (line  46)
@@ -626,9 +646,10 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * FOO:                                   Lisp evaluation.     (line 148)
 * MAP-PERMUTATIONS:                      Commands.            (line  63)
 * PROBE-FILE:                            Lisp evaluation.     (line  31)
+* PROCESS-WEAVER-COMMAND:                API.                 (line  29)
 * READ:                                  Lisp evaluation.     (line  11)
 * RENAME-FILE:                           Lisp evaluation.     (line  41)
-* WEAVE-FILE:                            API.                 (line  29)
+* WEAVE-FILE:                            API.                 (line  37)
 
 
 
@@ -650,27 +671,28 @@ Ref: ALEXANDRIA:MAP-PERMUTATIONS function4830
 Node: Documentation systems6260
 Node: Texinfo6439
 Node: common-lisp.texi7274
-Node: Tips and tricks9801
-Node: Lisp evaluation9971
-Ref: COMMON-LISP:READ function10302
-Ref: COMMON-LISP:PROBE-FILE function10830
-Ref: COMMON-LISP:FILE-AUTHOR function11048
-Ref: COMMON-LISP:RENAME-FILE function11250
-Ref: COMMON-LISP:FILE-LENGTH function11447
-Ref: COMMON-LISP:FILE-POSITION function11486
-Ref: COMMON-LISP:FILE-NAMESTRING function11546
-Ref: COMMON-LISP:DELETE-FILE function11652
-Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function12034
-Ref: COMMON-LISP:COMPILE-FILE function12317
-Ref: COMMON-LISP:FILE-ERROR-PATHNAME function14497
-Ref: COMMON-LISP:FILE-WRITE-DATE function14547
-Ref: COMMON-LISP:FILE-STRING-LENGTH function14761
-Ref: DOCWEAVER/UTILS:BAR function15287
-Ref: DOCWEAVER/UTILS:FOO function15397
-Node: API15508
-Ref: api15608
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro15690
-Ref: DOCWEAVER:WEAVE-FILE function16219
-Node: Index16920
+Node: Tips and tricks10022
+Node: Lisp evaluation10192
+Ref: COMMON-LISP:READ function10523
+Ref: COMMON-LISP:PROBE-FILE function11051
+Ref: COMMON-LISP:FILE-AUTHOR function11269
+Ref: COMMON-LISP:RENAME-FILE function11471
+Ref: COMMON-LISP:FILE-LENGTH function11668
+Ref: COMMON-LISP:FILE-POSITION function11707
+Ref: COMMON-LISP:FILE-NAMESTRING function11767
+Ref: COMMON-LISP:DELETE-FILE function11873
+Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function12255
+Ref: COMMON-LISP:COMPILE-FILE function12538
+Ref: COMMON-LISP:FILE-ERROR-PATHNAME function14718
+Ref: COMMON-LISP:FILE-WRITE-DATE function14768
+Ref: COMMON-LISP:FILE-STRING-LENGTH function14982
+Ref: DOCWEAVER/UTILS:BAR function15508
+Ref: DOCWEAVER/UTILS:FOO function15618
+Node: API15729
+Ref: api15829
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro15911
+Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function16456
+Ref: DOCWEAVER:WEAVE-FILE function16669
+Node: Index17370
 
 End Tag Table

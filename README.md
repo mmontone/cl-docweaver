@@ -32,6 +32,7 @@ Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
 
 - [function] **DOCWEAVER:PROCESS-WEAVER-COMMAND** *(docsystem command args stream)*
 
+    The generic function to specialize for implementing weaving commands for the different documentation systems.
 
 
 
