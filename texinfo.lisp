@@ -106,8 +106,45 @@
           (terpri stream)
           (write-string "@endcldefvar" stream)))))
 
+;; Copied from sb-texinfo:
+
+(defparameter *undocumented-packages* '(sb-pcl sb-int sb-kernel sb-sys sb-c))
+
+(defun ensure-class-precedence-list (class)
+  (unless (c2mop:class-finalized-p class)
+    (c2mop:finalize-inheritance class))
+  (c2mop:class-precedence-list class))
+
+(defun hide-superclass-p (class-name super-name)
+  (let ((super-package (symbol-package super-name)))
+    (or
+     ;; KLUDGE: We assume that we don't want to advertise internal
+     ;; classes in CP-lists, unless the symbol we're documenting is
+     ;; internal as well.
+     (and (member super-package #.'(mapcar #'find-package *undocumented-packages*))
+          (not (eq super-package (symbol-package class-name))))
+     ;; KLUDGE: We don't generally want to advertise SIMPLE-ERROR or
+     ;; SIMPLE-CONDITION in the CPLs of conditions that inherit them
+     ;; simply as a matter of convenience. The assumption here is that
+     ;; the inheritance is incidental unless the name of the condition
+     ;; begins with SIMPLE-.
+     (and (member super-name '(simple-error simple-condition))
+          (let ((prefix "SIMPLE-"))
+            (mismatch prefix (string class-name) :end2 (length prefix)))
+          t ; don't return number from MISMATCH
+          ))))
+
+(defun hide-slot-p (symbol slot)
+  ;; FIXME: There is no pricipal reason to avoid the slot docs fo
+  ;; structures and conditions, but their DOCUMENTATION T doesn't
+  ;; currently work with them the way we'd like.
+  (not (and (typep (find-class symbol nil) 'standard-class)
+            (cl:documentation slot t))))
+
+
 (defun texinfo-define-class (class-symbol stream)
-  (let ((class-info (def-properties:class-properties class-symbol)))
+  (let ((class-info (def-properties:class-properties class-symbol))
+	(class (find-class class-symbol)))
     (if (null class-info)
         (error "Class properties could not be read: ~s" class-symbol)
         (progn
@@ -124,6 +161,36 @@
                 ;; else
                 (write-string (aget class-info :documentation) stream)))
           (terpri stream)
+	  (terpri stream)
+	  (format stream ;"Class precedence list: @code{~(~{@lw{~A}~^, ~}~)}~%~%"
+		  "Class precedence list: @code{~(~{~A~^, ~}~)}~%~%"
+		  (remove-if (lambda (class)  (hide-superclass-p class-symbol class))
+                             (mapcar #'class-name (ensure-class-precedence-list class))))
+	  
+	  ;; slots
+	  (let ((slots (remove-if (lambda (slot) (hide-slot-p class-symbol slot))
+				  (c2mop:class-direct-slots class))))
+            (when slots
+              (format stream "Slots:~%@itemize~%")
+              (dolist (slot slots)
+		(format stream
+			"@item ~(@code{~A}~#[~:; --- ~]~
+                      ~:{~2*~@[~2:*~A~P: ~{@code{@w{~S}}~^, ~}~]~:^; ~}~)~%~%"
+			(c2mop:slot-definition-name slot)
+			(remove
+			 nil
+			 (mapcar
+			  (lambda (name things)
+                            (if things
+				(list name (length things) things)))
+			  '("initarg" "reader"  "writer")
+			  (list
+			   (c2mop:slot-definition-initargs slot)
+			   (c2mop:slot-definition-readers slot)
+			   (c2mop:slot-definition-writers slot)))))
+		;; FIXME: Would be neater to handler as children
+		(write-string (cl:documentation slot t) stream))
+              (format stream "@end itemize~%~%")))
           (write-string "@endcldefclass" stream)))))
 
 (def-weaver-command-handler clfunction (function-symbol)
