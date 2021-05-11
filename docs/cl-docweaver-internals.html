@@ -213,7 +213,9 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#C
 <var>COMMAND-NAME</var> is the name of the command, without the prefix (like &rsquo;clvariable&rsquo;, &rsquo;clfunction&rsquo;, etc.)<br>
 <var>ARGS</var> is the list of arguments for that command in the <var>DOCSYSTEM</var> implementation.<br>
 <var>DOCSYSTEM</var> is a specializer for the documentation system. For example, (eql <var>:texinfo</var>).<br>
-<var>BODY</var> should write to an implicit  variable, to expand the command.
+<var>BODY</var> should write to an implicit  variable, to expand the command.<br>
+<br>
+This is implemented as a wraper over <a href="#DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function">PROCESS-WEAVER-COMMAND</a> .
 </p></dd></dl>
 
 <span id="Generic-functions"></span><h3 class="heading">Generic functions</h3>
@@ -221,7 +223,9 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#C
 <span id="DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function"></span><dl>
 <dt id="index-PROCESS_002dWEAVER_002dCOMMAND">DOCWEAVER: <strong>PROCESS-WEAVER-COMMAND</strong> <em>(docsystem command args stream)</em></dt>
 <dd>
-<p>The generic function to specialize for implementing weaving commands for the different documentation systems.
+<p>The generic function to specialize for implementing weaving commands for the different documentation systems.<br>
+<br>
+See: &lsquo;DEF-WEAVER-COMMAND-HANDLER&rsquo;
 </p></dd></dl>
 
 <span id="Functions"></span><h3 class="heading">Functions</h3>

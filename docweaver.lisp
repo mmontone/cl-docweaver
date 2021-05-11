@@ -64,14 +64,18 @@
 	      (write-char (read-char s) stream)))))))
 
 (defgeneric process-weaver-command (docsystem command args stream)
-  (:documentation "The generic function to specialize for implementing weaving commands for the different documentation systems."))
+  (:documentation "The generic function to specialize for implementing weaving commands for the different documentation systems.
+
+See: DEF-WEAVER-COMMAND-HANDLER"))
 
 (defmacro def-weaver-command-handler (command-name args (&key docsystem) &body body)
   "Define a weaver command handler.
 COMMAND-NAME is the name of the command, without the prefix (like 'clvariable', 'clfunction', etc.)
 ARGS is the list of arguments for that command in the DOCSYSTEM implementation.
 DOCSYSTEM is a specializer for the documentation system. For example, (eql :texinfo).
-BODY should write to an implicit STREAM variable, to expand the command."
+BODY should write to an implicit STREAM variable, to expand the command.
+
+This is implemented as a wraper over PROCESS-WEAVER-COMMAND ."
   `(defmethod process-weaver-command ((docsystem ,(or docsystem 'T))
 				      (command (eql ,(intern (symbol-name command-name) :keyword)))
 				      args stream)

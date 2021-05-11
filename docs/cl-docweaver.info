@@ -552,6 +552,9 @@ Macros
      example, (eql :TEXINFO).
      BODY should write to an implicit variable, to expand the command.
 
+     This is implemented as a wraper over *note PROCESS-WEAVER-COMMAND:
+     DOCWEAVER:PROCESS-WEAVER-COMMAND function. .
+
 Generic functions
 =================
 
@@ -559,6 +562,9 @@ Generic functions
 
      The generic function to specialize for implementing weaving
      commands for the different documentation systems.
+
+     See: *note DEF-WEAVER-COMMAND-HANDLER:
+     DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER function.
 
 Functions
 =========
@@ -633,8 +639,8 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * DOCWEAVER/UTILS:BAR:                   Lisp evaluation.     (line 143)
 * DOCWEAVER/UTILS:FOO:                   Lisp evaluation.     (line 148)
 * DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER:  API.                 (line  14)
-* DOCWEAVER:PROCESS-WEAVER-COMMAND:      API.                 (line  29)
-* DOCWEAVER:WEAVE-FILE:                  API.                 (line  37)
+* DOCWEAVER:PROCESS-WEAVER-COMMAND:      API.                 (line  32)
+* DOCWEAVER:WEAVE-FILE:                  API.                 (line  43)
 * FILE-AUTHOR:                           Lisp evaluation.     (line  36)
 * FILE-ERROR-PATHNAME:                   Lisp evaluation.     (line 119)
 * FILE-LENGTH:                           Lisp evaluation.     (line  46)
@@ -646,10 +652,10 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * FOO:                                   Lisp evaluation.     (line 148)
 * MAP-PERMUTATIONS:                      Commands.            (line  63)
 * PROBE-FILE:                            Lisp evaluation.     (line  31)
-* PROCESS-WEAVER-COMMAND:                API.                 (line  29)
+* PROCESS-WEAVER-COMMAND:                API.                 (line  32)
 * READ:                                  Lisp evaluation.     (line  11)
 * RENAME-FILE:                           Lisp evaluation.     (line  41)
-* WEAVE-FILE:                            API.                 (line  37)
+* WEAVE-FILE:                            API.                 (line  43)
 
 
 
@@ -691,8 +697,8 @@ Ref: DOCWEAVER/UTILS:FOO function15618
 Node: API15729
 Ref: api15829
 Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro15911
-Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function16456
-Ref: DOCWEAVER:WEAVE-FILE function16669
-Node: Index17370
+Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function16579
+Ref: DOCWEAVER:WEAVE-FILE function16889
+Node: Index17590
 
 End Tag Table

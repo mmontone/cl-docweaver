@@ -27,12 +27,16 @@ Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
     ARGS is the list of arguments for that command in the DOCSYSTEM implementation.
     DOCSYSTEM is a specializer for the documentation system. For example, (eql :texinfo).
     BODY should write to an implicit STREAM variable, to expand the command.
+    
+    This is implemented as a wraper over PROCESS-WEAVER-COMMAND .
 
 
 
 - [function] **DOCWEAVER:PROCESS-WEAVER-COMMAND** *(docsystem command args stream)*
 
     The generic function to specialize for implementing weaving commands for the different documentation systems.
+    
+    See: DEF-WEAVER-COMMAND-HANDLER
 
 
 
