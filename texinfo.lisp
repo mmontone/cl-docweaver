@@ -85,6 +85,29 @@
           (terpri stream)
           (write-string "@endcldefun" stream)))))
 
+(defun texinfo-define-macro (macro-symbol stream)
+  (let ((macro-info (def-properties:function-properties macro-symbol)))
+    (if (null macro-info)
+        (error "Macro properties could not be read: ~s" macro-symbol)
+        (progn
+          (format stream "@cldefmacro {~a, ~a, ~a}"
+                  (package-name (symbol-package macro-symbol))
+                  (symbol-name macro-symbol)
+                  (aget macro-info :args))
+          (terpri stream) (terpri stream)
+          (when (aget macro-info :documentation)
+            (if (docweaver::read-config :parse-docstrings)
+                (texinfo-render-parsed-docstring
+                 (texinfo-parse-docstring
+                  (aget macro-info :documentation)
+                  (def-properties:list-lambda-list-args (aget macro-info :arglist))
+		  :package (symbol-package macro-symbol))
+                 stream)
+                ;; else
+                (write-string (aget macro-info :documentation) stream)))
+          (terpri stream)
+          (write-string "@endcldefmacro" stream)))))
+
 (defun texinfo-define-variable (variable-symbol stream)
   (let ((variable-info (def-properties:variable-properties variable-symbol)))
     (if (null variable-info)
@@ -193,14 +216,6 @@
               (format stream "@end itemize~%~%")))
           (write-string "@endcldefclass" stream)))))
 
-(def-weaver-command-handler clfunction (function-symbol)
-    (:docsystem (eql :texinfo))
-  (etypecase function-symbol
-    (symbol (texinfo-define-function function-symbol stream))
-    (list (dolist (fun-symbol function-symbol)
-	    (texinfo-define-function fun-symbol stream)
-	    (terpri stream)))))
-
 (def-weaver-command-handler clvariable (variable-symbol)
     (:docsystem (eql :texinfo))
   (etypecase variable-symbol
@@ -209,12 +224,35 @@
 	    (texinfo-define-variable var-symbol stream)
 	    (terpri stream)))))
 
+(def-weaver-command-handler clfunction (function-symbol)
+    (:docsystem (eql :texinfo))
+  (etypecase function-symbol
+    (symbol (texinfo-define-function function-symbol stream))
+    (list (dolist (fun-symbol function-symbol)
+	    (texinfo-define-function fun-symbol stream)
+	    (terpri stream)))))
+
+(def-weaver-command-handler clmacro (macro-symbol)
+    (:docsystem (eql :texinfo))
+  (etypecase macro-symbol
+    (symbol (texinfo-define-macro macro-symbol stream))
+    (list (dolist (mac-symbol macro-symbol)
+	    (texinfo-define-macro mac-symbol stream)
+	    (terpri stream)))))
+
 (defun texinfo-format-definitions (symbols stream &key categorized)
   (let ((variables (remove-if-not 'def-properties:symbol-variable-p symbols)))
     (when (and variables categorized)
       (format stream "@heading Variables~%"))
     (dolist (variable variables)
       (texinfo-define-variable variable stream)
+      (terpri stream) (terpri stream)))
+
+  (let ((macros (remove-if-not 'def-properties::symbol-macro-p symbols)))
+    (when (and macros categorized)
+      (format stream "@heading Macros~%"))
+    (dolist (macro macros)
+      (texinfo-define-macro macro stream)
       (terpri stream) (terpri stream)))
 
   (let ((functions (remove-if-not 'def-properties:symbol-function-p symbols)))

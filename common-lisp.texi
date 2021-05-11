@@ -27,6 +27,22 @@
 @c This is alexandria flatten function
 @c @endcldefun
 
+@c Function definition
+@macro cldefmacro{package, name, args}
+@findex \package\:\name\
+@anchor{\package\:\name\ macro}
+@deffn \package\ \name\ \args\
+@end macro
+
+@macro endcldefmacro
+@end deffn
+@end macro
+
+@c Example:
+@c @cldefmacro {alexandria, with-gensyms, (&rest args)}
+@c This is alexandria with-gensyms macro
+@c @endcldefmacro
+
 @c Class definition
 @macro cldefclass{package, name}
 @tindex \package\:\name\

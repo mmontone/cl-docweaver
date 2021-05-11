@@ -35,7 +35,7 @@
    :symbol-kind-p
    :symbol-variable-p
    :symbol-function-p
-   
+   :symbol-macro-p
    :symbol-generic-function-p
    :symbol-type-p
    :symbol-class-p
