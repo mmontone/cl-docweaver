@@ -223,13 +223,20 @@ They are mostly equivalent to Texinfo's definition macros, like @code{@@deffn}, 
 @code{@@cldefun} is for defining a Common Lisp function.
 
 They are used like this:
+
 @example
 @verbatim
-@cldefun{alexandria, flatten}
+@cldefun{alexandria, flatten, ()}
 Traverses the @var{tree} in order, collecting non-null leaves into a list. 
 @endcldefun
 @end verbatim
 @end example
+
+You can use the macros in @code{common-lisp.texi} to define your own Common Lisp definitions manually, without using CL-DOCWEAVER expanders.
+
+Have a look at the source to figure out more about how they are used:
+
+@verbatiminclude ../common-lisp.texi
 
 The @code{common-lisp.texi} file is required to be included in the file being weaved by CL-DOCWEAVER for the Texinfo documentation system, as the implementation expands to macros found in @code{common-lisp.texi}.
 

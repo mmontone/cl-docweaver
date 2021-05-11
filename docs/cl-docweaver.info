@@ -260,9 +260,92 @@ entries.
    '@cldefun' is for defining a Common Lisp function.
 
    They are used like this:
-     @cldefun{alexandria, flatten}
+
+     @cldefun{alexandria, flatten, ()}
      Traverses the @var{tree} in order, collecting non-null leaves into a list. 
      @endcldefun
+
+   You can use the macros in 'common-lisp.texi' to define your own
+Common Lisp definitions manually, without using CL-DOCWEAVER expanders.
+
+   Have a look at the source to figure out more about how they are used:
+
+@c Macros for Common Lisp definitions
+
+@c Variable definition
+@macro cldefvar{package, name}
+@vindex \package\:\name\
+@anchor{\package\:\name\ variable}
+@defvr \package\ \name\
+@end macro
+
+@macro endcldefvar
+@end defvr
+@end macro
+
+@c Function definition
+@macro cldefun{package, name, args}
+@findex \package\:\name\
+@anchor{\package\:\name\ function}
+@deffn \package\ \name\ \args\
+@end macro
+
+@macro endcldefun
+@end deffn
+@end macro
+
+@c Example:
+@c @cldefun {alexandria, flatten, (x y z)}
+@c This is alexandria flatten function
+@c @endcldefun
+
+@c Function definition
+@macro cldefmacro{package, name, args}
+@findex \package\:\name\
+@anchor{\package\:\name\ macro}
+@deffn \package\ \name\ \args\
+@end macro
+
+@macro endcldefmacro
+@end deffn
+@end macro
+
+@c Example:
+@c @cldefmacro {alexandria, with-gensyms, (&rest args)}
+@c This is alexandria with-gensyms macro
+@c @endcldefmacro
+
+@c Class definition
+@macro cldefclass{package, name}
+@tindex \package\:\name\
+@anchor{\package\:\name\ class}
+@deftp \package\ \name\
+@end macro
+
+@macro endcldefclass
+@end deftp
+@end macro
+
+@c References
+@macro clref{package, name, type}
+@xref{\package\:\name\ \type\,\name\}
+@end macro
+
+@c Source references
+@macro clsourceref{type,package,name}
+@end macro
+
+@c Use @clref{package, name} to reference cl definitions
+
+@c Weave Common Lisp function definition
+@macro clfunction{package, name}
+@end macro
+
+@macro clsourcecode{system,path}
+@end macro
+
+@macro setup{things}
+@end macro
 
    The 'common-lisp.texi' file is required to be included in the file
 being weaved by CL-DOCWEAVER for the Texinfo documentation system, as
@@ -567,27 +650,27 @@ Ref: ALEXANDRIA:MAP-PERMUTATIONS function4830
 Node: Documentation systems6260
 Node: Texinfo6439
 Node: common-lisp.texi7274
-Node: Tips and tricks8116
-Node: Lisp evaluation8286
-Ref: COMMON-LISP:READ function8617
-Ref: COMMON-LISP:PROBE-FILE function9145
-Ref: COMMON-LISP:FILE-AUTHOR function9363
-Ref: COMMON-LISP:RENAME-FILE function9565
-Ref: COMMON-LISP:FILE-LENGTH function9762
-Ref: COMMON-LISP:FILE-POSITION function9801
-Ref: COMMON-LISP:FILE-NAMESTRING function9861
-Ref: COMMON-LISP:DELETE-FILE function9967
-Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function10349
-Ref: COMMON-LISP:COMPILE-FILE function10632
-Ref: COMMON-LISP:FILE-ERROR-PATHNAME function12812
-Ref: COMMON-LISP:FILE-WRITE-DATE function12862
-Ref: COMMON-LISP:FILE-STRING-LENGTH function13076
-Ref: DOCWEAVER/UTILS:BAR function13602
-Ref: DOCWEAVER/UTILS:FOO function13712
-Node: API13823
-Ref: api13923
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro14005
-Ref: DOCWEAVER:WEAVE-FILE function14534
-Node: Index15235
+Node: Tips and tricks9794
+Node: Lisp evaluation9964
+Ref: COMMON-LISP:READ function10295
+Ref: COMMON-LISP:PROBE-FILE function10823
+Ref: COMMON-LISP:FILE-AUTHOR function11041
+Ref: COMMON-LISP:RENAME-FILE function11243
+Ref: COMMON-LISP:FILE-LENGTH function11440
+Ref: COMMON-LISP:FILE-POSITION function11479
+Ref: COMMON-LISP:FILE-NAMESTRING function11539
+Ref: COMMON-LISP:DELETE-FILE function11645
+Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function12027
+Ref: COMMON-LISP:COMPILE-FILE function12310
+Ref: COMMON-LISP:FILE-ERROR-PATHNAME function14490
+Ref: COMMON-LISP:FILE-WRITE-DATE function14540
+Ref: COMMON-LISP:FILE-STRING-LENGTH function14754
+Ref: DOCWEAVER/UTILS:BAR function15280
+Ref: DOCWEAVER/UTILS:FOO function15390
+Node: API15501
+Ref: api15601
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro15683
+Ref: DOCWEAVER:WEAVE-FILE function16212
+Node: Index16913
 
 End Tag Table

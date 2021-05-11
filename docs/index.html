@@ -357,12 +357,94 @@ Up: <a href="#Texinfo" accesskey="u" rel="up">Texinfo</a> &nbsp; [<a href="#SEC_
 <p><code>@cldefun</code> is for defining a Common Lisp function.
 </p>
 <p>They are used like this:
-</p><div class="example">
-<pre class="verbatim">@cldefun{alexandria, flatten}
+</p>
+<div class="example">
+<pre class="verbatim">@cldefun{alexandria, flatten, ()}
 Traverses the @var{tree} in order, collecting non-null leaves into a list. 
 @endcldefun
 </pre></div>
 
+<p>You can use the macros in <code>common-lisp.texi</code> to define your own Common Lisp definitions manually, without using CL-DOCWEAVER expanders.
+</p>
+<p>Have a look at the source to figure out more about how they are used:
+</p>
+<pre class="verbatim">@c Macros for Common Lisp definitions
+
+@c Variable definition
+@macro cldefvar{package, name}
+@vindex \package\:\name\
+@anchor{\package\:\name\ variable}
+@defvr \package\ \name\
+@end macro
+
+@macro endcldefvar
+@end defvr
+@end macro
+
+@c Function definition
+@macro cldefun{package, name, args}
+@findex \package\:\name\
+@anchor{\package\:\name\ function}
+@deffn \package\ \name\ \args\
+@end macro
+
+@macro endcldefun
+@end deffn
+@end macro
+
+@c Example:
+@c @cldefun {alexandria, flatten, (x y z)}
+@c This is alexandria flatten function
+@c @endcldefun
+
+@c Function definition
+@macro cldefmacro{package, name, args}
+@findex \package\:\name\
+@anchor{\package\:\name\ macro}
+@deffn \package\ \name\ \args\
+@end macro
+
+@macro endcldefmacro
+@end deffn
+@end macro
+
+@c Example:
+@c @cldefmacro {alexandria, with-gensyms, (&amp;rest args)}
+@c This is alexandria with-gensyms macro
+@c @endcldefmacro
+
+@c Class definition
+@macro cldefclass{package, name}
+@tindex \package\:\name\
+@anchor{\package\:\name\ class}
+@deftp \package\ \name\
+@end macro
+
+@macro endcldefclass
+@end deftp
+@end macro
+
+@c References
+@macro clref{package, name, type}
+@xref{\package\:\name\ \type\,\name\}
+@end macro
+
+@c Source references
+@macro clsourceref{type,package,name}
+@end macro
+
+@c Use @clref{package, name} to reference cl definitions
+
+@c Weave Common Lisp function definition
+@macro clfunction{package, name}
+@end macro
+
+@macro clsourcecode{system,path}
+@end macro
+
+@macro setup{things}
+@end macro
+</pre>
 <p>The <code>common-lisp.texi</code> file is required to be included in the file being weaved by CL-DOCWEAVER for the Texinfo documentation system, as the implementation expands to macros found in <code>common-lisp.texi</code>.
 </p>
 <hr>
