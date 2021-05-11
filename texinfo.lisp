@@ -269,12 +269,20 @@
       (texinfo-define-class class stream)
       (terpri stream) (terpri stream))))
 
-(def-weaver-command-handler clpackage (package-name &key (include-external-definitions t) include-internal-definitions (categorized t))
+(def-weaver-command-handler clpackage
+    (package-name
+     &key
+     (include-external-definitions t)
+     include-internal-definitions
+     (include-undocumented-definitions t)
+     (categorized t))
     (:docsystem (eql :texinfo))
   "Process a clpackage definition.
 Defines a package.
 If INCLUDE-EXTERNAL-DEFINITIONS is T, then the package external definitions are also defined.
-If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defined."
+If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defined.
+INCLUDE-UNDOCUMENTED-DEFINITIONS controls if definitions are included depending on wether they have a docstring or not.
+When CATEGORIZED is T, definitions are separated in sections (variables, functions, etc). Otherwise, they are expanded in sequence with no separation."
   (let ((package (or (find-package (string-upcase package-name))
                      (error "Package not found: ~a" package-name))))
     (format stream "@deftp PACKAGE ~a~%" (package-name package))

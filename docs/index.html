@@ -80,7 +80,10 @@ ul.no-bullet {list-style: none}
   <li><a id="toc-Commands-1" href="#Commands">4 Commands</a></li>
   <li><a id="toc-Documentation-systems-1" href="#Documentation-systems">5 Documentation systems</a>
   <ul class="no-bullet">
-    <li><a id="toc-Texinfo-1" href="#Texinfo">5.1 Texinfo</a></li>
+    <li><a id="toc-Texinfo-1" href="#Texinfo">5.1 Texinfo</a>
+    <ul class="no-bullet">
+      <li><a id="toc-common_002dlisp_002etexi-1" href="#common_002dlisp_002etexi">5.1.1 common-lisp.texi</a></li>
+    </ul></li>
   </ul></li>
   <li><a id="toc-Tips-and-tricks-1" href="#Tips-and-tricks">6 Tips and tricks</a>
   <ul class="no-bullet">
@@ -335,6 +338,33 @@ Up: <a href="#Documentation-systems" accesskey="u" rel="up">Documentation system
 </p>
 <p>See <code>docs/Makefile</code> in <em>CL-DOCWEAVER</em> source for an example of how Texinfo tools should be used.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#common_002dlisp_002etexi" accesskey="1">common-lisp.texi</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="common_002dlisp_002etexi"></span><div class="header">
+<p>
+Up: <a href="#Texinfo" accesskey="u" rel="up">Texinfo</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="common_002dlisp_002etexi-1"></span><h4 class="subsection">5.1.1 common-lisp.texi</h4>
+
+<p><code>common-lisp.texi</code> file contains macros for defining Common Lisp related definitions.
+</p>
+<p>They are mostly equivalent to Texinfo&rsquo;s definition macros, like <code>@deffn</code>, <code>@defun</code>, etc, but for Common Lisp. In particular, they take into consideration Lisp packages, and uses them for naming and index entries.
+</p>
+<p><code>@cldefun</code> is for defining a Common Lisp function.
+</p>
+<p>They are used like this:
+</p><div class="example">
+<pre class="verbatim">@cldefun{alexandria, flatten}
+Traverses the @var{tree} in order, collecting non-null leaves into a list. 
+@endcldefun
+</pre></div>
+
+<p>The <code>common-lisp.texi</code> file is required to be included in the file being weaved by CL-DOCWEAVER for the Texinfo documentation system, as the implementation expands to macros found in <code>common-lisp.texi</code>.
+</p>
 <hr>
 <span id="Tips-and-tricks"></span><div class="header">
 <p>
@@ -524,7 +554,13 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#T
 <span id="index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"></span>
 <span id="DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-macro"></span><dl>
 <dt id="index-DEF_002dWEAVER_002dCOMMAND_002dHANDLER">DOCWEAVER: <strong>DEF-WEAVER-COMMAND-HANDLER</strong> <em>(command-name args (&amp;key docsystem) &amp;body body)</em></dt>
-</dl>
+<dd>
+<p>Define a weaver command handler.<br>
+<var>COMMAND-NAME</var> is the name of the command, without the prefix (like &rsquo;clvariable&rsquo;, &rsquo;clfunction&rsquo;, etc.)<br>
+<var>ARGS</var> is the list of arguments for that command in the <var>DOCSYSTEM</var> implementation.<br>
+<var>DOCSYSTEM</var> is a specializer for the documentation system. For example, (eql <var>:texinfo</var>).<br>
+<var>BODY</var> should write to an implicit  variable, to expand the command.
+</p></dd></dl>
 
 <span id="Functions"></span><h3 class="heading">Functions</h3>
 <span id="index-DOCWEAVER_003aWEAVE_002dFILE"></span>
@@ -535,10 +571,10 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#T
 <br>
 Arguments:<br>
 <br>
-- DOCSYSTEM: specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).<br>
-- MODULES: is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.<br>
-- COMMAND-PREFIX: is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.<br>
-- PARSE-DOCSTRINGS: if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.
+- <var>DOCSYSTEM</var> <var>:</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).<br>
+- <var>MODULES</var> <var>:</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.<br>
+- <var>COMMAND-PREFIX</var> <var>:</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.<br>
+- <var>PARSE-DOCSTRINGS</var> <var>:</var> if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.
 </p></dd></dl>
 
 

@@ -213,6 +213,26 @@ Also you may want to invoke @code{makeinfo} and @code{texi2any} Texinfo commands
 
 See @code{docs/Makefile} in @emph{CL-DOCWEAVER} source for an example of how Texinfo tools should be used.
 
+@node common-lisp.texi
+@subsection common-lisp.texi
+
+@code{common-lisp.texi} file contains macros for defining Common Lisp related definitions.
+
+They are mostly equivalent to Texinfo's definition macros, like @code{@@deffn}, @code{@@defun}, etc, but for Common Lisp. In particular, they take into consideration Lisp packages, and uses them for naming and index entries.
+
+@code{@@cldefun} is for defining a Common Lisp function.
+
+They are used like this:
+@example
+@verbatim
+@cldefun{alexandria, flatten}
+Traverses the @var{tree} in order, collecting non-null leaves into a list. 
+@endcldefun
+@end verbatim
+@end example
+
+The @code{common-lisp.texi} file is required to be included in the file being weaved by CL-DOCWEAVER for the Texinfo documentation system, as the implementation expands to macros found in @code{common-lisp.texi}.
+
 @node Tips and tricks
 @chapter Tips and tricks
 

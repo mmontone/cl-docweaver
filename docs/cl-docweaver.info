@@ -239,6 +239,35 @@ without that option you would get an error.
    See 'docs/Makefile' in _CL-DOCWEAVER_ source for an example of how
 Texinfo tools should be used.
 
+* Menu:
+
+* common-lisp.texi::
+
+
+File: cl-docweaver.info,  Node: common-lisp.texi,  Up: Texinfo
+
+5.1.1 common-lisp.texi
+----------------------
+
+'common-lisp.texi' file contains macros for defining Common Lisp related
+definitions.
+
+   They are mostly equivalent to Texinfo's definition macros, like
+'@deffn', '@defun', etc, but for Common Lisp.  In particular, they take
+into consideration Lisp packages, and uses them for naming and index
+entries.
+
+   '@cldefun' is for defining a Common Lisp function.
+
+   They are used like this:
+     @cldefun{alexandria, flatten}
+     Traverses the @var{tree} in order, collecting non-null leaves into a list. 
+     @endcldefun
+
+   The 'common-lisp.texi' file is required to be included in the file
+being weaved by CL-DOCWEAVER for the Texinfo documentation system, as
+the implementation expands to macros found in 'common-lisp.texi'.
+
 
 File: cl-docweaver.info,  Node: Tips and tricks,  Next: API,  Prev: Documentation systems,  Up: Top
 
@@ -420,6 +449,15 @@ Macros
  -- DOCWEAVER: DEF-WEAVER-COMMAND-HANDLER (command-name args (&key
           docsystem) &body body)
 
+     Define a weaver command handler.
+     COMMAND-NAME is the name of the command, without the prefix (like
+     'clvariable', 'clfunction', etc.)
+     ARGS is the list of arguments for that command in the DOCSYSTEM
+     implementation.
+     DOCSYSTEM is a specializer for the documentation system.  For
+     example, (eql :TEXINFO).
+     BODY should write to an implicit variable, to expand the command.
+
 Functions
 =========
 
@@ -431,14 +469,14 @@ Functions
 
      Arguments:
 
-     - DOCSYSTEM: specify the documentation tool that is being used
+     - DOCSYSTEM : specify the documentation tool that is being used
      (:TEXINFO, :MARKDOWN, etc.).
-     - MODULES: is the list of MODULES (or ASDF system names) that need
+     - MODULES : is the list of MODULES (or ASDF system names) that need
      to be loaded to be able to read definition descriptions.
-     - COMMAND-PREFIX: is the character to use as prefix for commands.
+     - COMMAND-PREFIX : is the character to use as prefix for commands.
      The character 'at' is the default.
-     - PARSE-DOCSTRINGS: if T, then docstings are parsed and highlighted
-     and references to code from it created.
+     - PARSE-DOCSTRINGS : if T, then docstings are parsed and
+     highlighted and references to code from it created.
 
 
 File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
@@ -493,7 +531,7 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * DOCWEAVER/UTILS:BAR:                   Lisp evaluation.     (line 143)
 * DOCWEAVER/UTILS:FOO:                   Lisp evaluation.     (line 148)
 * DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER:  API.                 (line  14)
-* DOCWEAVER:WEAVE-FILE:                  API.                 (line  20)
+* DOCWEAVER:WEAVE-FILE:                  API.                 (line  29)
 * FILE-AUTHOR:                           Lisp evaluation.     (line  36)
 * FILE-ERROR-PATHNAME:                   Lisp evaluation.     (line 119)
 * FILE-LENGTH:                           Lisp evaluation.     (line  46)
@@ -507,7 +545,7 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * PROBE-FILE:                            Lisp evaluation.     (line  31)
 * READ:                                  Lisp evaluation.     (line  11)
 * RENAME-FILE:                           Lisp evaluation.     (line  41)
-* WEAVE-FILE:                            API.                 (line  20)
+* WEAVE-FILE:                            API.                 (line  29)
 
 
 
@@ -528,27 +566,28 @@ Ref: COMMON-LISP:*COMPILE-VERBOSE* variable4463
 Ref: ALEXANDRIA:MAP-PERMUTATIONS function4830
 Node: Documentation systems6260
 Node: Texinfo6439
-Node: Tips and tricks7243
-Node: Lisp evaluation7413
-Ref: COMMON-LISP:READ function7744
-Ref: COMMON-LISP:PROBE-FILE function8272
-Ref: COMMON-LISP:FILE-AUTHOR function8490
-Ref: COMMON-LISP:RENAME-FILE function8692
-Ref: COMMON-LISP:FILE-LENGTH function8889
-Ref: COMMON-LISP:FILE-POSITION function8928
-Ref: COMMON-LISP:FILE-NAMESTRING function8988
-Ref: COMMON-LISP:DELETE-FILE function9094
-Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function9476
-Ref: COMMON-LISP:COMPILE-FILE function9759
-Ref: COMMON-LISP:FILE-ERROR-PATHNAME function11939
-Ref: COMMON-LISP:FILE-WRITE-DATE function11989
-Ref: COMMON-LISP:FILE-STRING-LENGTH function12203
-Ref: DOCWEAVER/UTILS:BAR function12729
-Ref: DOCWEAVER/UTILS:FOO function12839
-Node: API12950
-Ref: api13050
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro13132
-Ref: DOCWEAVER:WEAVE-FILE function13254
-Node: Index13951
+Node: common-lisp.texi7274
+Node: Tips and tricks8116
+Node: Lisp evaluation8286
+Ref: COMMON-LISP:READ function8617
+Ref: COMMON-LISP:PROBE-FILE function9145
+Ref: COMMON-LISP:FILE-AUTHOR function9363
+Ref: COMMON-LISP:RENAME-FILE function9565
+Ref: COMMON-LISP:FILE-LENGTH function9762
+Ref: COMMON-LISP:FILE-POSITION function9801
+Ref: COMMON-LISP:FILE-NAMESTRING function9861
+Ref: COMMON-LISP:DELETE-FILE function9967
+Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function10349
+Ref: COMMON-LISP:COMPILE-FILE function10632
+Ref: COMMON-LISP:FILE-ERROR-PATHNAME function12812
+Ref: COMMON-LISP:FILE-WRITE-DATE function12862
+Ref: COMMON-LISP:FILE-STRING-LENGTH function13076
+Ref: DOCWEAVER/UTILS:BAR function13602
+Ref: DOCWEAVER/UTILS:FOO function13712
+Node: API13823
+Ref: api13923
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro14005
+Ref: DOCWEAVER:WEAVE-FILE function14534
+Node: Index15235
 
 End Tag Table
