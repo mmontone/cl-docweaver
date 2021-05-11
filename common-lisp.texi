@@ -56,7 +56,7 @@
 
 @c References
 @macro clref{package, name, type}
-@xref{\package\:\name\ \type\,\name\}
+@ref{\package\:\name\ \type\,\name\, \name\}
 @end macro
 
 @c Source references

@@ -177,7 +177,7 @@ Next: <a href="#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a hr
 </p>
 <p>By default, docstrings are interpreted to extract possible references to other parts of the code; then those references are formatted as links that can be used to navigate the definitions documentations.
 </p>
-<p>Finally, use See <a href="#DOCWEAVER_003aWEAVE_002dFILE-function">WEAVE-FILE</a>to weave your documentation system source files.
+<p>Finally, use <a href="#DOCWEAVER_003aWEAVE_002dFILE-function">WEAVE-FILE</a>to weave your documentation system source files.
 </p>
 <p>Have a look at <em>cl-docweaver</em> documentation in <code>docs</code> directory for an example of how all this works.
 </p>
@@ -242,13 +242,13 @@ Default is the <code>#\@</code> character.
 <span id="COMMON_002dLISP_003a_002aCOMPILE_002dPRINT_002a-variable"></span><dl>
 <dt id="index-_002aCOMPILE_002dPRINT_002a">COMMON-LISP: <strong>*COMPILE-PRINT*</strong></dt>
 <dd>
-<p>The default for the <var>:PRINT</var> argument to See <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a>.
+<p>The default for the <var>:PRINT</var> argument to <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a>.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a"></span>
 <span id="COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a-variable"></span><dl>
 <dt id="index-_002aCOMPILE_002dVERBOSE_002a">COMMON-LISP: <strong>*COMPILE-VERBOSE*</strong></dt>
 <dd>
-<p>The default for the <var>:VERBOSE</var> argument to See <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a>.
+<p>The default for the <var>:VERBOSE</var> argument to <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a>.
 </p></dd></dl>
 
 
@@ -305,7 +305,7 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </p>
 <p><code>(@clref alexandria:flatten function)</code>
 </p>
-<p>And this is the resulting link: See <a href="#ALEXANDRIA_003aFLATTEN-function">FLATTEN</a>
+<p>And this is the resulting link: <a href="#ALEXANDRIA_003aFLATTEN-function">FLATTEN</a>
 </p>
 </dd></dl>
 
@@ -426,7 +426,7 @@ Traverses the @var{tree} in order, collecting non-null leaves into a list.
 
 @c References
 @macro clref{package, name, type}
-@xref{\package\:\name\ \type\,\name\}
+@ref{\package\:\name\ \type\,\name\, \name\}
 @end macro
 
 @c Source references
@@ -490,7 +490,7 @@ Up: <a href="#Tips-and-tricks" accesskey="u" rel="up">Tips and tricks</a> &nbsp;
 <dt id="index-PROBE_002dFILE">COMMON-LISP: <strong>PROBE-FILE</strong> <em>(sb-impl::pathspec)</em></dt>
 <dd>
 <p>Return the truename of <var>PATHSPEC</var> if the truename can be found,<br>
-or NIL otherwise.  See See &lsquo;TRUENAME&rsquo; for more information.
+or NIL otherwise.  See &lsquo;TRUENAME&rsquo; for more information.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003aFILE_002dAUTHOR"></span>
 <span id="COMMON_002dLISP_003aFILE_002dAUTHOR-function"></span><dl>
@@ -536,7 +536,7 @@ per standard Unix unlink() behaviour.
 <span id="COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-function"></span><dl>
 <dt id="index-COMPILE_002dFILE_002dPATHNAME">COMMON-LISP: <strong>COMPILE-FILE-PATHNAME</strong> <em>(sb-c::input-file &amp;key (sb-c::output-file nil sb-c::output-file-p) &amp;allow-other-keys)</em></dt>
 <dd>
-<p>Return a pathname describing what file See <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> would write to given<br>
+<p>Return a pathname describing what file <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> would write to given<br>
    these arguments.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003aCOMPILE_002dFILE"></span>
@@ -548,25 +548,25 @@ returning its filename.<br>
 <br>
   <var>:PRINT</var><br>
      If true, a message per non-macroexpanded top level form is printed<br>
-     to See <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>. Top level forms that whose subforms are<br>
-     processed as top level forms (eg. See &lsquo;EVAL-WHEN&rsquo;, See &lsquo;MACROLET&rsquo;, See &lsquo;PROGN&rsquo;) receive<br>
+     to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>. Top level forms that whose subforms are<br>
+     processed as top level forms (eg. &lsquo;EVAL-WHEN&rsquo;, &lsquo;MACROLET&rsquo;, &lsquo;PROGN&rsquo;) receive<br>
      no such message, but their subforms do.<br>
 <br>
      As an extension to ANSI, if <var>:PRINT</var> is <var>:top-level-forms</var>, a message<br>
-     per top level form after macroexpansion is printed to See <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>.<br>
-     For example, compiling an See &lsquo;IN-PACKAGE&rsquo; form will result in a message about<br>
-     a top level See &lsquo;SETQ&rsquo; in addition to the message about the See &lsquo;IN-PACKAGE&rsquo; form&rsquo;<br>
+     per top level form after macroexpansion is printed to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>.<br>
+     For example, compiling an &lsquo;IN-PACKAGE&rsquo; form will result in a message about<br>
+     a top level &lsquo;SETQ&rsquo; in addition to the message about the &lsquo;IN-PACKAGE&rsquo; form&rsquo;<br>
      itself.<br>
 <br>
-     Both forms of reporting obey the See &lsquo;SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*&rsquo;.<br>
+     Both forms of reporting obey the &lsquo;SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*&rsquo;.<br>
 <br>
   <var>:BLOCK-COMPILE</var><br>
-     Though See <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> accepts an additional <var>:BLOCK-COMPILE</var><br>
+     Though <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> accepts an additional <var>:BLOCK-COMPILE</var><br>
      argument, it is not currently supported. (non-standard)<br>
 <br>
   <var>:TRACE-FILE</var><br>
      If given, internal data structures are dumped to the specified<br>
-     file, or if a value of  is given, to a file of See &lsquo;*&rsquo;.trace type<br>
+     file, or if a value of  is given, to a file of &lsquo;*&rsquo;.trace type<br>
      derived from the input file name. (non-standard)<br>
 <br>
   <var>:EMIT-CFASL</var><br>
@@ -605,7 +605,7 @@ or if <var>PATHSPEC</var> is a wild pathname.
 <span id="DOCWEAVER_002fUTILS_003aBAR-function"></span><dl>
 <dt id="index-BAR">DOCWEAVER/UTILS: <strong>BAR</strong> <em>nil</em></dt>
 <dd>
-<p>See <a href="#DOCWEAVER_002fUTILS_003aBAR-function">BAR</a> function.<br>
+<p><a href="#DOCWEAVER_002fUTILS_003aBAR-function">BAR</a> function.<br>
 <br>
 Category: foobar.
 </p></dd></dl>
@@ -613,7 +613,7 @@ Category: foobar.
 <span id="DOCWEAVER_002fUTILS_003aFOO-function"></span><dl>
 <dt id="index-FOO">DOCWEAVER/UTILS: <strong>FOO</strong> <em>nil</em></dt>
 <dd>
-<p>See <a href="#DOCWEAVER_002fUTILS_003aFOO-function">FOO</a> function.<br>
+<p><a href="#DOCWEAVER_002fUTILS_003aFOO-function">FOO</a> function.<br>
 <br>
 Category: foobar.
 </p></dd></dl>

@@ -94,7 +94,7 @@ control different aspects of the expanded definition.
 to other parts of the code; then those references are formatted as links
 that can be used to navigate the definitions documentations.
 
-   Finally, use *Note WEAVE-FILE: DOCWEAVER:WEAVE-FILE function.to weave
+   Finally, use *note WEAVE-FILE: DOCWEAVER:WEAVE-FILE function.to weave
 your documentation system source files.
 
    Have a look at _cl-docweaver_ documentation in 'docs' directory for
@@ -146,11 +146,11 @@ File: cl-docweaver.info,  Node: Commands,  Next: Documentation systems,  Prev: U
 
       -- COMMON-LISP: *COMPILE-PRINT*
 
-          The default for the :PRINT argument to *Note COMPILE-FILE:
+          The default for the :PRINT argument to *note COMPILE-FILE:
           COMMON-LISP:COMPILE-FILE function.
       -- COMMON-LISP: *COMPILE-VERBOSE*
 
-          The default for the :VERBOSE argument to *Note COMPILE-FILE:
+          The default for the :VERBOSE argument to *note COMPILE-FILE:
           COMMON-LISP:COMPILE-FILE function.
 
  -- Command: @clfunction function-symbol &rest args
@@ -203,7 +203,7 @@ File: cl-docweaver.info,  Node: Commands,  Next: Documentation systems,  Prev: U
 
      '(@clref alexandria:flatten function)'
 
-     And this is the resulting link: *Note FLATTEN: ALEXANDRIA:FLATTEN
+     And this is the resulting link: *note FLATTEN: ALEXANDRIA:FLATTEN
      function.
 
 
@@ -328,7 +328,7 @@ Common Lisp definitions manually, without using CL-DOCWEAVER expanders.
 
 @c References
 @macro clref{package, name, type}
-@xref{\package\:\name\ \type\,\name\}
+@ref{\package\:\name\ \type\,\name\, \name\}
 @end macro
 
 @c Source references
@@ -395,7 +395,7 @@ their name:
  -- COMMON-LISP: PROBE-FILE (sb-impl::pathspec)
 
      Return the truename of PATHSPEC if the truename can be found,
-     or NIL otherwise.  See *Note TRUENAME: COMMON-LISP:TRUENAME
+     or NIL otherwise.  See *note TRUENAME: COMMON-LISP:TRUENAME
      function. for more information.
  -- COMMON-LISP: FILE-AUTHOR (sb-impl::pathspec)
 
@@ -428,7 +428,7 @@ their name:
  -- COMMON-LISP: COMPILE-FILE-PATHNAME (sb-c::input-file &key
           (sb-c::output-file nil sb-c::output-file-p) &allow-other-keys)
 
-     Return a pathname describing what file *Note COMPILE-FILE:
+     Return a pathname describing what file *note COMPILE-FILE:
      COMMON-LISP:COMPILE-FILE function. would write to given
      these arguments.
  -- COMMON-LISP: COMPILE-FILE (sb-c::input-file &key (sb-c::output-file
@@ -444,36 +444,36 @@ their name:
 
      :PRINT
      If true, a message per non-macroexpanded top level form is printed
-     to *Note *STANDARD-OUTPUT*: COMMON-LISP:*STANDARD-OUTPUT* variable.
+     to *note *STANDARD-OUTPUT*: COMMON-LISP:*STANDARD-OUTPUT* variable.
      Top level forms that whose subforms are
-     processed as top level forms (eg.  *Note EVAL-WHEN:
-     COMMON-LISP:EVAL-WHEN function, *Note MACROLET:
-     COMMON-LISP:MACROLET function, *Note PROGN: COMMON-LISP:PROGN
+     processed as top level forms (eg.  *note EVAL-WHEN:
+     COMMON-LISP:EVAL-WHEN function, *note MACROLET:
+     COMMON-LISP:MACROLET function, *note PROGN: COMMON-LISP:PROGN
      function.) receive
      no such message, but their subforms do.
 
      As an extension to ANSI, if :PRINT is :TOP-LEVEL-FORMS, a message
-     per top level form after macroexpansion is printed to *Note
+     per top level form after macroexpansion is printed to *note
      *STANDARD-OUTPUT*: COMMON-LISP:*STANDARD-OUTPUT* variable.
-     For example, compiling an *Note IN-PACKAGE: COMMON-LISP:IN-PACKAGE
+     For example, compiling an *note IN-PACKAGE: COMMON-LISP:IN-PACKAGE
      function. form will result in a message about
-     a top level *Note SETQ: COMMON-LISP:SETQ function. in addition to
-     the message about the *Note IN-PACKAGE: COMMON-LISP:IN-PACKAGE
+     a top level *note SETQ: COMMON-LISP:SETQ function. in addition to
+     the message about the *note IN-PACKAGE: COMMON-LISP:IN-PACKAGE
      function. form'
      itself.
 
-     Both forms of reporting obey the *Note
+     Both forms of reporting obey the *note
      SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*:
      SB-EXT:SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST* variable.
 
      :BLOCK-COMPILE
-     Though *Note COMPILE-FILE: COMMON-LISP:COMPILE-FILE function.
+     Though *note COMPILE-FILE: COMMON-LISP:COMPILE-FILE function.
      accepts an additional :BLOCK-COMPILE
      argument, it is not currently supported.  (non-standard)
 
      :TRACE-FILE
      If given, internal data structures are dumped to the specified
-     file, or if a value of is given, to a file of *Note *:
+     file, or if a value of is given, to a file of *note *:
      COMMON-LISP:* function.trace type
      derived from the input file name.  (non-standard)
 
@@ -506,12 +506,12 @@ detected by *Note docweaver/utils:symbols-categorized::.
 
  -- DOCWEAVER/UTILS: BAR nil
 
-     *Note BAR: DOCWEAVER/UTILS:BAR function. function.
+     *note BAR: DOCWEAVER/UTILS:BAR function. function.
 
      Category: foobar.
  -- DOCWEAVER/UTILS: FOO nil
 
-     *Note FOO: DOCWEAVER/UTILS:FOO function. function.
+     *note FOO: DOCWEAVER/UTILS:FOO function. function.
 
      Category: foobar.
 
@@ -650,27 +650,27 @@ Ref: ALEXANDRIA:MAP-PERMUTATIONS function4830
 Node: Documentation systems6260
 Node: Texinfo6439
 Node: common-lisp.texi7274
-Node: Tips and tricks9794
-Node: Lisp evaluation9964
-Ref: COMMON-LISP:READ function10295
-Ref: COMMON-LISP:PROBE-FILE function10823
-Ref: COMMON-LISP:FILE-AUTHOR function11041
-Ref: COMMON-LISP:RENAME-FILE function11243
-Ref: COMMON-LISP:FILE-LENGTH function11440
-Ref: COMMON-LISP:FILE-POSITION function11479
-Ref: COMMON-LISP:FILE-NAMESTRING function11539
-Ref: COMMON-LISP:DELETE-FILE function11645
-Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function12027
-Ref: COMMON-LISP:COMPILE-FILE function12310
-Ref: COMMON-LISP:FILE-ERROR-PATHNAME function14490
-Ref: COMMON-LISP:FILE-WRITE-DATE function14540
-Ref: COMMON-LISP:FILE-STRING-LENGTH function14754
-Ref: DOCWEAVER/UTILS:BAR function15280
-Ref: DOCWEAVER/UTILS:FOO function15390
-Node: API15501
-Ref: api15601
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro15683
-Ref: DOCWEAVER:WEAVE-FILE function16212
-Node: Index16913
+Node: Tips and tricks9801
+Node: Lisp evaluation9971
+Ref: COMMON-LISP:READ function10302
+Ref: COMMON-LISP:PROBE-FILE function10830
+Ref: COMMON-LISP:FILE-AUTHOR function11048
+Ref: COMMON-LISP:RENAME-FILE function11250
+Ref: COMMON-LISP:FILE-LENGTH function11447
+Ref: COMMON-LISP:FILE-POSITION function11486
+Ref: COMMON-LISP:FILE-NAMESTRING function11546
+Ref: COMMON-LISP:DELETE-FILE function11652
+Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function12034
+Ref: COMMON-LISP:COMPILE-FILE function12317
+Ref: COMMON-LISP:FILE-ERROR-PATHNAME function14497
+Ref: COMMON-LISP:FILE-WRITE-DATE function14547
+Ref: COMMON-LISP:FILE-STRING-LENGTH function14761
+Ref: DOCWEAVER/UTILS:BAR function15287
+Ref: DOCWEAVER/UTILS:FOO function15397
+Node: API15508
+Ref: api15608
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro15690
+Ref: DOCWEAVER:WEAVE-FILE function16219
+Node: Index16920
 
 End Tag Table
