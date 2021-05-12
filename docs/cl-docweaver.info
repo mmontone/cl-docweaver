@@ -188,10 +188,15 @@ File: cl-docweaver.info,  Node: Commands,  Next: Documentation systems,  Prev: U
      definitions are expanded.
 
      CATEGORIZED controls how to categorize the expanded package
-     definitions: - :BY-KIND or T, definitions are separated in sections
-     (variables, functions, etc).  - :BY-DOCSTRING-CATEGORY, definitions
-     are grouped by the category parsed from docstrings.  - Otherwise,
-     they are expanded in sequence with no separation.
+     definitions:
+
+        * :BY-KIND or T, definitions are separated in sections
+          (variables, functions, etc).
+        * :BY-DOCSTRING-CATEGORY, definitions are grouped by the
+          category parsed from docstrings.  A category for a definition
+          is specified by adding the text "Category: _category-name_" to
+          the docstring.
+        * Otherwise, they are expanded in sequence with no separation.
 
      Example:
 
@@ -624,7 +629,7 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 
 * @clfunction:                           Commands.            (line  53)
 * @clpackage:                            Commands.            (line  76)
-* @clref:                                Commands.            (line  97)
+* @clref:                                Commands.            (line 102)
 * @clvariable:                           Commands.            (line  21)
 * @setup:                                Commands.            (line   6)
 * ALEXANDRIA:FLATTEN:                    Usage.               (line  18)
@@ -685,31 +690,31 @@ Ref: COMMON-LISP:*STANDARD-OUTPUT* variable4036
 Ref: COMMON-LISP:*COMPILE-PRINT* variable4310
 Ref: COMMON-LISP:*COMPILE-VERBOSE* variable4463
 Ref: ALEXANDRIA:MAP-PERMUTATIONS function4830
-Node: Documentation systems6479
-Node: Texinfo6658
-Node: common-lisp.texi7493
-Node: Tips and tricks10241
-Node: Lisp evaluation10411
-Ref: COMMON-LISP:READ function10742
-Ref: COMMON-LISP:PROBE-FILE function11270
-Ref: COMMON-LISP:FILE-AUTHOR function11488
-Ref: COMMON-LISP:RENAME-FILE function11690
-Ref: COMMON-LISP:FILE-LENGTH function11887
-Ref: COMMON-LISP:FILE-POSITION function11926
-Ref: COMMON-LISP:FILE-NAMESTRING function11986
-Ref: COMMON-LISP:DELETE-FILE function12092
-Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function12474
-Ref: COMMON-LISP:COMPILE-FILE function12757
-Ref: COMMON-LISP:FILE-ERROR-PATHNAME function14937
-Ref: COMMON-LISP:FILE-WRITE-DATE function14987
-Ref: COMMON-LISP:FILE-STRING-LENGTH function15201
-Ref: DOCWEAVER/UTILS:BAR function15727
-Ref: DOCWEAVER/UTILS:FOO function15837
-Node: API15948
-Ref: api16048
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro16151
-Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function16819
-Ref: DOCWEAVER:WEAVE-FILE function17129
-Node: Index17872
+Node: Documentation systems6634
+Node: Texinfo6813
+Node: common-lisp.texi7648
+Node: Tips and tricks10396
+Node: Lisp evaluation10566
+Ref: COMMON-LISP:READ function10897
+Ref: COMMON-LISP:PROBE-FILE function11425
+Ref: COMMON-LISP:FILE-AUTHOR function11643
+Ref: COMMON-LISP:RENAME-FILE function11845
+Ref: COMMON-LISP:FILE-LENGTH function12042
+Ref: COMMON-LISP:FILE-POSITION function12081
+Ref: COMMON-LISP:FILE-NAMESTRING function12141
+Ref: COMMON-LISP:DELETE-FILE function12247
+Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function12629
+Ref: COMMON-LISP:COMPILE-FILE function12912
+Ref: COMMON-LISP:FILE-ERROR-PATHNAME function15092
+Ref: COMMON-LISP:FILE-WRITE-DATE function15142
+Ref: COMMON-LISP:FILE-STRING-LENGTH function15356
+Ref: DOCWEAVER/UTILS:BAR function15882
+Ref: DOCWEAVER/UTILS:FOO function15992
+Node: API16103
+Ref: api16203
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro16306
+Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function16974
+Ref: DOCWEAVER:WEAVE-FILE function17284
+Node: Index18027
 
 End Tag Table

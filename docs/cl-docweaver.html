@@ -291,10 +291,13 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 <p>If <var>INCLUDE-INTERNAL-DEFINITIONS</var> is <code>T</code>, then all package internals definitions are expanded.
 </p>
 <p><var>CATEGORIZED</var> controls how to categorize the expanded package definitions:
-- <var>:by-kind</var> or <var>T</var>, definitions are separated in sections (variables, functions, etc).
-- <var>:by-docstring-category</var>, definitions are grouped by the category parsed from docstrings. 
-- Otherwise, they are expanded in sequence with no separation.
 </p>
+<ul>
+<li> <var>:by-kind</var> or <var>T</var>, definitions are separated in sections (variables, functions, etc).
+</li><li> <var>:by-docstring-category</var>, definitions are grouped by the category parsed from docstrings. A category for a definition is specified by adding the text &ldquo;Category: <em>category-name</em>&rdquo; to the docstring.
+</li><li> Otherwise, they are expanded in sequence with no separation.
+</li></ul>
+
 <p>Example:
 </p>
 <p><code>(@clpackage :alexandria)</code>
