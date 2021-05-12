@@ -118,7 +118,9 @@ Arguments:
 - DOCSYSTEM : specify the documentation tool that is being used (:texinfo, :markdown, etc.).
 - MODULES : is the list of modules (or ASDF system names) that need to be loaded to be able to read definition descriptions.
 - COMMAND-PREFIX : is the character to use as prefix for commands. The character `at` is the default.
-- PARSE-DOCSTRINGS : if T, then docstings are parsed and highlighted and references to code from it created."
+- PARSE-DOCSTRINGS : if T, then docstings are parsed and highlighted and references to code from it created.
+
+Category: TopLevel"
   (loop for module-name in modules do (require module-name))
   (with-open-file (output output-file :direction :output
                                       :external-format :utf-8
@@ -131,6 +133,6 @@ Arguments:
 
 (defmethod process-weaver-command (docsystem (command (eql :setup)) args stream)
   "Configure cl-docweaver."
-  (setf *config* args))
+  (setf *config* args)) 
 
 (provide :docweaver)

@@ -537,6 +537,9 @@ File: cl-docweaver.info,  Node: API,  Next: Index,  Prev: Tips and tricks,  Up: 
 External definitions
 ====================
 
+Variables
+=========
+
 Macros
 ======
 
@@ -586,6 +589,9 @@ Functions
      - PARSE-DOCSTRINGS : if T, then docstings are parsed and
      highlighted and references to code from it created.
 
+Classes
+=======
+
 
 File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 
@@ -634,13 +640,13 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * COMMON-LISP:RENAME-FILE:               Lisp evaluation.     (line  41)
 * COMPILE-FILE:                          Lisp evaluation.     (line  70)
 * COMPILE-FILE-PATHNAME:                 Lisp evaluation.     (line  64)
-* DEF-WEAVER-COMMAND-HANDLER:            API.                 (line  14)
+* DEF-WEAVER-COMMAND-HANDLER:            API.                 (line  17)
 * DELETE-FILE:                           Lisp evaluation.     (line  53)
 * DOCWEAVER/UTILS:BAR:                   Lisp evaluation.     (line 143)
 * DOCWEAVER/UTILS:FOO:                   Lisp evaluation.     (line 148)
-* DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER:  API.                 (line  14)
-* DOCWEAVER:PROCESS-WEAVER-COMMAND:      API.                 (line  32)
-* DOCWEAVER:WEAVE-FILE:                  API.                 (line  43)
+* DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER:  API.                 (line  17)
+* DOCWEAVER:PROCESS-WEAVER-COMMAND:      API.                 (line  35)
+* DOCWEAVER:WEAVE-FILE:                  API.                 (line  46)
 * FILE-AUTHOR:                           Lisp evaluation.     (line  36)
 * FILE-ERROR-PATHNAME:                   Lisp evaluation.     (line 119)
 * FILE-LENGTH:                           Lisp evaluation.     (line  46)
@@ -652,10 +658,10 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * FOO:                                   Lisp evaluation.     (line 148)
 * MAP-PERMUTATIONS:                      Commands.            (line  63)
 * PROBE-FILE:                            Lisp evaluation.     (line  31)
-* PROCESS-WEAVER-COMMAND:                API.                 (line  32)
+* PROCESS-WEAVER-COMMAND:                API.                 (line  35)
 * READ:                                  Lisp evaluation.     (line  11)
 * RENAME-FILE:                           Lisp evaluation.     (line  41)
-* WEAVE-FILE:                            API.                 (line  43)
+* WEAVE-FILE:                            API.                 (line  46)
 
 
 
@@ -696,9 +702,9 @@ Ref: DOCWEAVER/UTILS:BAR function15508
 Ref: DOCWEAVER/UTILS:FOO function15618
 Node: API15729
 Ref: api15829
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro15911
-Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function16579
-Ref: DOCWEAVER:WEAVE-FILE function16889
-Node: Index17590
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro15932
+Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function16600
+Ref: DOCWEAVER:WEAVE-FILE function16910
+Node: Index17628
 
 End Tag Table

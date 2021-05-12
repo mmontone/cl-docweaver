@@ -263,41 +263,110 @@
 	    (texinfo-define-macro mac-symbol stream)
 	    (terpri stream)))))
 
-(defun texinfo-format-definitions (symbols stream &key categorized)
+(defun docstring-category (docstring)
+  "Extracts category from docstring, when found."
+  (let* ((category-regex "Category:\\s*(.*)"))
+    (multiple-value-bind (match registers)
+	(ppcre:scan-to-strings category-regex
+			       docstring)
+      (when match
+	(aref registers 0)))))
+    
+(defun symbol-categories (symbol)
+  "Collects category for each definition bound to SYMBOL, looking at docstrings."
+  (let ((definitions (def-properties:symbol-properties symbol)))
+    (mapcar (lambda (def)
+	      (cons (or (docstring-category (aget def :documentation))
+			"Uncategorized")
+		    def))
+	    definitions)))
+
+(defun categorize-definitions-by-docstring (symbols)
+  (let ((groups (groupby:groupby 'car (apply #'append (mapcar 'symbol-categories symbols))
+				 :test 'equalp)))
+    (mapcar (lambda (category)
+	      (cons (car category) (mapcar 'cdr (cadr category))))
+	    groups)))
+
+(defun texinfo-format-definitions-uncategorized (symbols stream)
   (let ((variables (remove-if-not 'def-properties:symbol-variable-p symbols)))
-    (when (and variables categorized)
-      (format stream "@heading Variables~%"))
+    (dolist (variable variables)
+      (texinfo-define-variable variable stream)
+      (terpri stream) (terpri stream)))
+  (let ((macros (remove-if-not 'def-properties::symbol-macro-p symbols)))
+    (dolist (macro macros)
+      (texinfo-define-macro macro stream)
+      (terpri stream) (terpri stream)))
+  (let ((functions (remove-if-not 'def-properties:symbol-generic-function-p symbols)))
+    (dolist (function functions)
+      (texinfo-define-generic-function function stream)
+      (terpri stream) (terpri stream)))
+  (let ((functions (remove-if-not 'def-properties:symbol-function-p symbols)))
+    (dolist (function functions)
+      (texinfo-define-function function stream)
+      (terpri stream) (terpri stream)))
+  (let ((classes (remove-if-not 'def-properties:symbol-class-p symbols)))
+    (dolist (class classes)
+      (texinfo-define-class class stream)
+      (terpri stream) (terpri stream))))
+
+(defun texinfo-format-definitions-by-kind (symbols stream)
+  (let ((variables (remove-if-not 'def-properties:symbol-variable-p symbols)))
+    (format stream "@heading Variables~%")
     (dolist (variable variables)
       (texinfo-define-variable variable stream)
       (terpri stream) (terpri stream)))
 
   (let ((macros (remove-if-not 'def-properties::symbol-macro-p symbols)))
-    (when (and macros categorized)
-      (format stream "@heading Macros~%"))
+    (format stream "@heading Macros~%")
     (dolist (macro macros)
       (texinfo-define-macro macro stream)
       (terpri stream) (terpri stream)))
 
   (let ((functions (remove-if-not 'def-properties:symbol-generic-function-p symbols)))
-    (when (and functions categorized)
-      (format stream "@heading Generic functions~%"))
+    (format stream "@heading Generic functions~%")
     (dolist (function functions)
       (texinfo-define-generic-function function stream)
       (terpri stream) (terpri stream)))
 
   (let ((functions (remove-if-not 'def-properties:symbol-function-p symbols)))
-    (when (and functions categorized)
-      (format stream "@heading Functions~%"))
+    (format stream "@heading Functions~%")
     (dolist (function functions)
       (texinfo-define-function function stream)
       (terpri stream) (terpri stream)))
 
   (let ((classes (remove-if-not 'def-properties:symbol-class-p symbols)))
-    (when (and classes categorized)
-      (format stream "@heading Classes~%"))
+    (format stream "@heading Classes~%")
     (dolist (class classes)
       (texinfo-define-class class stream)
-      (terpri stream) (terpri stream))))
+      (terpri stream) (terpri stream)))
+
+  )
+
+(defun texinfo-format-definition (definition stream)
+  (ecase (aget definition :type)
+    (:function (texinfo-define-function (aget definition :name) stream))
+    (:generic-function (texinfo-define-generic-function (aget definition :name) stream))
+    (:macro (texinfo-define-macro (aget definition :name) stream))
+    (:variable (texinfo-define-variable (aget definition :name) stream))
+    (:class (texinfo-define-class (aget definition :name) stream))))
+
+(defun texinfo-format-definitions-by-docstring-category (symbols stream)
+  (let ((categories (categorize-definitions-by-docstring symbols)))
+    (dolist (category categories)
+      (let ((category-name (car category))
+	    (definitions (cdr category)))
+	(format stream "@heading ~a~%~%" category-name)
+	(dolist (def definitions)
+	  (texinfo-format-definition def stream)
+	  (terpri stream) (terpri stream))))))
+
+(defun texinfo-format-definitions (symbols stream &key (categorized t))
+  (check-type categorized (or boolean (member :by-kind :by-docstring-category)))
+  (case categorized
+    ((:by-kind t) (texinfo-format-definitions-by-kind symbols stream))
+    (:by-docstring-category (texinfo-format-definitions-by-docstring-category symbols stream))
+    (t (texinfo-format-definitions-uncategorized symbols stream))))    
 
 (def-weaver-command-handler clpackage
     (package-name
@@ -312,7 +381,10 @@ Defines a package.
 If INCLUDE-EXTERNAL-DEFINITIONS is T, then the package external definitions are also defined.
 If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defined.
 INCLUDE-UNDOCUMENTED-DEFINITIONS controls if definitions are included depending on wether they have a docstring or not.
-When CATEGORIZED is T, definitions are separated in sections (variables, functions, etc). Otherwise, they are expanded in sequence with no separation."
+When CATEGORIZED is has value 
+- :by-kind or T, definitions are separated in sections (variables, functions, etc).
+- :by-docstring-category, definitions are grouped by the category parsed from docstrings. 
+- Otherwise, they are expanded in sequence with no separation."
   (let ((package (or (find-package (string-upcase package-name))
                      (error "Package not found: ~a" package-name))))
     (format stream "@deftp PACKAGE ~a~%" (package-name package))
@@ -342,10 +414,10 @@ When CATEGORIZED is T, definitions are separated in sections (variables, functio
           ;; else, categorized
           (progn
             (format stream "@heading External definitions~%~%")
-            (texinfo-format-definitions external-symbols stream :categorized t)
+            (texinfo-format-definitions external-symbols stream :categorized categorized)
             (when include-internal-definitions
               (format stream "~%@heading Internal definitions~%~%")
-              (texinfo-format-definitions internal-symbols stream :categorized t)))))))
+              (texinfo-format-definitions internal-symbols stream :categorized categorized)))))))
 
 (defun lget (list key)
   (second (find key list :key 'car)))
