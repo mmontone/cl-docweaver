@@ -290,7 +290,10 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </p>
 <p>If <var>INCLUDE-INTERNAL-DEFINITIONS</var> is <code>T</code>, then all package internals definitions are expanded.
 </p>
-<p>If <var>CATEGORIZED</var> is <code>T</code>, then package definitions appear categorized in sections (variables, functions, etc).
+<p><var>CATEGORIZED</var> controls how to categorize the expanded package definitions:
+- <var>:by-kind</var> or <var>T</var>, definitions are separated in sections (variables, functions, etc).
+- <var>:by-docstring-category</var>, definitions are grouped by the category parsed from docstrings. 
+- Otherwise, they are expanded in sequence with no separation.
 </p>
 <p>Example:
 </p>
@@ -682,7 +685,9 @@ Arguments:<br>
 - <var>DOCSYSTEM</var> <var>:</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).<br>
 - <var>MODULES</var> <var>:</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.<br>
 - <var>COMMAND-PREFIX</var> <var>:</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.<br>
-- <var>PARSE-DOCSTRINGS</var> <var>:</var> if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.
+- <var>PARSE-DOCSTRINGS</var> <var>:</var> if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.<br>
+<br>
+Category: TopLevel
 </p></dd></dl>
 
 <span id="Classes"></span><h3 class="heading">Classes</h3>

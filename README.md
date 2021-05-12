@@ -50,6 +50,8 @@ Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
     - MODULES : is the list of modules (or ASDF system names) that need to be loaded to be able to read definition descriptions.
     - COMMAND-PREFIX : is the character to use as prefix for commands. The character `at` is the default.
     - PARSE-DOCSTRINGS : if T, then docstings are parsed and highlighted and references to code from it created.
+    
+    Category: TopLevel
 
 
 

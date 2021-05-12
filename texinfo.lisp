@@ -381,7 +381,7 @@ Defines a package.
 If INCLUDE-EXTERNAL-DEFINITIONS is T, then the package external definitions are also defined.
 If INCLUDE-INTERNAL-DEFINITIONS is T, then all the package definitions are defined.
 INCLUDE-UNDOCUMENTED-DEFINITIONS controls if definitions are included depending on wether they have a docstring or not.
-When CATEGORIZED is has value 
+CATEGORIZED controls how to categorize the expanded package definitions:
 - :by-kind or T, definitions are separated in sections (variables, functions, etc).
 - :by-docstring-category, definitions are grouped by the category parsed from docstrings. 
 - Otherwise, they are expanded in sequence with no separation."

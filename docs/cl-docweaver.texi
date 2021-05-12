@@ -177,7 +177,10 @@ If @var{INCLUDE-EXTERNAL-DEFINITIONS} is @code{T}, then all package external def
 
 If @var{INCLUDE-INTERNAL-DEFINITIONS} is @code{T}, then all package internals definitions are expanded.
 
-If @var{CATEGORIZED} is @code{T}, then package definitions appear categorized in sections (variables, functions, etc).
+@var{CATEGORIZED} controls how to categorize the expanded package definitions:
+- @var{:by-kind} or @var{T}, definitions are separated in sections (variables, functions, etc).
+- @var{:by-docstring-category}, definitions are grouped by the category parsed from docstrings. 
+- Otherwise, they are expanded in sequence with no separation.
 
 Example:
 
