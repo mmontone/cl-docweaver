@@ -677,8 +677,8 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
       (declare (ignore type))
       (let* ((colon (position #\: s :from-end t :test #'char=))
              (to-lookup (if colon (subseq s (1+ colon)) s))
-             (result (if (find-package :clhs-lookup)
-                         (funcall (symbol-function (intern "SYMBOL-LOOKUP" :clhs-lookup))
+             (result (if (find-package :hyperspec)
+                         (funcall (symbol-function (intern "LOOKUP" :hyperspec))
                                   to-lookup))))
         (if result
             (format nil "<a href=\"~A\" class=\"symbol\">~A</a>"

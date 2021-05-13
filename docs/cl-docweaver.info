@@ -546,10 +546,10 @@ External definitions
 ====================
 
 Variables
-=========
+---------
 
 Macros
-======
+------
 
  -- DOCWEAVER: DEF-WEAVER-COMMAND-HANDLER (command-name args (&key
           docsystem) &body body)
@@ -567,7 +567,7 @@ Macros
      DOCWEAVER:PROCESS-WEAVER-COMMAND function. .
 
 Generic functions
-=================
+-----------------
 
  -- DOCWEAVER: PROCESS-WEAVER-COMMAND (docsystem command args stream)
 
@@ -578,7 +578,7 @@ Generic functions
      DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER function.
 
 Functions
-=========
+---------
 
  -- DOCWEAVER: WEAVE-FILE (file output-file &rest options &key docsystem
           modules command-prefix (parse-docstrings t))
@@ -600,7 +600,7 @@ Functions
      Category: TopLevel
 
 Classes
-=======
+-------
 
 
 File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top

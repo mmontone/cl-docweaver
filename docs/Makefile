@@ -10,11 +10,11 @@ cl-docweaver.pdf: cl-docweaver.weaved.texi
 
 cl-docweaver.html: cl-docweaver.weaved.texi
 	texi2any --no-validate --html cl-docweaver.weaved.texi --css-ref texinfo-klare.css --css-ref lisp-coloring.css --no-split -o cl-docweaver.html
-	sbcl --no-sysinit --no-userinit --load colorize-lisp-examples.lisp cl-docweaver.html
+	sbcl --eval '(require :hyperspec)' --load colorize-lisp-examples.lisp cl-docweaver.html
 
 index.html: cl-docweaver.weaved.texi
 	texi2any --no-validate --html cl-docweaver.weaved.texi --css-ref texinfo-klare.css --css-ref lisp-coloring.css --no-split -o index.html
-	sbcl --no-sysinit --no-userinit --load colorize-lisp-examples.lisp index.html
+	sbcl --eval '(require :hyperspec)' --load colorize-lisp-examples.lisp index.html
 
 cl-docweaver.weaved.texi:
 	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "cl-docweaver.texi" "cl-docweaver.weaved.texi" :docsystem :texinfo)' --quit
