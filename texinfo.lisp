@@ -312,34 +312,39 @@
 
 (defun texinfo-format-definitions-by-kind (symbols stream)
   (let ((variables (remove-if-not 'def-properties:symbol-variable-p symbols)))
-    (format stream "@subheading Variables~%")
-    (dolist (variable variables)
-      (texinfo-define-variable variable stream)
-      (terpri stream) (terpri stream)))
+    (when variables
+      (format stream "@subheading Variables~%")
+      (dolist (variable variables)
+	(texinfo-define-variable variable stream)
+	(terpri stream) (terpri stream))))
 
   (let ((macros (remove-if-not 'def-properties::symbol-macro-p symbols)))
-    (format stream "@subheading Macros~%")
-    (dolist (macro macros)
-      (texinfo-define-macro macro stream)
-      (terpri stream) (terpri stream)))
+    (when macros
+      (format stream "@subheading Macros~%")
+      (dolist (macro macros)
+	(texinfo-define-macro macro stream)
+	(terpri stream) (terpri stream))))
 
   (let ((functions (remove-if-not 'def-properties:symbol-generic-function-p symbols)))
-    (format stream "@subheading Generic functions~%")
-    (dolist (function functions)
-      (texinfo-define-generic-function function stream)
-      (terpri stream) (terpri stream)))
+    (when functions
+      (format stream "@subheading Generic functions~%")
+      (dolist (function functions)
+	(texinfo-define-generic-function function stream)
+	(terpri stream) (terpri stream))))
 
   (let ((functions (remove-if-not 'def-properties:symbol-function-p symbols)))
-    (format stream "@subheading Functions~%")
-    (dolist (function functions)
-      (texinfo-define-function function stream)
-      (terpri stream) (terpri stream)))
+    (when functions
+      (format stream "@subheading Functions~%")
+      (dolist (function functions)
+	(texinfo-define-function function stream)
+	(terpri stream) (terpri stream))))
 
   (let ((classes (remove-if-not 'def-properties:symbol-class-p symbols)))
-    (format stream "@subheading Classes~%")
-    (dolist (class classes)
-      (texinfo-define-class class stream)
-      (terpri stream) (terpri stream)))
+    (when classes
+      (format stream "@subheading Classes~%")
+      (dolist (class classes)
+	(texinfo-define-class class stream)
+	(terpri stream) (terpri stream))))
 
   )
 
