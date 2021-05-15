@@ -100,6 +100,52 @@ your documentation system source files.
    Have a look at _cl-docweaver_ documentation in 'docs' directory for
 an example of how all this works.
 
+* Menu:
+
+* Command Line::
+
+
+File: cl-docweaver.info,  Node: Command Line,  Up: Usage
+
+3.1 Command Line
+================
+
+The 'cl-docweaver' executable can be used weave documents from the
+command line.
+
+   To build, do:
+
+     make
+     sudo make install
+
+   Then use it like this:
+
+     cl-docweaver - Common Lisp Documentation Weaver
+
+     USAGE: cl-docweaver [OPTIONS] INPUTFILE
+
+     Weave Common Lisp documentation in INPUTFILE.
+
+     Options:
+       --version             display version information and exit
+       -h, --help            display help information and exit
+       -o FILE, --output FILE
+                             output file
+       -s DOCSYSTEM, --docsystem DOCSYSTEM
+                             the documentation system to use. either texinfo or
+                             markdown. if not specified, the documentation system
+                             used is inferred by looking at input file extension.
+
+     Examples:
+
+       Weave texinfo file and visualize weaved output
+
+           cl-docweaver my-documentation.texi
+
+       Weave texinfo file into a file
+
+           cl-docweaver my-documentation.texi -o my-documentation.weaved.texi
+
 
 File: cl-docweaver.info,  Node: Commands,  Next: Documentation systems,  Prev: Usage,  Up: Top
 
@@ -545,9 +591,6 @@ File: cl-docweaver.info,  Node: API,  Next: Index,  Prev: Tips and tricks,  Up: 
 External definitions
 ====================
 
-Variables
----------
-
 Macros
 ------
 
@@ -599,9 +642,6 @@ Functions
 
      Category: TopLevel
 
-Classes
--------
-
 
 File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 
@@ -650,13 +690,13 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * COMMON-LISP:RENAME-FILE:               Lisp evaluation.     (line  41)
 * COMPILE-FILE:                          Lisp evaluation.     (line  70)
 * COMPILE-FILE-PATHNAME:                 Lisp evaluation.     (line  64)
-* DEF-WEAVER-COMMAND-HANDLER:            API.                 (line  17)
+* DEF-WEAVER-COMMAND-HANDLER:            API.                 (line  14)
 * DELETE-FILE:                           Lisp evaluation.     (line  53)
 * DOCWEAVER/UTILS:BAR:                   Lisp evaluation.     (line 143)
 * DOCWEAVER/UTILS:FOO:                   Lisp evaluation.     (line 148)
-* DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER:  API.                 (line  17)
-* DOCWEAVER:PROCESS-WEAVER-COMMAND:      API.                 (line  35)
-* DOCWEAVER:WEAVE-FILE:                  API.                 (line  46)
+* DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER:  API.                 (line  14)
+* DOCWEAVER:PROCESS-WEAVER-COMMAND:      API.                 (line  32)
+* DOCWEAVER:WEAVE-FILE:                  API.                 (line  43)
 * FILE-AUTHOR:                           Lisp evaluation.     (line  36)
 * FILE-ERROR-PATHNAME:                   Lisp evaluation.     (line 119)
 * FILE-LENGTH:                           Lisp evaluation.     (line  46)
@@ -668,10 +708,10 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * FOO:                                   Lisp evaluation.     (line 148)
 * MAP-PERMUTATIONS:                      Commands.            (line  63)
 * PROBE-FILE:                            Lisp evaluation.     (line  31)
-* PROCESS-WEAVER-COMMAND:                API.                 (line  35)
+* PROCESS-WEAVER-COMMAND:                API.                 (line  32)
 * READ:                                  Lisp evaluation.     (line  11)
 * RENAME-FILE:                           Lisp evaluation.     (line  41)
-* WEAVE-FILE:                            API.                 (line  46)
+* WEAVE-FILE:                            API.                 (line  43)
 
 
 
@@ -684,37 +724,38 @@ Ref: installation1963
 Node: Usage1963
 Ref: usage2069
 Ref: ALEXANDRIA:FLATTEN function2581
-Node: Commands3245
-Ref: commands3366
-Ref: COMMON-LISP:*STANDARD-OUTPUT* variable4036
-Ref: COMMON-LISP:*COMPILE-PRINT* variable4310
-Ref: COMMON-LISP:*COMPILE-VERBOSE* variable4463
-Ref: ALEXANDRIA:MAP-PERMUTATIONS function4830
-Node: Documentation systems6634
-Node: Texinfo6813
-Node: common-lisp.texi7648
-Node: Tips and tricks10396
-Node: Lisp evaluation10566
-Ref: COMMON-LISP:READ function10897
-Ref: COMMON-LISP:PROBE-FILE function11425
-Ref: COMMON-LISP:FILE-AUTHOR function11643
-Ref: COMMON-LISP:RENAME-FILE function11845
-Ref: COMMON-LISP:FILE-LENGTH function12042
-Ref: COMMON-LISP:FILE-POSITION function12081
-Ref: COMMON-LISP:FILE-NAMESTRING function12141
-Ref: COMMON-LISP:DELETE-FILE function12247
-Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function12629
-Ref: COMMON-LISP:COMPILE-FILE function12912
-Ref: COMMON-LISP:FILE-ERROR-PATHNAME function15092
-Ref: COMMON-LISP:FILE-WRITE-DATE function15142
-Ref: COMMON-LISP:FILE-STRING-LENGTH function15356
-Ref: DOCWEAVER/UTILS:BAR function15882
-Ref: DOCWEAVER/UTILS:FOO function15992
-Node: API16103
-Ref: api16203
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro16306
-Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function16974
-Ref: DOCWEAVER:WEAVE-FILE function17284
-Node: Index18027
+Node: Command Line3272
+Node: Commands4418
+Ref: commands4539
+Ref: COMMON-LISP:*STANDARD-OUTPUT* variable5209
+Ref: COMMON-LISP:*COMPILE-PRINT* variable5483
+Ref: COMMON-LISP:*COMPILE-VERBOSE* variable5636
+Ref: ALEXANDRIA:MAP-PERMUTATIONS function6003
+Node: Documentation systems7807
+Node: Texinfo7986
+Node: common-lisp.texi8821
+Node: Tips and tricks11569
+Node: Lisp evaluation11739
+Ref: COMMON-LISP:READ function12070
+Ref: COMMON-LISP:PROBE-FILE function12598
+Ref: COMMON-LISP:FILE-AUTHOR function12816
+Ref: COMMON-LISP:RENAME-FILE function13018
+Ref: COMMON-LISP:FILE-LENGTH function13215
+Ref: COMMON-LISP:FILE-POSITION function13254
+Ref: COMMON-LISP:FILE-NAMESTRING function13314
+Ref: COMMON-LISP:DELETE-FILE function13420
+Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function13802
+Ref: COMMON-LISP:COMPILE-FILE function14085
+Ref: COMMON-LISP:FILE-ERROR-PATHNAME function16265
+Ref: COMMON-LISP:FILE-WRITE-DATE function16315
+Ref: COMMON-LISP:FILE-STRING-LENGTH function16529
+Ref: DOCWEAVER/UTILS:BAR function17055
+Ref: DOCWEAVER/UTILS:FOO function17165
+Node: API17276
+Ref: api17376
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro17458
+Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function18126
+Ref: DOCWEAVER:WEAVE-FILE function18436
+Node: Index19162
 
 End Tag Table

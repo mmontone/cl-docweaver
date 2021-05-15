@@ -101,6 +101,48 @@ Finally, use ($clref docweaver:weave-file :function) to weave your documentation
 
 Have a look at @emph{cl-docweaver} documentation in @code{docs} directory for an example of how all this works.
 
+@node Command Line
+@section Command Line
+
+The @code{cl-docweaver} executable can be used weave documents from the command line.
+
+To build, do:
+
+@example
+make
+sudo make install
+@end example
+
+Then use it like this:
+
+@example
+cl-docweaver - Common Lisp Documentation Weaver
+
+USAGE: cl-docweaver [OPTIONS] INPUTFILE
+
+Weave Common Lisp documentation in INPUTFILE.
+
+Options:
+  --version             display version information and exit
+  -h, --help            display help information and exit
+  -o FILE, --output FILE
+                        output file
+  -s DOCSYSTEM, --docsystem DOCSYSTEM
+                        the documentation system to use. either texinfo or
+                        markdown. if not specified, the documentation system
+                        used is inferred by looking at input file extension.
+
+Examples:
+
+  Weave texinfo file and visualize weaved output
+
+      cl-docweaver my-documentation.texi
+
+  Weave texinfo file into a file
+
+      cl-docweaver my-documentation.texi -o my-documentation.weaved.texi
+@end example
+
 @node Commands
 @chapter Commands
 @anchor{commands}

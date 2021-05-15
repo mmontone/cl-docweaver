@@ -79,7 +79,10 @@ ul.no-bullet {list-style: none}
 <ul class="no-bullet">
   <li><a id="toc-Introduction-1" href="#Introduction">1 Introduction</a></li>
   <li><a id="toc-Installation-1" href="#Installation">2 Installation</a></li>
-  <li><a id="toc-Usage-1" href="#Usage">3 Usage</a></li>
+  <li><a id="toc-Usage-1" href="#Usage">3 Usage</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Command-Line-1" href="#Command-Line">3.1 Command Line</a></li>
+  </ul></li>
   <li><a id="toc-Commands-1" href="#Commands">4 Commands</a></li>
   <li><a id="toc-Documentation-systems-1" href="#Documentation-systems">5 Documentation systems</a>
   <ul class="no-bullet">
@@ -184,6 +187,57 @@ Next: <a href="#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a hr
 </p>
 <p>Have a look at <em>cl-docweaver</em> documentation in <code>docs</code> directory for an example of how all this works.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Command-Line" accesskey="1">Command Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="Command-Line"></span><div class="header">
+<p>
+Up: <a href="#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Command-Line-1"></span><h3 class="section">3.1 Command Line</h3>
+
+<p>The <code>cl-docweaver</code> executable can be used weave documents from the command line.
+</p>
+<p>To build, do:
+</p>
+<div class="example">
+<pre class="example">make
+sudo make install
+</pre></div>
+
+<p>Then use it like this:
+</p>
+<div class="example">
+<pre class="example">cl-docweaver - Common Lisp Documentation Weaver
+
+USAGE: cl-docweaver [OPTIONS] INPUTFILE
+
+Weave Common Lisp documentation in INPUTFILE.
+
+Options:
+  --version             display version information and exit
+  -h, --help            display help information and exit
+  -o FILE, --output FILE
+                        output file
+  -s DOCSYSTEM, --docsystem DOCSYSTEM
+                        the documentation system to use. either texinfo or
+                        markdown. if not specified, the documentation system
+                        used is inferred by looking at input file extension.
+
+Examples:
+
+  Weave texinfo file and visualize weaved output
+
+      cl-docweaver my-documentation.texi
+
+  Weave texinfo file into a file
+
+      cl-docweaver my-documentation.texi -o my-documentation.weaved.texi
+</pre></div>
+
 <hr>
 <span id="Commands"></span><div class="header">
 <p>
@@ -652,7 +706,6 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#T
 
 <span id="External-definitions"></span><h3 class="heading">External definitions</h3>
 
-<span id="Variables"></span><h4 class="subheading">Variables</h4>
 <span id="Macros"></span><h4 class="subheading">Macros</h4>
 <span id="index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"></span>
 <span id="DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-macro"></span><dl>
@@ -694,7 +747,6 @@ Arguments:<br>
 Category: TopLevel
 </p></dd></dl>
 
-<span id="Classes"></span><h4 class="subheading">Classes</h4>
 
 
 <hr>
