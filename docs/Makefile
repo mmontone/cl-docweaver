@@ -19,7 +19,6 @@ index.html: cl-docweaver.weaved.texi
 cl-docweaver.weaved.texi:
 	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "cl-docweaver.texi" "cl-docweaver.weaved.texi" :docsystem :texinfo)' --quit
 
-
 cl-docweaver-internals.info: cl-docweaver-internals.weaved.texi
 	makeinfo --no-validate cl-docweaver-internals.weaved.texi
 

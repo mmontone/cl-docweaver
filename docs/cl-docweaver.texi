@@ -114,33 +114,9 @@ sudo make install
 @end example
 
 Then use it like this:
-
+($cleval (load "../cli.lisp"))
 @example
-cl-docweaver - Common Lisp Documentation Weaver
-
-USAGE: cl-docweaver [OPTIONS] INPUTFILE
-
-Weave Common Lisp documentation in INPUTFILE.
-
-Options:
-  --version             display version information and exit
-  -h, --help            display help information and exit
-  -o FILE, --output FILE
-                        output file
-  -s DOCSYSTEM, --docsystem DOCSYSTEM
-                        the documentation system to use. either texinfo or
-                        markdown. if not specified, the documentation system
-                        used is inferred by looking at input file extension.
-
-Examples:
-
-  Weave texinfo file and visualize weaved output
-
-      cl-docweaver my-documentation.texi
-
-  Weave texinfo file into a file
-
-      cl-docweaver my-documentation.texi -o my-documentation.weaved.texi
+($clcapture-output (adopt:print-help docweaver/cli::*ui*))
 @end example
 
 @node Commands
@@ -242,6 +218,18 @@ For example, to reference ALEXANDRIA:FLATTEN function, do this:
 @code{(@@clref alexandria:flatten function)}
 
 And this is the resulting link: ($clref alexandria:flatten function)
+
+@end deffn
+
+@deffn Command @@cleval expression
+
+Evaluates Lisp @var{EXPRESSION} and prints the result.
+
+@end deffn
+
+@deffn Command @@clcapture-output expression
+
+Evaluates Lisp @var{EXPRESSION}, captures its output, and prints it to the document.
 
 @end deffn
 

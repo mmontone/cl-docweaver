@@ -209,24 +209,28 @@ sudo make install
 </pre></div>
 
 <p>Then use it like this:
-</p>
-<div class="example">
+T
+</p><div class="example">
 <pre class="example">cl-docweaver - Common Lisp Documentation Weaver
 
-USAGE: cl-docweaver [OPTIONS] INPUTFILE
+USAGE: sbcl [OPTIONS] INPUTFILE
 
 Weave Common Lisp documentation in INPUTFILE.
 
 Options:
   --version             display version information and exit
   -h, --help            display help information and exit
+  -d, --debug           debug
   -o FILE, --output FILE
                         output file
   -s DOCSYSTEM, --docsystem DOCSYSTEM
                         the documentation system to use. either texinfo or
                         markdown. if not specified, the documentation system
                         used is inferred by looking at input file extension.
-
+  -m MODULES, --modules MODULES
+                        the list of modules to REQUIRE
+  -c COMMAND-PREFIX, --command-prefix COMMAND-PREFIX
+                        the command prefix character to use. Default is &nbsp;
 Examples:
 
   Weave texinfo file and visualize weaved output
@@ -236,6 +240,7 @@ Examples:
   Weave texinfo file into a file
 
       cl-docweaver my-documentation.texi -o my-documentation.weaved.texi
+
 </pre></div>
 
 <hr>
@@ -369,6 +374,20 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 <p><code>(@clref alexandria:flatten function)</code>
 </p>
 <p>And this is the resulting link: <a href="#ALEXANDRIA_003aFLATTEN-function">FLATTEN</a>
+</p>
+</dd></dl>
+
+<dl>
+<dt id="index-_0040cleval">Command: <strong>@cleval</strong> <em>expression</em></dt>
+<dd>
+<p>Evaluates Lisp <var>EXPRESSION</var> and prints the result.
+</p>
+</dd></dl>
+
+<dl>
+<dt id="index-_0040clcapture_002doutput">Command: <strong>@clcapture-output</strong> <em>expression</em></dt>
+<dd>
+<p>Evaluates Lisp <var>EXPRESSION</var>, captures its output, and prints it to the document.
 </p>
 </dd></dl>
 
@@ -828,6 +847,8 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Index_fn_symbol-1">@</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0040clcapture_002doutput"><code>@clcapture-output</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0040cleval"><code>@cleval</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0040clfunction"><code>@clfunction</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0040clpackage"><code>@clpackage</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0040clref"><code>@clref</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Commands">Commands</a></td></tr>
