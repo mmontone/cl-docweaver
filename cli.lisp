@@ -1,5 +1,6 @@
 (require :docweaver)
 (require :adopt)
+(require :trivial-backtrace)
 
 (defpackage :docweaver/cli
   (:use :cl :docweaver))
@@ -20,6 +21,13 @@
                      :long "help"
                      :short #\h
                      :help "display help information and exit"
+                     :reduce (constantly t)))
+
+(defparameter *option-debug*
+  (adopt:make-option 'debug
+                     :long "debug"
+                     :short #\d
+                     :help "debug"
                      :reduce (constantly t)))
 
 (defparameter *option-output*
@@ -64,10 +72,10 @@ if not specified, the documentation system used is inferred by looking at input 
                 "cl-docweaver my-documentation.texi")
                ("Weave texinfo file into a file" .
                 "cl-docweaver my-documentation.texi -o my-documentation.weaved.texi"))
-   :contents (list *option-version* *option-help* *option-output* *option-docsystem* *option-modules* *option-command-prefix*)
+   :contents (list *option-version* *option-help* *option-debug* *option-output* *option-docsystem* *option-modules* *option-command-prefix*)
    :help *help-text*))
 
-(defun run (input-file &key output docsystem modules command-prefix)
+(defun run (input-file &key output docsystem modules command-prefix debug)
   (let (input-pathname output-pathname docsystem-discriminator)
 
     (setf input-pathname (pathname input-file))
@@ -98,11 +106,17 @@ if not specified, the documentation system used is inferred by looking at input 
         (format t "Could not infer documentation system to use.~%")
         (adopt:exit)))
 
-    (docweaver:weave-file input-pathname output-pathname
-                          :docsystem docsystem-discriminator
-			  :modules modules
-			  :command-prefix (and command-prefix
-					       (coerce command-prefix 'character)))))
+    (when debug
+      (trace docweaver:weave-file))
+    
+    (apply #'docweaver:weave-file input-pathname output-pathname
+
+	   `(:docsystem ,docsystem-discriminator
+	     :modules ,modules
+	     ,@(when command-prefix
+		 `(:command-prefix ,(coerce command-prefix 'character)))))))
+
+(defvar *debug* nil)
 
 (defun toplevel ()
   (handler-case
@@ -118,11 +132,17 @@ if not specified, the documentation system used is inferred by looking at input 
         (unless (= 1 (length arguments))
           (format t "Invalid syntax.~%")
           (adopt:exit))
+	(setf *debug* (gethash 'debug options))
         (destructuring-bind (input-file) arguments
           (run input-file
                :output (gethash 'output options)
-               :docsystem (gethash 'docsystem options))))
+               :docsystem (gethash 'docsystem options)
+	       :debug (gethash 'debug options)
+	       :modules (gethash 'modules options)
+	       :command-prefix (gethash 'command-prefix options))))
     (error (c)
+      (when *debug*
+	(trivial-backtrace:print-backtrace c))
       (adopt:print-error-and-exit c))))
 
 (defun build ()
