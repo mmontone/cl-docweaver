@@ -127,12 +127,14 @@ Category: TopLevel"
                                       :if-does-not-exist :create
                                       :if-exists :supersede)
     (let ((*config* options))
-      (loop for module-name in (getf *config* :modules)
-	    do (require module-name))      
+      (dolist (module-name (getf *config* :modules))
+	(require module-name))
       (docsystem-weave-file (or docsystem (read-config :docsystem)) file output))))
 
 (defmethod process-weaver-command (docsystem (command (eql :setup)) args stream)
   "Configure cl-docweaver."
-  (setf *config* args)) 
+  (dolist (module-name (getf args :modules))
+    (require module-name))
+  (setf *config* args))
 
 (provide :docweaver)

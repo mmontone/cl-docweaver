@@ -39,6 +39,22 @@
 if not specified, the documentation system used is inferred by looking at input file extension.")
                      :reduce #'adopt:last))
 
+(defparameter *option-modules*
+  (adopt:make-option 'modules
+		     :long "modules"
+		     :parameter "MODULES"
+		     :short #\m
+		     :help (format nil "the list of modules to REQUIRE")
+		     :reduce #'adopt:collect))
+
+(defparameter *option-command-prefix*
+  (adopt:make-option 'command-prefix
+		     :long "command-prefix"
+		     :parameter "COMMAND-PREFIX"
+		     :short #\c
+		     :help (format nil "the command prefix character to use. Default is @")
+		     :reduce #'adopt:last))
+
 (defparameter *ui*
   (adopt:make-interface
    :name "cl-docweaver"
@@ -48,16 +64,16 @@ if not specified, the documentation system used is inferred by looking at input 
                 "cl-docweaver my-documentation.texi")
                ("Weave texinfo file into a file" .
                 "cl-docweaver my-documentation.texi -o my-documentation.weaved.texi"))
-   :contents (list *option-version* *option-help* *option-output* *option-docsystem*)
+   :contents (list *option-version* *option-help* *option-output* *option-docsystem* *option-modules* *option-command-prefix*)
    :help *help-text*))
 
-(defun run (input-file &key output docsystem)
+(defun run (input-file &key output docsystem modules command-prefix)
   (let (input-pathname output-pathname docsystem-discriminator)
 
     (setf input-pathname (pathname input-file))
     (when (not (UIOP/PATHNAME:ABSOLUTE-PATHNAME-P input-pathname))
       (setf input-pathname (merge-pathnames input-pathname (uiop/os:getcwd))))
-    
+
     (when output
       (setf output-pathname (pathname output))
       (when (not (UIOP/PATHNAME:ABSOLUTE-PATHNAME-P output-pathname))
@@ -83,8 +99,10 @@ if not specified, the documentation system used is inferred by looking at input 
         (adopt:exit)))
 
     (docweaver:weave-file input-pathname output-pathname
-                          :docsystem docsystem-discriminator)))
-
+                          :docsystem docsystem-discriminator
+			  :modules modules
+			  :command-prefix (and command-prefix
+					       (coerce command-prefix 'character)))))
 
 (defun toplevel ()
   (handler-case
