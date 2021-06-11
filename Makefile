@@ -1,7 +1,7 @@
 .PHONY: docs
 
 cl-docweaver:
-	sbcl --load cli.lisp
+	sbcl --load cli.lisp --eval '(docweaver/cli:build)'
 
 install:
 	cp ./cl-docweaver /usr/local/bin

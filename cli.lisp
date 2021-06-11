@@ -3,7 +3,8 @@
 (require :trivial-backtrace)
 
 (defpackage :docweaver/cli
-  (:use :cl :docweaver))
+  (:use :cl :docweaver)
+  (:export :build))
 
 (in-package :docweaver/cli)
 
@@ -150,5 +151,3 @@ if not specified, the documentation system used is inferred by looking at input 
                             :save-runtime-options t
                             :executable t
                             :toplevel #'toplevel))
-
-(build)
