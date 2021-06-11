@@ -171,6 +171,9 @@ File: cl-docweaver.info,  Node: Commands,  Next: Documentation systems,  Prev: U
         * ':command-prefix' The prefix character to use for commands.
           Default is the '#\@' character.
 
+        * ':modules' A list of Lisp modules to REQUIRE in order to be
+          able to expand definitions.
+
  -- Command: @clvariable variable-symbol &rest args
 
      Expands definition for variable bound to VARIABLE-SYMBOL.
@@ -670,25 +673,25 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
  [index ]
 * Menu:
 
-* *COMPILE-PRINT*:                       Commands.             (line 44)
-* *COMPILE-VERBOSE*:                     Commands.             (line 48)
-* *STANDARD-OUTPUT*:                     Commands.             (line 31)
-* COMMON-LISP:*COMPILE-PRINT*:           Commands.             (line 44)
-* COMMON-LISP:*COMPILE-VERBOSE*:         Commands.             (line 48)
-* COMMON-LISP:*STANDARD-OUTPUT*:         Commands.             (line 31)
+* *COMPILE-PRINT*:                       Commands.             (line 47)
+* *COMPILE-VERBOSE*:                     Commands.             (line 51)
+* *STANDARD-OUTPUT*:                     Commands.             (line 34)
+* COMMON-LISP:*COMPILE-PRINT*:           Commands.             (line 47)
+* COMMON-LISP:*COMPILE-VERBOSE*:         Commands.             (line 51)
+* COMMON-LISP:*STANDARD-OUTPUT*:         Commands.             (line 34)
 
  [index ]
 * Menu:
 
-* @clcapture-output:                     Commands.            (line 118)
-* @cleval:                               Commands.            (line 114)
-* @clfunction:                           Commands.            (line  53)
-* @clpackage:                            Commands.            (line  76)
-* @clref:                                Commands.            (line 102)
-* @clvariable:                           Commands.            (line  21)
+* @clcapture-output:                     Commands.            (line 121)
+* @cleval:                               Commands.            (line 117)
+* @clfunction:                           Commands.            (line  56)
+* @clpackage:                            Commands.            (line  79)
+* @clref:                                Commands.            (line 105)
+* @clvariable:                           Commands.            (line  24)
 * @setup:                                Commands.            (line   6)
 * ALEXANDRIA:FLATTEN:                    Usage.               (line  18)
-* ALEXANDRIA:MAP-PERMUTATIONS:           Commands.            (line  63)
+* ALEXANDRIA:MAP-PERMUTATIONS:           Commands.            (line  66)
 * BAR:                                   Lisp evaluation.     (line 143)
 * COMMON-LISP:COMPILE-FILE:              Lisp evaluation.     (line  70)
 * COMMON-LISP:COMPILE-FILE-PATHNAME:     Lisp evaluation.     (line  64)
@@ -721,7 +724,7 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
 * FILE-WRITE-DATE:                       Lisp evaluation.     (line 121)
 * FLATTEN:                               Usage.               (line  18)
 * FOO:                                   Lisp evaluation.     (line 148)
-* MAP-PERMUTATIONS:                      Commands.            (line  63)
+* MAP-PERMUTATIONS:                      Commands.            (line  66)
 * PROBE-FILE:                            Lisp evaluation.     (line  31)
 * PROCESS-WEAVER-COMMAND:                API.                 (line  32)
 * READ:                                  Lisp evaluation.     (line  11)
@@ -742,35 +745,35 @@ Ref: ALEXANDRIA:FLATTEN function2581
 Node: Command Line3272
 Node: Commands4680
 Ref: commands4801
-Ref: COMMON-LISP:*STANDARD-OUTPUT* variable5471
-Ref: COMMON-LISP:*COMPILE-PRINT* variable5745
-Ref: COMMON-LISP:*COMPILE-VERBOSE* variable5898
-Ref: ALEXANDRIA:MAP-PERMUTATIONS function6265
-Node: Documentation systems8290
-Node: Texinfo8469
-Node: common-lisp.texi9304
-Node: Tips and tricks12052
-Node: Lisp evaluation12222
-Ref: COMMON-LISP:READ function12553
-Ref: COMMON-LISP:PROBE-FILE function13081
-Ref: COMMON-LISP:FILE-AUTHOR function13299
-Ref: COMMON-LISP:RENAME-FILE function13501
-Ref: COMMON-LISP:FILE-LENGTH function13698
-Ref: COMMON-LISP:FILE-POSITION function13737
-Ref: COMMON-LISP:FILE-NAMESTRING function13797
-Ref: COMMON-LISP:DELETE-FILE function13903
-Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function14285
-Ref: COMMON-LISP:COMPILE-FILE function14568
-Ref: COMMON-LISP:FILE-ERROR-PATHNAME function16748
-Ref: COMMON-LISP:FILE-WRITE-DATE function16798
-Ref: COMMON-LISP:FILE-STRING-LENGTH function17012
-Ref: DOCWEAVER/UTILS:BAR function17538
-Ref: DOCWEAVER/UTILS:FOO function17648
-Node: API17759
-Ref: api17859
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro17941
-Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function18609
-Ref: DOCWEAVER:WEAVE-FILE function18919
-Node: Index19645
+Ref: COMMON-LISP:*STANDARD-OUTPUT* variable5580
+Ref: COMMON-LISP:*COMPILE-PRINT* variable5854
+Ref: COMMON-LISP:*COMPILE-VERBOSE* variable6007
+Ref: ALEXANDRIA:MAP-PERMUTATIONS function6374
+Node: Documentation systems8399
+Node: Texinfo8578
+Node: common-lisp.texi9413
+Node: Tips and tricks12161
+Node: Lisp evaluation12331
+Ref: COMMON-LISP:READ function12662
+Ref: COMMON-LISP:PROBE-FILE function13190
+Ref: COMMON-LISP:FILE-AUTHOR function13408
+Ref: COMMON-LISP:RENAME-FILE function13610
+Ref: COMMON-LISP:FILE-LENGTH function13807
+Ref: COMMON-LISP:FILE-POSITION function13846
+Ref: COMMON-LISP:FILE-NAMESTRING function13906
+Ref: COMMON-LISP:DELETE-FILE function14012
+Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function14394
+Ref: COMMON-LISP:COMPILE-FILE function14677
+Ref: COMMON-LISP:FILE-ERROR-PATHNAME function16857
+Ref: COMMON-LISP:FILE-WRITE-DATE function16907
+Ref: COMMON-LISP:FILE-STRING-LENGTH function17121
+Ref: DOCWEAVER/UTILS:BAR function17647
+Ref: DOCWEAVER/UTILS:FOO function17757
+Node: API17868
+Ref: api17968
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro18050
+Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function18718
+Ref: DOCWEAVER:WEAVE-FILE function19028
+Node: Index19754
 
 End Tag Table
