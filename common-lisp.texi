@@ -15,11 +15,11 @@
 @macro cldefun{package, name, args}
 @findex \package\:\name\
 @anchor{\package\:\name\ function}
-@deffn \package\ \name\ \args\
+@defun \package\:\name\ \args\
 @end macro
 
 @macro endcldefun
-@end deffn
+@end defun
 @end macro
 
 @c Example:
@@ -31,11 +31,11 @@
 @macro cldefmacro{package, name, args}
 @findex \package\:\name\
 @anchor{\package\:\name\ macro}
-@deffn \package\ \name\ \args\
+@defmac \package\:\name\ \args\
 @end macro
 
 @macro endcldefmacro
-@end deffn
+@end defmac
 @end macro
 
 @c Example:
@@ -47,7 +47,7 @@
 @macro cldefgeneric{package, name, args}
 @findex \package\:\name\
 @anchor{\package\:\name\ function}
-@deffn \package\ \name\ \args\
+@deffn Generic-Function \package\:\name\ \args\
 @end macro
 
 @macro endcldefgeneric
@@ -58,7 +58,7 @@
 @macro cldefclass{package, name}
 @tindex \package\:\name\
 @anchor{\package\:\name\ class}
-@deftp \package\ \name\
+@deftp Class \package\:\name\
 @end macro
 
 @macro endcldefclass

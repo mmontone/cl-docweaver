@@ -190,6 +190,38 @@ Like with @xref{@@clvariable}, a list of symbols is also accepted and definition
 
 @end deffn
 
+@deffn Command @@clmacro macro-symbol &rest args
+
+Expands definition for macro bound to @var{MACRO-SYMBOL}.
+
+For example,
+
+@code{(@@clmacro cl:print-unreadable-object)}
+
+Expands to this:
+
+($clmacro cl:print-unreadable-object)
+
+As in other commands, a list of symbols is also accepted; macro definitions are expanded in sequence.
+
+@end deffn
+
+@deffn Command @@clclass class-name &rest args
+
+Expands definition of class with name @var{CLASS-NAME}.
+
+For example,
+
+@code{(@@clclass asdf:component)}
+
+Expands to this:
+
+($clclass asdf:component)
+
+As in other commands, a list of symbols is also accepted; class definitions are expanded in sequence.
+
+@end deffn
+
 @deffn Command @@clpackage package-name &key (include-external-definitions t) include-internal-definitions (categorized t)
 
 Expands definition for Common Lisp package named @var{PACKAGE-NAME}.

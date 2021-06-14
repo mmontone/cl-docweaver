@@ -263,6 +263,14 @@
 	    (texinfo-define-macro mac-symbol stream)
 	    (terpri stream)))))
 
+(def-weaver-command-handler clclass (class-name)
+  (:docsystem (eql :texinfo))
+  (etypecase class-name
+    (symbol (texinfo-define-class class-name stream))
+    (list (dolist (class-name class-name)
+	    (texinfo-define-class class-name stream)
+	    (terpri stream)))))
+
 (def-weaver-command-handler cleval (expression)
     (:docsystem (eql :texinfo))
   (princ (eval expression) stream))
