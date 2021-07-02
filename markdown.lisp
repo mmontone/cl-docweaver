@@ -33,7 +33,15 @@
 	    do (dotimes (i indentation)
 		 (write-char #\space output))
 	       (write-line line output)
-	       ))))
+	    ))))
+
+(defun markdown-format-class (class-name stream)
+  (let ((class-info (def-properties:class-properties class-name)))
+    (format stream "- [class] ~a~%" class-name)
+    (terpri stream)
+    (when (aget class-info :documentation)
+      (write-string (indent-text (aget class-info :documentation) 4) stream))
+    (terpri stream)))
 
 (defun markdown-format-function (function-symbol stream)
   (let ((function-info (def-properties:function-properties function-symbol)))
@@ -63,6 +71,20 @@
 	    (write-string (indent-text (aget function-info :documentation) 4) stream))
 	  (terpri stream)))))
 
+(defun markdown-format-macro (macro-symbol stream)
+  (let ((macro-info (def-properties:function-properties macro-symbol)))
+    (if (null macro-info)
+	(error "Macro properties could not be read: ~s" macro-symbol)
+	(progn
+	  (format stream "- [macro] **~a:~a** *~a*~%"
+		  (package-name (symbol-package macro-symbol))
+		  (symbol-name macro-symbol)
+		  (aget macro-info :args))
+	  (terpri stream)
+	  (when (aget macro-info :documentation)
+	    (write-string (indent-text (aget macro-info :documentation) 4) stream))
+	  (terpri stream)))))
+
 (def-weaver-command-handler clfunction (function-symbol)
     (:docsystem (eql :markdown))
   (markdown-format-function function-symbol stream))
@@ -70,6 +92,10 @@
 (def-weaver-command-handler clgeneric-function (function-symbol)
     (:docsystem (eql :markdown))
   (markdown-format-generic-function function-symbol stream))
+
+(def-weaver-command-handler clmacro (macro-symbol)
+    (:docsystem (eql :markdown))
+  (markdown-format-macro macro-symbol stream))
 
 (def-weaver-command-handler clvariable (variable-symbol)
     (:docsystem (eql :markdown))
@@ -85,6 +111,14 @@
                 (write-string (indent-text (aget variable-info :documentation) 4) stream))
               (terpri stream)
               ))))
+
+(def-weaver-command-handler clclass (class-name)
+  (:docsystem (eql :markdown))
+  (etypecase class-name
+    (symbol (markdown-format-class class-name stream))
+    (list (dolist (class-name class-name)
+	    (markdown-format-class class-name stream)
+	    (terpri stream)))))
 
 (defun lget (list key)
   (second (find key list :key 'car)))
