@@ -37,7 +37,7 @@
 
 (defun markdown-format-class (class-name stream)
   (let ((class-info (def-properties:class-properties class-name)))
-    (format stream "- [class] ~a~%" class-name)
+    (format stream "- [class] **~a**~%" class-name)
     (terpri stream)
     (when (aget class-info :documentation)
       (write-string (indent-text (aget class-info :documentation) 4) stream))
