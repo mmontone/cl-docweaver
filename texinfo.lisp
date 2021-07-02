@@ -255,6 +255,14 @@
 	    (texinfo-define-function fun-symbol stream)
 	    (terpri stream)))))
 
+(def-weaver-command-handler clgeneric-function (function-symbol)
+    (:docsystem (eql :texinfo))
+  (etypecase function-symbol
+    (symbol (texinfo-define-generic-function function-symbol stream))
+    (list (dolist (fun-symbol function-symbol)
+	    (texinfo-define-generic-function fun-symbol stream)
+	    (terpri stream)))))
+
 (def-weaver-command-handler clmacro (macro-symbol)
     (:docsystem (eql :texinfo))
   (etypecase macro-symbol

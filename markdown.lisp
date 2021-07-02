@@ -49,11 +49,29 @@
 	    (write-string (indent-text (aget function-info :documentation) 4) stream))
 	  (terpri stream)))))
 
-(def-weaver-command-handler :clfunction (function-symbol)
+(defun markdown-format-generic-function (function-symbol stream)
+  (let ((function-info (def-properties:function-properties function-symbol)))
+    (if (null function-info)
+	(error "Function properties could not be read: ~s" function-symbol)
+	(progn
+	  (format stream "- [generic function] **~a:~a** *~a*~%"
+		  (package-name (symbol-package function-symbol))
+		  (symbol-name function-symbol)
+		  (aget function-info :args))
+	  (terpri stream)
+	  (when (aget function-info :documentation)
+	    (write-string (indent-text (aget function-info :documentation) 4) stream))
+	  (terpri stream)))))
+
+(def-weaver-command-handler clfunction (function-symbol)
     (:docsystem (eql :markdown))
   (markdown-format-function function-symbol stream))
 
-(def-weaver-command-handler :clvariable (variable-symbol)
+(def-weaver-command-handler clgeneric-function (function-symbol)
+    (:docsystem (eql :markdown))
+  (markdown-format-generic-function function-symbol stream))
+
+(def-weaver-command-handler clvariable (variable-symbol)
     (:docsystem (eql :markdown))
   (let ((variable-info (def-properties:variable-properties variable-symbol)))
         (if (null variable-info)
@@ -71,21 +89,21 @@
 (defun lget (list key)
   (second (find key list :key 'car)))
 
-(def-weaver-command-handler :clsourceref (symbol)
+(def-weaver-command-handler clsourceref (symbol)
     (:docsystem (eql :markdown))
   "TODO"
   )
 
-(def-weaver-command-handler :clsourcecode (system-name filepath)
+(def-weaver-command-handler clsourcecode (system-name filepath)
   (:docsystem (eql :markdown))
   (let ((source-file (asdf:system-relative-pathname system-name filepath)))
     (generate-markdown-source source-file stream)))
 
-(def-weaver-command-handler :clref (symbol &optional type)
+(def-weaver-command-handler clref (symbol &optional type)
     (:docsystem (eql :markdown))
   (princ symbol stream))
 
-(def-weaver-command-handler :clpackage (package-name &rest options)
+(def-weaver-command-handler clpackage (package-name &rest options)
     (:docsystem (eql :markdown))
   (let ((package (or (find-package (string-upcase package-name))
 		     (error "Package not found: ~a" package-name))))
