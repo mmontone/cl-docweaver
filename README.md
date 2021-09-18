@@ -14,7 +14,18 @@ Texinfo and Markdown are the ones with best support at this moment.
 
 ## Usage
 
-Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
+Please have a look at the [manual](docs/cl-docweaver.pdf "manual").
+
+### cl-docweaver command line command
+
+Build the cl-docweaver command line command:
+
+```
+make
+sudo make install
+```
+
+After that, `cl-docweaver` command is available.
 
 ## API
 
