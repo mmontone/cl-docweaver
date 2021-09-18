@@ -114,7 +114,7 @@ sudo make install
 @end example
 
 Then use it like this:
-($cleval (load "../cli.lisp"))
+($cleval (progn (load "../cli.lisp") ""))
 @example
 ($clcapture-output (adopt:print-help docweaver/cli::*ui*))
 @end example

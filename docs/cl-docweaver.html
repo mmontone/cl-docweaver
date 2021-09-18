@@ -209,8 +209,8 @@ sudo make install
 </pre></div>
 
 <p>Then use it like this:
-T
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">cl-docweaver - Common Lisp Documentation Weaver
 
 USAGE: sbcl [OPTIONS] INPUTFILE
@@ -338,9 +338,9 @@ A list of Lisp modules to REQUIRE in order to be able to expand definitions.
 <span id="ALEXANDRIA_003aMAP_002dPERMUTATIONS-function"></span><dl>
 <dt id="index-ALEXANDRIA_003aMAP_002dPERMUTATIONS-1">Function: <strong>ALEXANDRIA:MAP-PERMUTATIONS</strong> <em>(function sequence &amp;key (start 0) end length (copy t))</em></dt>
 <dd>
-<p>Calls <var>function</var> with each permutation of <var>LENGTH</var> constructable<br>
-from the subsequence of <var>SEQUENCE</var> delimited by <var>START</var> and <var>END</var>. <var>START</var><br>
-defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, and <var>LENGTH</var> to the<br>
+<p>Calls <var>function</var> with each permutation of <var>LENGTH</var> constructable
+from the subsequence of <var>SEQUENCE</var> delimited by <var>START</var> and <var>END</var>. <var>START</var>
+defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, and <var>LENGTH</var> to the
 <var>length</var> of the delimited subsequence.
 </p></dd></dl>
 
@@ -363,8 +363,8 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 <span id="COMMON_002dLISP_003aPRINT_002dUNREADABLE_002dOBJECT-macro"></span><dl>
 <dt id="index-COMMON_002dLISP_003aPRINT_002dUNREADABLE_002dOBJECT-1">Macro: <strong>COMMON-LISP:PRINT-UNREADABLE-OBJECT</strong> <em>((sb-impl::object stream &amp;key type identity) &amp;body sb-impl::body)</em></dt>
 <dd>
-<p>Output <var>OBJECT</var> to <var>STREAM</var> with &quot;#&lsquo;&lt;&rsquo;&quot; prefix, &quot;&lsquo;&gt;&rsquo;&quot; suffix, optionally<br>
-  with object-type prefix and object-identity suffix, and executing the<br>
+<p>Output <var>OBJECT</var> to <var>STREAM</var> with &quot;#&lsquo;&lt;&rsquo;&quot; prefix, &quot;&lsquo;&gt;&rsquo;&quot; suffix, optionally
+  with object-type prefix and object-identity suffix, and executing the
   code in <var>BODY</var> to provide possible further output.
 </p></dd></dl>
 
@@ -644,22 +644,22 @@ Up: <a href="#Tips-and-tricks" accesskey="u" rel="up">Tips and tricks</a> &nbsp;
 <span id="COMMON_002dLISP_003aPROBE_002dFILE-function"></span><dl>
 <dt id="index-COMMON_002dLISP_003aPROBE_002dFILE-1">Function: <strong>COMMON-LISP:PROBE-FILE</strong> <em>(sb-impl::pathspec)</em></dt>
 <dd>
-<p>Return the truename of <var>PATHSPEC</var> if the truename can be found,<br>
+<p>Return the truename of <var>PATHSPEC</var> if the truename can be found,
 or NIL otherwise.  See &lsquo;TRUENAME&rsquo; for more information.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003aFILE_002dAUTHOR"></span>
 <span id="COMMON_002dLISP_003aFILE_002dAUTHOR-function"></span><dl>
 <dt id="index-COMMON_002dLISP_003aFILE_002dAUTHOR-1">Function: <strong>COMMON-LISP:FILE-AUTHOR</strong> <em>(sb-impl::pathspec)</em></dt>
 <dd>
-<p>Return the author of the file specified by <var>PATHSPEC</var>. Signal an<br>
-error of type  if no such file exists, or if <var>PATHSPEC</var><br>
+<p>Return the author of the file specified by <var>PATHSPEC</var>. Signal an
+error of type  if no such file exists, or if <var>PATHSPEC</var>
 is a wild pathname.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003aRENAME_002dFILE"></span>
 <span id="COMMON_002dLISP_003aRENAME_002dFILE-function"></span><dl>
 <dt id="index-COMMON_002dLISP_003aRENAME_002dFILE-1">Function: <strong>COMMON-LISP:RENAME-FILE</strong> <em>(sb-impl::file sb-impl::new-name)</em></dt>
 <dd>
-<p>Rename <var>FILE</var> to have the specified <var>NEW-NAME</var>. If <var>FILE</var> is a stream open to a<br>
+<p>Rename <var>FILE</var> to have the specified <var>NEW-NAME</var>. If <var>FILE</var> is a stream open to a
 <var>file</var>, then the associated <var>file</var> is renamed.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003aFILE_002dLENGTH"></span>
@@ -680,52 +680,52 @@ is a wild pathname.
 <span id="COMMON_002dLISP_003aDELETE_002dFILE-function"></span><dl>
 <dt id="index-COMMON_002dLISP_003aDELETE_002dFILE-1">Function: <strong>COMMON-LISP:DELETE-FILE</strong> <em>(sb-impl::file)</em></dt>
 <dd>
-<p>Delete the specified <var>FILE</var>.<br>
-<br>
-If <var>FILE</var> is a stream, on Windows the stream is closed immediately. On Unix<br>
-platforms the stream remains open, allowing IO to continue: the OS resources<br>
-associated with the deleted <var>file</var> remain available till the stream is closed as<br>
+<p>Delete the specified <var>FILE</var>.
+</p>
+<p>If <var>FILE</var> is a stream, on Windows the stream is closed immediately. On Unix
+platforms the stream remains open, allowing IO to continue: the OS resources
+associated with the deleted <var>file</var> remain available till the stream is closed as
 per standard Unix unlink() behaviour.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME"></span>
 <span id="COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-function"></span><dl>
 <dt id="index-COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-1">Function: <strong>COMMON-LISP:COMPILE-FILE-PATHNAME</strong> <em>(sb-c::input-file &amp;key (sb-c::output-file nil sb-c::output-file-p) &amp;allow-other-keys)</em></dt>
 <dd>
-<p>Return a pathname describing what file <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> would write to given<br>
+<p>Return a pathname describing what file <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> would write to given
    these arguments.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003aCOMPILE_002dFILE"></span>
 <span id="COMMON_002dLISP_003aCOMPILE_002dFILE-function"></span><dl>
 <dt id="index-COMMON_002dLISP_003aCOMPILE_002dFILE-1">Function: <strong>COMMON-LISP:COMPILE-FILE</strong> <em>(sb-c::input-file &amp;key (sb-c::output-file (sb-c::cfp-output-file-default sb-c::input-file)) ((:verbose *compile-verbose*) *compile-verbose*) ((:print *compile-print*) *compile-print*) (sb-c::external-format :default) (sb-c::trace-file nil) ((:block-compile sb-c::*block-compile-arg*) nil) (sb-c::emit-cfasl sb-c::*emit-cfasl*))</em></dt>
 <dd>
-<p>Compile <var>INPUT-FILE</var>, producing a corresponding fasl file and<br>
-returning its filename.<br>
-<br>
-  <var>:PRINT</var><br>
-     If true, a message per non-macroexpanded top level form is printed<br>
-     to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>. Top level forms that whose subforms are<br>
-     processed as top level forms (eg. &lsquo;EVAL-WHEN&rsquo;, &lsquo;MACROLET&rsquo;, &lsquo;PROGN&rsquo;) receive<br>
-     no such message, but their subforms do.<br>
-<br>
-     As an extension to ANSI, if <var>:PRINT</var> is <var>:top-level-forms</var>, a message<br>
-     per top level form after macroexpansion is printed to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>.<br>
-     For example, compiling an &lsquo;IN-PACKAGE&rsquo; form will result in a message about<br>
-     a top level &lsquo;SETQ&rsquo; in addition to the message about the &lsquo;IN-PACKAGE&rsquo; form&rsquo;<br>
-     itself.<br>
-<br>
-     Both forms of reporting obey the &lsquo;SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*&rsquo;.<br>
-<br>
-  <var>:BLOCK-COMPILE</var><br>
-     Though <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> accepts an additional <var>:BLOCK-COMPILE</var><br>
-     argument, it is not currently supported. (non-standard)<br>
-<br>
-  <var>:TRACE-FILE</var><br>
-     If given, internal data structures are dumped to the specified<br>
-     file, or if a value of  is given, to a file of &lsquo;*&rsquo;.trace type<br>
-     derived from the input file name. (non-standard)<br>
-<br>
-  <var>:EMIT-CFASL</var><br>
-     (Experimental). If true, outputs the toplevel compile-time effects<br>
+<p>Compile <var>INPUT-FILE</var>, producing a corresponding fasl file and
+returning its filename.
+</p>
+<p><var>:PRINT</var>
+     If true, a message per non-macroexpanded top level form is printed
+     to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>. Top level forms that whose subforms are
+     processed as top level forms (eg. &lsquo;EVAL-WHEN&rsquo;, &lsquo;MACROLET&rsquo;, &lsquo;PROGN&rsquo;) receive
+     no such message, but their subforms do.
+</p>
+<p>As an extension to ANSI, if <var>:PRINT</var> is <var>:top-level-forms</var>, a message
+     per top level form after macroexpansion is printed to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>.
+     For example, compiling an &lsquo;IN-PACKAGE&rsquo; form will result in a message about
+     a top level &lsquo;SETQ&rsquo; in addition to the message about the &lsquo;IN-PACKAGE&rsquo; form&rsquo;
+     itself.
+</p>
+<p>Both forms of reporting obey the &lsquo;SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*&rsquo;.
+</p>
+<p><var>:BLOCK-COMPILE</var>
+     Though <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> accepts an additional <var>:BLOCK-COMPILE</var>
+     argument, it is not currently supported. (non-standard)
+</p>
+<p><var>:TRACE-FILE</var>
+     If given, internal data structures are dumped to the specified
+     file, or if a value of  is given, to a file of &lsquo;*&rsquo;.trace type
+     derived from the input file name. (non-standard)
+</p>
+<p><var>:EMIT-CFASL</var>
+     (Experimental). If true, outputs the toplevel compile-time effects
      of this file into a separate .cfasl file.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME"></span>
@@ -736,8 +736,8 @@ returning its filename.<br>
 <span id="COMMON_002dLISP_003aFILE_002dWRITE_002dDATE-function"></span><dl>
 <dt id="index-COMMON_002dLISP_003aFILE_002dWRITE_002dDATE-1">Function: <strong>COMMON-LISP:FILE-WRITE-DATE</strong> <em>(sb-impl::pathspec)</em></dt>
 <dd>
-<p>Return the write date of the file specified by <var>PATHSPEC</var>.<br>
-An error of type  is signaled if no such file exists,<br>
+<p>Return the write date of the file specified by <var>PATHSPEC</var>.
+An error of type  is signaled if no such file exists,
 or if <var>PATHSPEC</var> is a wild pathname.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH"></span>
@@ -760,17 +760,17 @@ or if <var>PATHSPEC</var> is a wild pathname.
 <span id="DOCWEAVER_002fUTILS_003aBAR-function"></span><dl>
 <dt id="index-DOCWEAVER_002fUTILS_003aBAR-1">Function: <strong>DOCWEAVER/UTILS:BAR</strong> <em>nil</em></dt>
 <dd>
-<p><a href="#DOCWEAVER_002fUTILS_003aBAR-function">BAR</a> function.<br>
-<br>
-Category: foobar.
+<p><a href="#DOCWEAVER_002fUTILS_003aBAR-function">BAR</a> function.
+</p>
+<p>Category: foobar.
 </p></dd></dl>
 <span id="index-DOCWEAVER_002fUTILS_003aFOO"></span>
 <span id="DOCWEAVER_002fUTILS_003aFOO-function"></span><dl>
 <dt id="index-DOCWEAVER_002fUTILS_003aFOO-1">Function: <strong>DOCWEAVER/UTILS:FOO</strong> <em>nil</em></dt>
 <dd>
-<p><a href="#DOCWEAVER_002fUTILS_003aFOO-function">FOO</a> function.<br>
-<br>
-Category: foobar.
+<p><a href="#DOCWEAVER_002fUTILS_003aFOO-function">FOO</a> function.
+</p>
+<p>Category: foobar.
 </p></dd></dl>
 
 
@@ -792,13 +792,13 @@ Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#T
 <span id="DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-macro"></span><dl>
 <dt id="index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-1">Macro: <strong>DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER</strong> <em>(command-name args (&amp;key docsystem) &amp;body body)</em></dt>
 <dd>
-<p>Define a weaver command handler.<br>
-<var>COMMAND-NAME</var> is the name of the command, without the prefix (like &rsquo;clvariable&rsquo;, &rsquo;clfunction&rsquo;, etc.)<br>
-<var>ARGS</var> is the list of arguments for that command in the <var>DOCSYSTEM</var> implementation.<br>
-<var>DOCSYSTEM</var> is a specializer for the documentation system. For example, (eql <var>:texinfo</var>).<br>
-<var>BODY</var> should write to an implicit  variable, to expand the command.<br>
-<br>
-This is implemented as a wraper over <a href="#DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function">PROCESS-WEAVER-COMMAND</a> .
+<p>Define a weaver command handler.
+<var>COMMAND-NAME</var> is the name of the command, without the prefix (like &rsquo;clvariable&rsquo;, &rsquo;clfunction&rsquo;, etc.)
+<var>ARGS</var> is the list of arguments for that command in the <var>DOCSYSTEM</var> implementation.
+<var>DOCSYSTEM</var> is a specializer for the documentation system. For example, (eql <var>:texinfo</var>).
+<var>BODY</var> should write to an implicit  variable, to expand the command.
+</p>
+<p>This is implemented as a wraper over <a href="#DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function">PROCESS-WEAVER-COMMAND</a> .
 </p></dd></dl>
 
 <span id="Generic-functions"></span><h4 class="subheading">Generic functions</h4>
@@ -806,9 +806,9 @@ This is implemented as a wraper over <a href="#DOCWEAVER_003aPROCESS_002dWEAVER_
 <span id="DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function"></span><dl>
 <dt id="index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-1">Generic-Function: <strong>DOCWEAVER:PROCESS-WEAVER-COMMAND</strong> <em>(docsystem command args stream)</em></dt>
 <dd>
-<p>The generic function to specialize for implementing weaving commands for the different documentation systems.<br>
-<br>
-See: &lsquo;DEF-WEAVER-COMMAND-HANDLER&rsquo;
+<p>The generic function to specialize for implementing weaving commands for the different documentation systems.
+</p>
+<p>See: &lsquo;DEF-WEAVER-COMMAND-HANDLER&rsquo;
 </p></dd></dl>
 
 <span id="Functions"></span><h4 class="subheading">Functions</h4>
@@ -816,15 +816,15 @@ See: &lsquo;DEF-WEAVER-COMMAND-HANDLER&rsquo;
 <span id="DOCWEAVER_003aWEAVE_002dFILE-function"></span><dl>
 <dt id="index-DOCWEAVER_003aWEAVE_002dFILE-1">Function: <strong>DOCWEAVER:WEAVE-FILE</strong> <em>(file output-file &amp;rest options &amp;key docsystem modules command-prefix (parse-docstrings t) (escape-docstrings t))</em></dt>
 <dd>
-<p>Weaves documentation source in <var>FILE</var> and writes the result to <var>OUTPUT-FILE</var>.<br>
-<br>
-Arguments:<br>
-<br>
-- <var>DOCSYSTEM</var> <var>:</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).<br>
-- <var>MODULES</var> <var>:</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.<br>
-- <var>COMMAND-PREFIX</var> <var>:</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.<br>
-- <var>PARSE-DOCSTRINGS</var> <var>:</var> if <var>T</var>, then docstrings are parsed and highlighted and references to code from it created.<br>
-- ESCAPE-DOCSTRINGS: if <var>T</var>, then docstrings are escaped by the documentation system. Escaping allows the use of special documentation system characters in docstring sources. If the escaping of docstrings is turned off, then that allows to use documentation system markup in docstrings.<br>
+<p>Weaves documentation source in <var>FILE</var> and writes the result to <var>OUTPUT-FILE</var>.
+</p>
+<p>Arguments:
+</p>
+<p>- <var>DOCSYSTEM</var> <var>:</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).
+- <var>MODULES</var> <var>:</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.
+- <var>COMMAND-PREFIX</var> <var>:</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.
+- <var>PARSE-DOCSTRINGS</var> <var>:</var> if <var>T</var>, then docstrings are parsed and highlighted and references to code from it created.
+- ESCAPE-DOCSTRINGS: if <var>T</var>, then docstrings are escaped by the documentation system. Escaping allows the use of special documentation system characters in docstring sources. If the escaping of docstrings is turned off, then that allows to use documentation system markup in docstrings.
 Category: TopLevel
 </p></dd></dl>
 

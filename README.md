@@ -14,7 +14,7 @@ Texinfo and Markdown are the ones with best support at this moment.
 
 ## Usage
 
-Please have a look at the [manual](docs/cl-docweaver.pdf "manual").
+Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
 
 ### cl-docweaver command line command
 
@@ -25,7 +25,44 @@ make
 sudo make install
 ```
 
-After that, `cl-docweaver` command is available.
+After that, `cl-docweaver` command is available: 
+```
+cl-docweaver - Common Lisp Documentation Weaver
+
+USAGE: sbcl [OPTIONS] INPUTFILE
+
+Weave Common Lisp documentation in INPUTFILE.
+
+Options:
+  --version             display version information and exit
+  -h, --help            display help information and exit
+  -d, --debug           debug
+  -o FILE, --output FILE
+                        output file
+  -s DOCSYSTEM, --docsystem DOCSYSTEM
+                        the documentation system to use. either texinfo or
+                        markdown. if not specified, the documentation system
+                        used is inferred by looking at input file extension.
+  -m MODULES, --modules MODULES
+                        the list of modules to REQUIRE
+  -c COMMAND-PREFIX, --command-prefix COMMAND-PREFIX
+                        the command prefix character to use. Default is @
+  --parse-docstrings    When enabled, parse docstrings and format them. This is
+                        enabled by default.
+  --escape-docstrings   When enabled, escape the docstrings depending on the
+                        output. This is enabled by default.
+
+Examples:
+
+  Weave texinfo file and visualize weaved output
+
+      cl-docweaver my-documentation.texi
+
+  Weave texinfo file into a file
+
+      cl-docweaver my-documentation.texi -o my-documentation.weaved.texi
+
+```
 
 ## API
 

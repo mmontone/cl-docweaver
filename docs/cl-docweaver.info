@@ -118,7 +118,8 @@ command line.
      make
      sudo make install
 
-   Then use it like this: T
+   Then use it like this:
+
      cl-docweaver - Common Lisp Documentation Weaver
 
      USAGE: sbcl [OPTIONS] INPUTFILE
@@ -225,10 +226,8 @@ File: cl-docweaver.info,  Node: Commands,  Next: Documentation systems,  Prev: U
 
           Calls FUNCTION with each permutation of LENGTH constructable
           from the subsequence of SEQUENCE delimited by START and END.
-          START
-          defaults to 0, END to LENGTH of the SEQUENCE, and LENGTH to
-          the
-          LENGTH of the delimited subsequence.
+          START defaults to 0, END to LENGTH of the SEQUENCE, and LENGTH
+          to the LENGTH of the delimited subsequence.
 
      Like with *Note @clvariable::, a list of symbols is also accepted
      and definitions are expanded in sequence.
@@ -248,10 +247,9 @@ File: cl-docweaver.info,  Node: Commands,  Next: Documentation systems,  Prev: U
 
           Output OBJECT to STREAM with "#*note <: COMMON-LISP:<
           function." prefix, "*note >: COMMON-LISP:> function." suffix,
-          optionally
-          with object-type prefix and object-identity suffix, and
-          executing the
-          code in BODY to provide possible further output.
+          optionally with object-type prefix and object-identity suffix,
+          and executing the code in BODY to provide possible further
+          output.
 
      As in other commands, a list of symbols is also accepted; macro
      definitions are expanded in sequence.
@@ -529,19 +527,18 @@ their name:
 
  -- Function: COMMON-LISP:PROBE-FILE (sb-impl::pathspec)
 
-     Return the truename of PATHSPEC if the truename can be found,
-     or NIL otherwise.  See *note TRUENAME: COMMON-LISP:TRUENAME
-     function. for more information.
+     Return the truename of PATHSPEC if the truename can be found, or
+     NIL otherwise.  See *note TRUENAME: COMMON-LISP:TRUENAME function.
+     for more information.
  -- Function: COMMON-LISP:FILE-AUTHOR (sb-impl::pathspec)
 
      Return the author of the file specified by PATHSPEC.  Signal an
-     error of type if no such file exists, or if PATHSPEC
-     is a wild pathname.
+     error of type if no such file exists, or if PATHSPEC is a wild
+     pathname.
  -- Function: COMMON-LISP:RENAME-FILE (sb-impl::file sb-impl::new-name)
 
      Rename FILE to have the specified NEW-NAME.  If FILE is a stream
-     open to a
-     FILE, then the associated FILE is renamed.
+     open to a FILE, then the associated FILE is renamed.
  -- Function: COMMON-LISP:FILE-LENGTH (stream)
 
  -- Function: COMMON-LISP:FILE-POSITION (stream &optional position)
@@ -554,18 +551,15 @@ their name:
      Delete the specified FILE.
 
      If FILE is a stream, on Windows the stream is closed immediately.
-     On Unix
-     platforms the stream remains open, allowing IO to continue: the OS
-     resources
-     associated with the deleted FILE remain available till the stream
-     is closed as
-     per standard Unix unlink() behaviour.
+     On Unix platforms the stream remains open, allowing IO to continue:
+     the OS resources associated with the deleted FILE remain available
+     till the stream is closed as per standard Unix unlink() behaviour.
  -- Function: COMMON-LISP:COMPILE-FILE-PATHNAME (sb-c::input-file &key
           (sb-c::output-file nil sb-c::output-file-p) &allow-other-keys)
 
      Return a pathname describing what file *note COMPILE-FILE:
-     COMMON-LISP:COMPILE-FILE function. would write to given
-     these arguments.
+     COMMON-LISP:COMPILE-FILE function. would write to given these
+     arguments.
  -- Function: COMMON-LISP:COMPILE-FILE (sb-c::input-file &key
           (sb-c::output-file (sb-c::cfp-output-file-default
           sb-c::input-file)) ((:verbose *compile-verbose*)
@@ -577,51 +571,45 @@ their name:
      Compile INPUT-FILE, producing a corresponding fasl file and
      returning its filename.
 
-     :PRINT
-     If true, a message per non-macroexpanded top level form is printed
-     to *note *STANDARD-OUTPUT*: COMMON-LISP:*STANDARD-OUTPUT* variable.
-     Top level forms that whose subforms are
-     processed as top level forms (eg.  *note EVAL-WHEN:
-     COMMON-LISP:EVAL-WHEN function, *note MACROLET:
-     COMMON-LISP:MACROLET function, *note PROGN: COMMON-LISP:PROGN
-     function.) receive
-     no such message, but their subforms do.
+     :PRINT If true, a message per non-macroexpanded top level form is
+     printed to *note *STANDARD-OUTPUT*: COMMON-LISP:*STANDARD-OUTPUT*
+     variable.  Top level forms that whose subforms are processed as top
+     level forms (eg.  *note EVAL-WHEN: COMMON-LISP:EVAL-WHEN function,
+     *note MACROLET: COMMON-LISP:MACROLET function, *note PROGN:
+     COMMON-LISP:PROGN function.) receive no such message, but their
+     subforms do.
 
      As an extension to ANSI, if :PRINT is :TOP-LEVEL-FORMS, a message
      per top level form after macroexpansion is printed to *note
-     *STANDARD-OUTPUT*: COMMON-LISP:*STANDARD-OUTPUT* variable.
-     For example, compiling an *note IN-PACKAGE: COMMON-LISP:IN-PACKAGE
-     function. form will result in a message about
-     a top level *note SETQ: COMMON-LISP:SETQ function. in addition to
-     the message about the *note IN-PACKAGE: COMMON-LISP:IN-PACKAGE
-     function. form'
+     *STANDARD-OUTPUT*: COMMON-LISP:*STANDARD-OUTPUT* variable.  For
+     example, compiling an *note IN-PACKAGE: COMMON-LISP:IN-PACKAGE
+     function. form will result in a message about a top level *note
+     SETQ: COMMON-LISP:SETQ function. in addition to the message about
+     the *note IN-PACKAGE: COMMON-LISP:IN-PACKAGE function. form'
      itself.
 
      Both forms of reporting obey the *note
      SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*:
      SB-EXT:SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST* variable.
 
-     :BLOCK-COMPILE
-     Though *note COMPILE-FILE: COMMON-LISP:COMPILE-FILE function.
-     accepts an additional :BLOCK-COMPILE
-     argument, it is not currently supported.  (non-standard)
+     :BLOCK-COMPILE Though *note COMPILE-FILE: COMMON-LISP:COMPILE-FILE
+     function. accepts an additional :BLOCK-COMPILE argument, it is not
+     currently supported.  (non-standard)
 
-     :TRACE-FILE
-     If given, internal data structures are dumped to the specified
-     file, or if a value of is given, to a file of *note *:
-     COMMON-LISP:* function.trace type
-     derived from the input file name.  (non-standard)
+     :TRACE-FILE If given, internal data structures are dumped to the
+     specified file, or if a value of is given, to a file of *note *:
+     COMMON-LISP:* function.trace type derived from the input file name.
+     (non-standard)
 
-     :EMIT-CFASL
-     (Experimental).  If true, outputs the toplevel compile-time effects
-     of this file into a separate .cfasl file.
+     :EMIT-CFASL (Experimental).  If true, outputs the toplevel
+     compile-time effects of this file into a separate .cfasl file.
  -- Function: COMMON-LISP:FILE-ERROR-PATHNAME (condition)
 
  -- Function: COMMON-LISP:FILE-WRITE-DATE (sb-impl::pathspec)
 
-     Return the write date of the file specified by PATHSPEC.
-     An error of type is signaled if no such file exists,
-     or if PATHSPEC is a wild pathname.
+     Return the write date of the file specified by PATHSPEC.  An error
+     of type is signaled if no such file exists, or if PATHSPEC is a
+     wild pathname.
  -- Function: COMMON-LISP:FILE-STRING-LENGTH (stream sb-impl::object)
 
 Categorized definitions
@@ -667,14 +655,12 @@ Macros
  -- Macro: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER (command-name args (&key
           docsystem) &body body)
 
-     Define a weaver command handler.
-     COMMAND-NAME is the name of the command, without the prefix (like
-     'clvariable', 'clfunction', etc.)
+     Define a weaver command handler.  COMMAND-NAME is the name of the
+     command, without the prefix (like 'clvariable', 'clfunction', etc.)
      ARGS is the list of arguments for that command in the DOCSYSTEM
-     implementation.
-     DOCSYSTEM is a specializer for the documentation system.  For
-     example, (eql :TEXINFO).
-     BODY should write to an implicit variable, to expand the command.
+     implementation.  DOCSYSTEM is a specializer for the documentation
+     system.  For example, (eql :TEXINFO).  BODY should write to an
+     implicit variable, to expand the command.
 
      This is implemented as a wraper over *note PROCESS-WEAVER-COMMAND:
      DOCWEAVER:PROCESS-WEAVER-COMMAND function. .
@@ -704,18 +690,16 @@ Functions
      Arguments:
 
      - DOCSYSTEM : specify the documentation tool that is being used
-     (:TEXINFO, :MARKDOWN, etc.).
-     - MODULES : is the list of MODULES (or ASDF system names) that need
-     to be loaded to be able to read definition descriptions.
-     - COMMAND-PREFIX : is the character to use as prefix for commands.
-     The character 'at' is the default.
-     - PARSE-DOCSTRINGS : if T, then docstrings are parsed and
-     highlighted and references to code from it created.
-     - ESCAPE-DOCSTRINGS: if T, then docstrings are escaped by the
-     documentation system.  Escaping allows the use of special
-     documentation system characters in docstring sources.  If the
-     escaping of docstrings is turned off, then that allows to use
-     documentation system markup in docstrings.
+     (:TEXINFO, :MARKDOWN, etc.).  - MODULES : is the list of MODULES
+     (or ASDF system names) that need to be loaded to be able to read
+     definition descriptions.  - COMMAND-PREFIX : is the character to
+     use as prefix for commands.  The character 'at' is the default.  -
+     PARSE-DOCSTRINGS : if T, then docstrings are parsed and highlighted
+     and references to code from it created.  - ESCAPE-DOCSTRINGS: if T,
+     then docstrings are escaped by the documentation system.  Escaping
+     allows the use of special documentation system characters in
+     docstring sources.  If the escaping of docstrings is turned off,
+     then that allows to use documentation system markup in docstrings.
      Category: TopLevel
 
 
@@ -743,57 +727,57 @@ File: cl-docweaver.info,  Node: Index,  Prev: API,  Up: Top
  [index ]
 * Menu:
 
-* @clcapture-output:                     Commands.            (line 173)
-* @clclass:                              Commands.            (line 102)
-* @cleval:                               Commands.            (line 169)
+* @clcapture-output:                     Commands.            (line 170)
+* @clclass:                              Commands.            (line  99)
+* @cleval:                               Commands.            (line 166)
 * @clfunction:                           Commands.            (line  56)
-* @clmacro:                              Commands.            (line  79)
-* @clpackage:                            Commands.            (line 131)
-* @clref:                                Commands.            (line 157)
+* @clmacro:                              Commands.            (line  77)
+* @clpackage:                            Commands.            (line 128)
+* @clref:                                Commands.            (line 154)
 * @clvariable:                           Commands.            (line  24)
 * @setup:                                Commands.            (line   6)
 * ALEXANDRIA:FLATTEN:                    Usage.               (line  18)
 * ALEXANDRIA:FLATTEN <1>:                Usage.               (line  18)
 * ALEXANDRIA:MAP-PERMUTATIONS:           Commands.            (line  66)
 * ALEXANDRIA:MAP-PERMUTATIONS <1>:       Commands.            (line  66)
-* COMMON-LISP:COMPILE-FILE:              Lisp evaluation.     (line  70)
-* COMMON-LISP:COMPILE-FILE <1>:          Lisp evaluation.     (line  70)
-* COMMON-LISP:COMPILE-FILE-PATHNAME:     Lisp evaluation.     (line  64)
-* COMMON-LISP:COMPILE-FILE-PATHNAME <1>: Lisp evaluation.     (line  64)
-* COMMON-LISP:DELETE-FILE:               Lisp evaluation.     (line  53)
-* COMMON-LISP:DELETE-FILE <1>:           Lisp evaluation.     (line  53)
+* COMMON-LISP:COMPILE-FILE:              Lisp evaluation.     (line  66)
+* COMMON-LISP:COMPILE-FILE <1>:          Lisp evaluation.     (line  66)
+* COMMON-LISP:COMPILE-FILE-PATHNAME:     Lisp evaluation.     (line  60)
+* COMMON-LISP:COMPILE-FILE-PATHNAME <1>: Lisp evaluation.     (line  60)
+* COMMON-LISP:DELETE-FILE:               Lisp evaluation.     (line  52)
+* COMMON-LISP:DELETE-FILE <1>:           Lisp evaluation.     (line  52)
 * COMMON-LISP:FILE-AUTHOR:               Lisp evaluation.     (line  36)
 * COMMON-LISP:FILE-AUTHOR <1>:           Lisp evaluation.     (line  36)
-* COMMON-LISP:FILE-ERROR-PATHNAME:       Lisp evaluation.     (line 119)
-* COMMON-LISP:FILE-ERROR-PATHNAME <1>:   Lisp evaluation.     (line 119)
-* COMMON-LISP:FILE-LENGTH:               Lisp evaluation.     (line  46)
-* COMMON-LISP:FILE-LENGTH <1>:           Lisp evaluation.     (line  46)
-* COMMON-LISP:FILE-NAMESTRING:           Lisp evaluation.     (line  50)
-* COMMON-LISP:FILE-NAMESTRING <1>:       Lisp evaluation.     (line  50)
-* COMMON-LISP:FILE-POSITION:             Lisp evaluation.     (line  48)
-* COMMON-LISP:FILE-POSITION <1>:         Lisp evaluation.     (line  48)
-* COMMON-LISP:FILE-STRING-LENGTH:        Lisp evaluation.     (line 126)
-* COMMON-LISP:FILE-STRING-LENGTH <1>:    Lisp evaluation.     (line 126)
-* COMMON-LISP:FILE-WRITE-DATE:           Lisp evaluation.     (line 121)
-* COMMON-LISP:FILE-WRITE-DATE <1>:       Lisp evaluation.     (line 121)
-* COMMON-LISP:PRINT-UNREADABLE-OBJECT:   Commands.            (line  89)
-* COMMON-LISP:PRINT-UNREADABLE-OBJECT <1>: Commands.          (line  89)
+* COMMON-LISP:FILE-ERROR-PATHNAME:       Lisp evaluation.     (line 109)
+* COMMON-LISP:FILE-ERROR-PATHNAME <1>:   Lisp evaluation.     (line 109)
+* COMMON-LISP:FILE-LENGTH:               Lisp evaluation.     (line  45)
+* COMMON-LISP:FILE-LENGTH <1>:           Lisp evaluation.     (line  45)
+* COMMON-LISP:FILE-NAMESTRING:           Lisp evaluation.     (line  49)
+* COMMON-LISP:FILE-NAMESTRING <1>:       Lisp evaluation.     (line  49)
+* COMMON-LISP:FILE-POSITION:             Lisp evaluation.     (line  47)
+* COMMON-LISP:FILE-POSITION <1>:         Lisp evaluation.     (line  47)
+* COMMON-LISP:FILE-STRING-LENGTH:        Lisp evaluation.     (line 116)
+* COMMON-LISP:FILE-STRING-LENGTH <1>:    Lisp evaluation.     (line 116)
+* COMMON-LISP:FILE-WRITE-DATE:           Lisp evaluation.     (line 111)
+* COMMON-LISP:FILE-WRITE-DATE <1>:       Lisp evaluation.     (line 111)
+* COMMON-LISP:PRINT-UNREADABLE-OBJECT:   Commands.            (line  87)
+* COMMON-LISP:PRINT-UNREADABLE-OBJECT <1>: Commands.          (line  87)
 * COMMON-LISP:PROBE-FILE:                Lisp evaluation.     (line  31)
 * COMMON-LISP:PROBE-FILE <1>:            Lisp evaluation.     (line  31)
 * COMMON-LISP:READ:                      Lisp evaluation.     (line  11)
 * COMMON-LISP:READ <1>:                  Lisp evaluation.     (line  11)
 * COMMON-LISP:RENAME-FILE:               Lisp evaluation.     (line  41)
 * COMMON-LISP:RENAME-FILE <1>:           Lisp evaluation.     (line  41)
-* DOCWEAVER/UTILS:BAR:                   Lisp evaluation.     (line 143)
-* DOCWEAVER/UTILS:BAR <1>:               Lisp evaluation.     (line 143)
-* DOCWEAVER/UTILS:FOO:                   Lisp evaluation.     (line 148)
-* DOCWEAVER/UTILS:FOO <1>:               Lisp evaluation.     (line 148)
+* DOCWEAVER/UTILS:BAR:                   Lisp evaluation.     (line 133)
+* DOCWEAVER/UTILS:BAR <1>:               Lisp evaluation.     (line 133)
+* DOCWEAVER/UTILS:FOO:                   Lisp evaluation.     (line 138)
+* DOCWEAVER/UTILS:FOO <1>:               Lisp evaluation.     (line 138)
 * DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER:  API.                 (line  14)
 * DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER <1>: API.              (line  14)
-* DOCWEAVER:PROCESS-WEAVER-COMMAND:      API.                 (line  32)
-* DOCWEAVER:PROCESS-WEAVER-COMMAND <1>:  API.                 (line  32)
-* DOCWEAVER:WEAVE-FILE:                  API.                 (line  44)
-* DOCWEAVER:WEAVE-FILE <1>:              API.                 (line  44)
+* DOCWEAVER:PROCESS-WEAVER-COMMAND:      API.                 (line  30)
+* DOCWEAVER:PROCESS-WEAVER-COMMAND <1>:  API.                 (line  30)
+* DOCWEAVER:WEAVE-FILE:                  API.                 (line  42)
+* DOCWEAVER:WEAVE-FILE <1>:              API.                 (line  42)
 
 
 
@@ -807,39 +791,39 @@ Node: Usage1963
 Ref: usage2069
 Ref: ALEXANDRIA:FLATTEN function2581
 Node: Command Line3281
-Node: Commands4965
-Ref: commands5086
-Ref: COMMON-LISP:*STANDARD-OUTPUT* variable5865
-Ref: COMMON-LISP:*COMPILE-PRINT* variable6139
-Ref: COMMON-LISP:*COMPILE-VERBOSE* variable6292
-Ref: ALEXANDRIA:MAP-PERMUTATIONS function6659
-Ref: COMMON-LISP:PRINT-UNREADABLE-OBJECT macro7379
-Ref: ASDF/COMPONENT:COMPONENT class8110
-Node: Documentation systems10181
-Node: Texinfo10360
-Node: common-lisp.texi11195
-Node: Tips and tricks13968
-Node: Lisp evaluation14138
-Ref: COMMON-LISP:READ function14469
-Ref: COMMON-LISP:PROBE-FILE function15006
-Ref: COMMON-LISP:FILE-AUTHOR function15233
-Ref: COMMON-LISP:RENAME-FILE function15444
-Ref: COMMON-LISP:FILE-LENGTH function15650
-Ref: COMMON-LISP:FILE-POSITION function15698
-Ref: COMMON-LISP:FILE-NAMESTRING function15767
-Ref: COMMON-LISP:DELETE-FILE function15882
-Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function16273
-Ref: COMMON-LISP:COMPILE-FILE function16565
-Ref: COMMON-LISP:FILE-ERROR-PATHNAME function18754
-Ref: COMMON-LISP:FILE-WRITE-DATE function18813
-Ref: COMMON-LISP:FILE-STRING-LENGTH function19036
-Ref: DOCWEAVER/UTILS:BAR function19571
-Ref: DOCWEAVER/UTILS:FOO function19690
-Node: API19810
-Ref: api19910
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro19992
-Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function20666
-Ref: DOCWEAVER:WEAVE-FILE function21003
-Node: Index22082
+Node: Commands4964
+Ref: commands5085
+Ref: COMMON-LISP:*STANDARD-OUTPUT* variable5864
+Ref: COMMON-LISP:*COMPILE-PRINT* variable6138
+Ref: COMMON-LISP:*COMPILE-VERBOSE* variable6291
+Ref: ALEXANDRIA:MAP-PERMUTATIONS function6658
+Ref: COMMON-LISP:PRINT-UNREADABLE-OBJECT macro7358
+Ref: ASDF/COMPONENT:COMPONENT class8079
+Node: Documentation systems10150
+Node: Texinfo10329
+Node: common-lisp.texi11164
+Node: Tips and tricks13937
+Node: Lisp evaluation14107
+Ref: COMMON-LISP:READ function14438
+Ref: COMMON-LISP:PROBE-FILE function14975
+Ref: COMMON-LISP:FILE-AUTHOR function15202
+Ref: COMMON-LISP:RENAME-FILE function15413
+Ref: COMMON-LISP:FILE-LENGTH function15614
+Ref: COMMON-LISP:FILE-POSITION function15662
+Ref: COMMON-LISP:FILE-NAMESTRING function15731
+Ref: COMMON-LISP:DELETE-FILE function15846
+Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function16222
+Ref: COMMON-LISP:COMPILE-FILE function16514
+Ref: COMMON-LISP:FILE-ERROR-PATHNAME function18674
+Ref: COMMON-LISP:FILE-WRITE-DATE function18733
+Ref: COMMON-LISP:FILE-STRING-LENGTH function18957
+Ref: DOCWEAVER/UTILS:BAR function19492
+Ref: DOCWEAVER/UTILS:FOO function19611
+Node: API19731
+Ref: api19831
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro19913
+Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function20580
+Ref: DOCWEAVER:WEAVE-FILE function20917
+Node: Index21991
 
 End Tag Table

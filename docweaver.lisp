@@ -151,4 +151,13 @@ If the option is disabled, then STRING is returned witout escaping."
       (funcall function string)
       string))
 
+(def-weaver-command-handler cleval (expression)
+    (:docsystem t)
+  (princ (eval expression) stream))
+
+(def-weaver-command-handler clcapture-output (expression)
+    (:docsystem t)
+  (let ((*standard-output* stream))
+    (eval expression)))
+
 (provide :docweaver)

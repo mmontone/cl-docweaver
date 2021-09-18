@@ -282,15 +282,6 @@
 	    (texinfo-define-class class-name stream)
 	    (terpri stream)))))
 
-(def-weaver-command-handler cleval (expression)
-    (:docsystem (eql :texinfo))
-  (princ (eval expression) stream))
-
-(def-weaver-command-handler clcapture-output (expression)
-    (:docsystem (eql :texinfo))
-  (let ((*standard-output* stream))
-    (eval expression)))
-
 (defun docstring-category (docstring)
   "Extracts category from docstring, when found."
   (let* ((category-regex "Category:\\s*(.*)"))
