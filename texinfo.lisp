@@ -420,7 +420,7 @@ CATEGORIZED controls how to categorize the expanded package definitions:
     (format stream "@deftp PACKAGE ~a~%" (package-name package))
     (terpri stream)
     (when (documentation package t)
-      (write-string (texinfo-format (documentation package t)) stream)
+      (write-string (texinfo-format (texinfo-escape (documentation package t))) stream)
       (terpri stream) (terpri stream))
     (format stream "@end deftp")
     (terpri stream) (terpri stream)
@@ -482,7 +482,7 @@ CATEGORIZED controls how to categorize the expanded package definitions:
         do
            (cond
              ((stringp word)
-              (write-string (texinfo-format word) stream))
+              (write-string (texinfo-format (texinfo-escape word)) stream))
              ((and (listp word) (eql (car word) :arg))
               (format stream "@var{~a}" (second word)))
              ((and (listp word) (eql (car word) :fn))

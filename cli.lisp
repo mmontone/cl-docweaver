@@ -64,6 +64,18 @@ if not specified, the documentation system used is inferred by looking at input 
 		     :help (format nil "the command prefix character to use. Default is @")
 		     :reduce #'adopt:last))
 
+(defparameter *option-parse-docstrings*
+  (adopt:make-option 'parse-docstrings
+                     :long "parse-docstrings"
+                     :help "When enabled, parse docstrings and format them. This is enabled by default."
+                     :reduce (constantly t)))
+
+(defparameter *option-escape-docstrings*
+  (adopt:make-option 'escape-docstrings
+                     :long "escape-docstrings"
+                     :help "When enabled, escape the docstrings depending on the output. This is enabled by default."
+                     :reduce (constantly t)))
+
 (defparameter *ui*
   (adopt:make-interface
    :name "cl-docweaver"
@@ -73,10 +85,10 @@ if not specified, the documentation system used is inferred by looking at input 
                 "cl-docweaver my-documentation.texi")
                ("Weave texinfo file into a file" .
                 "cl-docweaver my-documentation.texi -o my-documentation.weaved.texi"))
-   :contents (list *option-version* *option-help* *option-debug* *option-output* *option-docsystem* *option-modules* *option-command-prefix*)
+   :contents (list *option-version* *option-help* *option-debug* *option-output* *option-docsystem* *option-modules* *option-command-prefix* *option-parse-docstrings* *option-escape-docstrings*)
    :help *help-text*))
 
-(defun run (input-file &key output docsystem modules command-prefix debug)
+(defun run (input-file &key output docsystem modules command-prefix debug parse-docstrings escape-docstrings)
   (let (input-pathname output-pathname docsystem-discriminator)
 
     (setf input-pathname (pathname input-file))
@@ -115,7 +127,9 @@ if not specified, the documentation system used is inferred by looking at input 
 	   `(:docsystem ,docsystem-discriminator
 	     :modules ,modules
 	     ,@(when command-prefix
-		 `(:command-prefix ,(coerce command-prefix 'character)))))))
+		 `(:command-prefix ,(coerce command-prefix 'character)))
+	     :parse-docstrings ,parse-docstrings
+	     :escape-docstrings ,escape-docstrings))))
 
 (defvar *debug* nil)
 
@@ -140,7 +154,9 @@ if not specified, the documentation system used is inferred by looking at input 
                :docsystem (gethash 'docsystem options)
 	       :debug (gethash 'debug options)
 	       :modules (gethash 'modules options)
-	       :command-prefix (gethash 'command-prefix options))))
+	       :command-prefix (gethash 'command-prefix options)
+	       :parse-docstrings (gethash 'parse-docstrings options)
+	       :escape-docstrings (gethash 'escape-docstrings options))))
     (error (c)
       (when *debug*
 	(trivial-backtrace:print-backtrace c))

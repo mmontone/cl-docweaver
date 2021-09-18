@@ -4,7 +4,7 @@
 @settitle Common Lisp Documentation Weaver
 @syncodeindex pg cp
 @setfilename cl-docweaver.info
-@include ../common-lisp.texi
+@include common-lisp.texi
 
 @copying
 
@@ -307,7 +307,7 @@ You can use the macros in @code{common-lisp.texi} to define your own Common Lisp
 
 Have a look at the source to figure out more about how they are used:
 
-@verbatiminclude ../common-lisp.texi
+@verbatiminclude common-lisp.texi
 
 The @code{common-lisp.texi} file is required to be included in the file being weaved by CL-DOCWEAVER for the Texinfo documentation system, as the implementation expands to macros found in @code{common-lisp.texi}.
 

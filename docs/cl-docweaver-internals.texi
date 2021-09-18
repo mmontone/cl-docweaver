@@ -4,7 +4,7 @@
 @settitle Common Lisp Documentation Weaver
 @syncodeindex pg cp
 @setfilename cl-docweaver.info
-@include ../common-lisp.texi
+@include common-lisp.texi
 
 @copying
 

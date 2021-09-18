@@ -110,7 +110,13 @@ This is implemented as a wraper over PROCESS-WEAVER-COMMAND ."
       (getf *config* key)
       (getf +default-config+ key)))
 
-(defun weave-file (file output-file &rest options &key docsystem modules command-prefix (parse-docstrings t))
+(defun weave-file (file output-file &rest options
+		   &key
+		     docsystem
+		     modules
+		     command-prefix
+		     (parse-docstrings t)
+		     (escape-docstrings t))
   "Weaves documentation source in FILE and writes the result to OUTPUT-FILE.
 
 Arguments:
@@ -118,8 +124,8 @@ Arguments:
 - DOCSYSTEM : specify the documentation tool that is being used (:texinfo, :markdown, etc.).
 - MODULES : is the list of modules (or ASDF system names) that need to be loaded to be able to read definition descriptions.
 - COMMAND-PREFIX : is the character to use as prefix for commands. The character `at` is the default.
-- PARSE-DOCSTRINGS : if T, then docstings are parsed and highlighted and references to code from it created.
-
+- PARSE-DOCSTRINGS : if T, then docstrings are parsed and highlighted and references to code from it created.
+- ESCAPE-DOCSTRINGS: if T, then docstrings are escaped by the documentation system. Escaping allows the use of special documentation system characters in docstring sources. If the escaping of docstrings is turned off, then that allows to use documentation system markup in docstrings.
 Category: TopLevel"
   (loop for module-name in modules do (require module-name))
   (with-open-file (output output-file :direction :output

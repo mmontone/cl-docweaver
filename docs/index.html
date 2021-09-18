@@ -230,7 +230,11 @@ Options:
   -m MODULES, --modules MODULES
                         the list of modules to REQUIRE
   -c COMMAND-PREFIX, --command-prefix COMMAND-PREFIX
-                        the command prefix character to use. Default is &nbsp;
+                        the command prefix character to use. Default is &nbsp;  --parse-docstrings    When enabled, parse docstrings and format them. This is
+                        enabled by default.
+  --escape-docstrings   When enabled, escape the docstrings depending on the
+                        output. This is enabled by default.
+
 Examples:
 
   Weave texinfo file and visualize weaved output
@@ -810,7 +814,7 @@ See: &lsquo;DEF-WEAVER-COMMAND-HANDLER&rsquo;
 <span id="Functions"></span><h4 class="subheading">Functions</h4>
 <span id="index-DOCWEAVER_003aWEAVE_002dFILE"></span>
 <span id="DOCWEAVER_003aWEAVE_002dFILE-function"></span><dl>
-<dt id="index-DOCWEAVER_003aWEAVE_002dFILE-1">Function: <strong>DOCWEAVER:WEAVE-FILE</strong> <em>(file output-file &amp;rest options &amp;key docsystem modules command-prefix (parse-docstrings t))</em></dt>
+<dt id="index-DOCWEAVER_003aWEAVE_002dFILE-1">Function: <strong>DOCWEAVER:WEAVE-FILE</strong> <em>(file output-file &amp;rest options &amp;key docsystem modules command-prefix (parse-docstrings t) (escape-docstrings t))</em></dt>
 <dd>
 <p>Weaves documentation source in <var>FILE</var> and writes the result to <var>OUTPUT-FILE</var>.<br>
 <br>
@@ -819,8 +823,8 @@ Arguments:<br>
 - <var>DOCSYSTEM</var> <var>:</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).<br>
 - <var>MODULES</var> <var>:</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.<br>
 - <var>COMMAND-PREFIX</var> <var>:</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.<br>
-- <var>PARSE-DOCSTRINGS</var> <var>:</var> if <var>T</var>, then docstings are parsed and highlighted and references to code from it created.<br>
-<br>
+- <var>PARSE-DOCSTRINGS</var> <var>:</var> if <var>T</var>, then docstrings are parsed and highlighted and references to code from it created.<br>
+- ESCAPE-DOCSTRINGS: if <var>T</var>, then docstrings are escaped by the documentation system. Escaping allows the use of special documentation system characters in docstring sources. If the escaping of docstrings is turned off, then that allows to use documentation system markup in docstrings.<br>
 Category: TopLevel
 </p></dd></dl>
 

@@ -138,7 +138,11 @@ command line.
        -m MODULES, --modules MODULES
                              the list of modules to REQUIRE
        -c COMMAND-PREFIX, --command-prefix COMMAND-PREFIX
-                             the command prefix character to use. Default is  
+                             the command prefix character to use. Default is    --parse-docstrings    When enabled, parse docstrings and format them. This is
+                             enabled by default.
+       --escape-docstrings   When enabled, escape the docstrings depending on the
+                             output. This is enabled by default.
+
      Examples:
 
        Weave texinfo file and visualize weaved output
@@ -691,7 +695,8 @@ Functions
 ---------
 
  -- Function: DOCWEAVER:WEAVE-FILE (file output-file &rest options &key
-          docsystem modules command-prefix (parse-docstrings t))
+          docsystem modules command-prefix (parse-docstrings t)
+          (escape-docstrings t))
 
      Weaves documentation source in FILE and writes the result to
      OUTPUT-FILE.
@@ -704,9 +709,13 @@ Functions
      to be loaded to be able to read definition descriptions.
      - COMMAND-PREFIX : is the character to use as prefix for commands.
      The character 'at' is the default.
-     - PARSE-DOCSTRINGS : if T, then docstings are parsed and
+     - PARSE-DOCSTRINGS : if T, then docstrings are parsed and
      highlighted and references to code from it created.
-
+     - ESCAPE-DOCSTRINGS: if T, then docstrings are escaped by the
+     documentation system.  Escaping allows the use of special
+     documentation system characters in docstring sources.  If the
+     escaping of docstrings is turned off, then that allows to use
+     documentation system markup in docstrings.
      Category: TopLevel
 
 
@@ -798,39 +807,39 @@ Node: Usage1963
 Ref: usage2069
 Ref: ALEXANDRIA:FLATTEN function2581
 Node: Command Line3281
-Node: Commands4689
-Ref: commands4810
-Ref: COMMON-LISP:*STANDARD-OUTPUT* variable5589
-Ref: COMMON-LISP:*COMPILE-PRINT* variable5863
-Ref: COMMON-LISP:*COMPILE-VERBOSE* variable6016
-Ref: ALEXANDRIA:MAP-PERMUTATIONS function6383
-Ref: COMMON-LISP:PRINT-UNREADABLE-OBJECT macro7103
-Ref: ASDF/COMPONENT:COMPONENT class7834
-Node: Documentation systems9905
-Node: Texinfo10084
-Node: common-lisp.texi10919
-Node: Tips and tricks13692
-Node: Lisp evaluation13862
-Ref: COMMON-LISP:READ function14193
-Ref: COMMON-LISP:PROBE-FILE function14730
-Ref: COMMON-LISP:FILE-AUTHOR function14957
-Ref: COMMON-LISP:RENAME-FILE function15168
-Ref: COMMON-LISP:FILE-LENGTH function15374
-Ref: COMMON-LISP:FILE-POSITION function15422
-Ref: COMMON-LISP:FILE-NAMESTRING function15491
-Ref: COMMON-LISP:DELETE-FILE function15606
-Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function15997
-Ref: COMMON-LISP:COMPILE-FILE function16289
-Ref: COMMON-LISP:FILE-ERROR-PATHNAME function18478
-Ref: COMMON-LISP:FILE-WRITE-DATE function18537
-Ref: COMMON-LISP:FILE-STRING-LENGTH function18760
-Ref: DOCWEAVER/UTILS:BAR function19295
-Ref: DOCWEAVER/UTILS:FOO function19414
-Node: API19534
-Ref: api19634
-Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro19716
-Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function20390
-Ref: DOCWEAVER:WEAVE-FILE function20727
-Node: Index21462
+Node: Commands4965
+Ref: commands5086
+Ref: COMMON-LISP:*STANDARD-OUTPUT* variable5865
+Ref: COMMON-LISP:*COMPILE-PRINT* variable6139
+Ref: COMMON-LISP:*COMPILE-VERBOSE* variable6292
+Ref: ALEXANDRIA:MAP-PERMUTATIONS function6659
+Ref: COMMON-LISP:PRINT-UNREADABLE-OBJECT macro7379
+Ref: ASDF/COMPONENT:COMPONENT class8110
+Node: Documentation systems10181
+Node: Texinfo10360
+Node: common-lisp.texi11195
+Node: Tips and tricks13968
+Node: Lisp evaluation14138
+Ref: COMMON-LISP:READ function14469
+Ref: COMMON-LISP:PROBE-FILE function15006
+Ref: COMMON-LISP:FILE-AUTHOR function15233
+Ref: COMMON-LISP:RENAME-FILE function15444
+Ref: COMMON-LISP:FILE-LENGTH function15650
+Ref: COMMON-LISP:FILE-POSITION function15698
+Ref: COMMON-LISP:FILE-NAMESTRING function15767
+Ref: COMMON-LISP:DELETE-FILE function15882
+Ref: COMMON-LISP:COMPILE-FILE-PATHNAME function16273
+Ref: COMMON-LISP:COMPILE-FILE function16565
+Ref: COMMON-LISP:FILE-ERROR-PATHNAME function18754
+Ref: COMMON-LISP:FILE-WRITE-DATE function18813
+Ref: COMMON-LISP:FILE-STRING-LENGTH function19036
+Ref: DOCWEAVER/UTILS:BAR function19571
+Ref: DOCWEAVER/UTILS:FOO function19690
+Node: API19810
+Ref: api19910
+Ref: DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER macro19992
+Ref: DOCWEAVER:PROCESS-WEAVER-COMMAND function20666
+Ref: DOCWEAVER:WEAVE-FILE function21003
+Node: Index22082
 
 End Tag Table
