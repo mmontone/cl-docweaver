@@ -24,15 +24,18 @@
 
 ;;(texinfo-format-urls "foo bar http://google.com lala")
 
-(defun texinfo-format (string)
+(defun texinfo-format (string &key (parse-urls t)
+				(add-line-breaks (getf docweaver::*config* :escape-docstrings)))
   "Add linebreaks and parse urls."
   (let (formatted)
     (setq formatted string)
-    (setq formatted (texinfo-format-urls formatted))
-    (setq formatted
-      (str:replace-all (coerce (list #\newline) 'string)
-		       (coerce (list #\@ #\* #\newline) 'string)
-		       formatted))
+    (when parse-urls
+      (setq formatted (texinfo-format-urls formatted)))
+    (when add-line-breaks
+      (setq formatted
+	    (str:replace-all (coerce (list #\newline) 'string)
+			     (coerce (list #\@ #\* #\newline) 'string)
+			     formatted)))
     formatted))
 
 (defun source-anchor-name (source-file line-number)
@@ -53,7 +56,7 @@
           while line
           do
              (format output "@anchor{~a}" (source-anchor-name source-file line-number))
-             (write-string (texinfo-escape line) output)
+             (write-string (docweaver::maybe-escape line 'texinfo-escape) output)
              (write-string "@*" output)
              (terpri output))))
 
@@ -420,7 +423,7 @@ CATEGORIZED controls how to categorize the expanded package definitions:
     (format stream "@deftp PACKAGE ~a~%" (package-name package))
     (terpri stream)
     (when (documentation package t)
-      (write-string (texinfo-format (texinfo-escape (documentation package t))) stream)
+      (write-string (texinfo-format (docweaver::maybe-escape (documentation package t) 'texinfo-escape)) stream)
       (terpri stream) (terpri stream))
     (format stream "@end deftp")
     (terpri stream) (terpri stream)
@@ -482,7 +485,7 @@ CATEGORIZED controls how to categorize the expanded package definitions:
         do
            (cond
              ((stringp word)
-              (write-string (texinfo-format (texinfo-escape word)) stream))
+              (write-string (texinfo-format (docweaver::maybe-escape word 'texinfo-escape)) stream))
              ((and (listp word) (eql (car word) :arg))
               (format stream "@var{~a}" (second word)))
              ((and (listp word) (eql (car word) :fn))

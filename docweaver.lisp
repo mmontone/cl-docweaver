@@ -143,4 +143,12 @@ Category: TopLevel"
     (require module-name))
   (setf *config* args))
 
+(defun maybe-escape (string function)
+  "Escape STRING using FUNCTION, only if :ESCAPE-DOCSTRINGS option is enabled.
+
+If the option is disabled, then STRING is returned witout escaping."
+  (if (getf *config* :escape-docstrings)
+      (funcall function string)
+      string))
+
 (provide :docweaver)

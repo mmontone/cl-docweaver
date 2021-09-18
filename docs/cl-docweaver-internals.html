@@ -294,6 +294,15 @@ Category: TopLevel
 <p>Reads <var>KEY</var> in current <a href="#DOCWEAVER_003a_002aCONFIG_002a-variable">*CONFIG*</a>. Returns default in <a href="#DOCWEAVER_003a_002bDEFAULT_002dCONFIG_002b-variable">+DEFAULT-CONFIG+</a> if <var>KEY</var> is not set.
 </p></dd></dl>
 
+<span id="index-DOCWEAVER_003aMAYBE_002dESCAPE"></span>
+<span id="DOCWEAVER_003aMAYBE_002dESCAPE-function"></span><dl>
+<dt id="index-DOCWEAVER_003aMAYBE_002dESCAPE-1">Function: <strong>DOCWEAVER:MAYBE-ESCAPE</strong> <em>(string function)</em></dt>
+<dd>
+<p>Escape <var>STRING</var> using <var>FUNCTION</var>, only if <var>:ESCAPE-DOCSTRINGS</var> option is enabled.<br>
+<br>
+If the option is disabled, then <var>STRING</var> is returned witout escaping.
+</p></dd></dl>
+
 <span id="index-DOCWEAVER_003aPACKAGE_002dVARIABLES"></span>
 <span id="DOCWEAVER_003aPACKAGE_002dVARIABLES-function"></span><dl>
 <dt id="index-DOCWEAVER_003aPACKAGE_002dVARIABLES-1">Function: <strong>DOCWEAVER:PACKAGE-VARIABLES</strong> <em>(package)</em></dt>
@@ -389,6 +398,8 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aDOCSYSTEM_002dWEAVE_002dFILE-1"><code>DOCWEAVER:DOCSYSTEM-WEAVE-FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aGENERATE_002dTEXINFO_002dREFERENCE_002dFOR_002dPACKAGE"><code>DOCWEAVER:GENERATE-TEXINFO-REFERENCE-FOR-PACKAGE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aGENERATE_002dTEXINFO_002dREFERENCE_002dFOR_002dPACKAGE-1"><code>DOCWEAVER:GENERATE-TEXINFO-REFERENCE-FOR-PACKAGE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aMAYBE_002dESCAPE"><code>DOCWEAVER:MAYBE-ESCAPE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aMAYBE_002dESCAPE-1"><code>DOCWEAVER:MAYBE-ESCAPE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPACKAGE_002dFUNCTIONS"><code>DOCWEAVER:PACKAGE-FUNCTIONS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPACKAGE_002dFUNCTIONS-1"><code>DOCWEAVER:PACKAGE-FUNCTIONS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DOCWEAVER_003aPACKAGE_002dSYMBOLS"><code>DOCWEAVER:PACKAGE-SYMBOLS</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#API">API</a></td></tr>
