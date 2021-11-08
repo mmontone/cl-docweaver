@@ -479,6 +479,16 @@ CATEGORIZED controls how to categorize the expanded package definitions:
               (write-string (texinfo-format (docweaver::maybe-escape word 'texinfo-escape)) stream))
              ((and (listp word) (eql (car word) :arg))
               (format stream "@var{~a}" (second word)))
+	     ((and (listp word) (eql (car word) :special-operator))
+              (format stream "@code{~a}" (second word)))
+	     ((and (listp word) (eql (car word) :macro))
+              ;; makeinfo command can be called with --no-validate option for this.
+              ;; in Emacs, customize makeinfo-options variable (add --no-validate option)
+              (format stream "@clref{~a, ~a, macro}"
+		      (package-name (symbol-package (third word)))
+		      (second word))
+              ;;(format stream "@code{~a}" (second word))
+              )
              ((and (listp word) (eql (car word) :fn))
               ;; makeinfo command can be called with --no-validate option for this.
               ;; in Emacs, customize makeinfo-options variable (add --no-validate option)
