@@ -11,4 +11,4 @@
 	       (:file "texinfo")
 	       (:file "markdown")
 	       (:file "utils"))
-  :depends-on (:assoc-utils :str :cl-ppcre :groupby))
+  :depends-on (:assoc-utils :str :cl-ppcre :groupby :def-properties))

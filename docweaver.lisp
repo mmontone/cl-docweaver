@@ -1,7 +1,3 @@
-;;;; docweaver.lisp
-
-(require :def-properties (asdf:system-relative-pathname :docweaver "def-properties.lisp"))
-
 (in-package #:docweaver)
 
 ;; This embeds a CL function, reading its structure and documentation from Lisp process:
