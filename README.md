@@ -12,9 +12,13 @@ CL-DOCWEAVER is easy to extend to support different documentation tools.
 
 Texinfo and Markdown are the ones with best support at this moment.
 
+## Install
+
+Depends on https://github.com/mmontone/cl-def-properties. You need to install that first.
+
 ## Usage
 
-Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
+Please have a look at the [manual](docs/cl-docweaver.pdf "manual").
 
 ### cl-docweaver command line command
 
