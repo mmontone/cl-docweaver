@@ -14,7 +14,7 @@ Texinfo and Markdown are the ones with best support at this moment.
 
 ## Install
 
-Depends on https://github.com/mmontone/cl-def-properties. You need to install that first.
+Depends on [cl-def-properties](https://github.com/mmontone/cl-def-properties). You need to install that first.
 
 ## Usage
 
