@@ -223,8 +223,10 @@
 			  (lambda (name things)
                             (if things
 				(list name (length things) things)))
-			  '("initarg" "reader"  "writer")
+			  '("type" "initarg" "reader"  "writer")
 			  (list
+                           (alexandria:when-let (type (c2mop:slot-definition-type slot))
+                             (list type))
 			   (c2mop:slot-definition-initargs slot)
 			   (c2mop:slot-definition-readers slot)
 			   (c2mop:slot-definition-writers slot)))))
