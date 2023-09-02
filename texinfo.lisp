@@ -183,14 +183,6 @@
           t ; don't return number from MISMATCH
           ))))
 
-(defun hide-slot-p (symbol slot)
-  ;; FIXME: There is no pricipal reason to avoid the slot docs fo
-  ;; structures and conditions, but their DOCUMENTATION T doesn't
-  ;; currently work with them the way we'd like.
-  (not (and (typep (find-class symbol nil) 'standard-class)
-            (cl:documentation slot t))))
-
-
 (defun texinfo-define-class (class-symbol stream)
   (let ((class-info (def-properties:class-properties class-symbol))
 	(class (find-class class-symbol)))
@@ -217,8 +209,7 @@
                              (mapcar #'class-name (ensure-class-precedence-list class))))
 	  
 	  ;; slots
-	  (let ((slots (remove-if (lambda (slot) (hide-slot-p class-symbol slot))
-				  (c2mop:class-direct-slots class))))
+	  (let ((slots (c2mop:class-direct-slots class)))
             (when slots
               (format stream "Slots:~%@itemize~%")
               (dolist (slot slots)
@@ -238,7 +229,8 @@
 			   (c2mop:slot-definition-readers slot)
 			   (c2mop:slot-definition-writers slot)))))
 		;; FIXME: Would be neater to handler as children
-		(write-string (cl:documentation slot t) stream))
+                (alexandria:when-let (slot-doc (cl:documentation slot t))
+                  (write-string slot-doc stream)))
               (format stream "@end itemize~%~%")))
           (write-string "@endcldefclass" stream)))))
 
