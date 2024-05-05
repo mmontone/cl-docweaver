@@ -166,5 +166,5 @@ if not specified, the documentation system used is inferred by looking at input 
   (sb-ext:save-lisp-and-die "cl-docweaver"
                             :save-runtime-options t
                             :executable t
-			    :compression t
+			    :compression (member :SB-CORE-COMPRESSION *features*)
                             :toplevel #'toplevel))
