@@ -1,5 +1,3 @@
-(@setup :command-prefix #\$ :docsystem :markdown)
-
 # CL-DOCWEAVER
 
 CL-DOCWEAVER is a document weaver for Common Lisp.
@@ -14,7 +12,7 @@ Texinfo and Markdown are the ones with best support at this moment.
 
 ## Usage
 
-Plase have a look at the [manual](docs/cl-docweaver.pdf "manual").
+Please have a look at the [manual](docs/cl-docweaver.pdf "manual").
 
 ### cl-docweaver command line command
 

@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- 
 Copyright (C) 2021 Mariano Montone
 
@@ -9,9 +12,6 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
 Texts.  A copy of the license is included in the section entitled
 "GNU Free Documentation License". -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Common Lisp Documentation Weaver</title>
 
 <meta name="description" content="Common Lisp Documentation Weaver">
@@ -19,16 +19,19 @@ Texts.  A copy of the license is included in the section entitled
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <link href="#Index" rel="index" title="Index">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="#Introduction" rel="next" title="Introduction">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -37,6 +40,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -71,7 +75,22 @@ ul.no-bullet {list-style: none}
 
 
 
-<span id="SEC_Contents"></span>
+
+<div class="top" id="Top">
+<div class="header">
+<p>
+Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Top-1"></span><h1 class="top">Top</h1>
+<span id="index-docweaver"></span>
+<span id="index-cl_002ddocweaver"></span>
+
+<p><em>CL-DOCWEAVER</em> is a document weaver for Common Lisp.
+</p>
+<p>Documentation for a Lisp project is written with the user&rsquo;s tool of choice (like Texinfo, Markdown, etc). Then, Common Lisp definitions are expanded into the documentation source using DocWeaver commands.
+</p>
+
+<div class="Contents_element" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
@@ -99,41 +118,10 @@ ul.no-bullet {list-style: none}
   <li><a id="toc-Index-1" href="#Index" rel="index">8 Index</a></li>
 </ul>
 </div>
-
-
-<span id="Top"></span><div class="header">
-<p>
-Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Top-1"></span><h1 class="top">Top</h1>
-<span id="index-docweaver"></span>
-<span id="index-cl_002ddocweaver"></span>
-
-<p><em>CL-DOCWEAVER</em> is a document weaver for Common Lisp.
-</p>
-<p>Documentation for a Lisp project is written with the user&rsquo;s tool of choice (like Texinfo, Markdown, etc). Then, Common Lisp definitions are expanded into the documentation source using DocWeaver commands.
-</p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Installation" accesskey="2">Installation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Usage" accesskey="3">Usage</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Commands" accesskey="4">Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Documentation-systems" accesskey="5">Documentation systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Tips-and-tricks" accesskey="6">Tips and tricks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#API" accesskey="7">API</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Index" rel="index" accesskey="8">Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
 <hr>
-<span id="Introduction"></span><div class="header">
+<div class="chapter" id="Introduction">
+<div class="header">
 <p>
 Next: <a href="#Installation" accesskey="n" rel="next">Installation</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -150,7 +138,9 @@ Next: <a href="#Installation" accesskey="n" rel="next">Installation</a>, Previou
 <p>Texinfo and Markdown are the ones with best support at this moment.
 </p>
 <hr>
-<span id="Installation"></span><div class="header">
+</div>
+<div class="chapter" id="Installation">
+<div class="header">
 <p>
 Next: <a href="#Usage" accesskey="n" rel="next">Usage</a>, Previous: <a href="#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -158,7 +148,9 @@ Next: <a href="#Usage" accesskey="n" rel="next">Usage</a>, Previous: <a href="#I
 <span id="installation"></span>
 
 <hr>
-<span id="Usage"></span><div class="header">
+</div>
+<div class="chapter" id="Usage">
+<div class="header">
 <p>
 Next: <a href="#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a href="#Installation" accesskey="p" rel="prev">Installation</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -173,8 +165,8 @@ Next: <a href="#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a hr
 <p>The expanded function definition looks like this:
 </p>
 <span id="index-ALEXANDRIA_003aFLATTEN"></span>
-<span id="ALEXANDRIA_003aFLATTEN-function"></span><dl>
-<dt id="index-ALEXANDRIA_003aFLATTEN-1">Function: <strong>ALEXANDRIA:FLATTEN</strong> <em>(tree)</em></dt>
+<span id="ALEXANDRIA_003aFLATTEN-function"></span><dl class="def">
+<dt id="index-ALEXANDRIA_003aFLATTEN-1"><span class="category">Function: </span><span><strong>ALEXANDRIA:FLATTEN</strong> <em>(tree)</em><a href='#index-ALEXANDRIA_003aFLATTEN-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Traverses the <var>tree</var> in order, collecting non-null leaves into a list.
 </p></dd></dl>
@@ -187,13 +179,12 @@ Next: <a href="#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a hr
 </p>
 <p>Have a look at <em>cl-docweaver</em> documentation in <code>docs</code> directory for an example of how all this works.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Command-Line" accesskey="1">Command Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
+<ul class="section-toc">
+<li><a href="#Command-Line" accesskey="1">Command Line</a></li>
+</ul>
 <hr>
-<span id="Command-Line"></span><div class="header">
+<div class="section" id="Command-Line">
+<div class="header">
 <p>
 Up: <a href="#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -248,14 +239,17 @@ Examples:
 </pre></div>
 
 <hr>
-<span id="Commands"></span><div class="header">
+</div>
+</div>
+<div class="chapter" id="Commands">
+<div class="header">
 <p>
 Next: <a href="#Documentation-systems" accesskey="n" rel="next">Documentation systems</a>, Previous: <a href="#Usage" accesskey="p" rel="prev">Usage</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Commands-1"></span><h2 class="chapter">4 Commands</h2>
 <span id="commands"></span>
-<dl>
-<dt id="index-_0040setup">Command: <strong>@setup</strong> <em>&amp;rest options</em></dt>
+<dl class="def">
+<dt id="index-_0040setup"><span class="category">Command: </span><span><strong>@setup</strong> <em>&amp;rest options</em><a href='#index-_0040setup' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Configures <em>cl-docweaver</em>.
 </p>
@@ -281,8 +275,8 @@ A list of Lisp modules to REQUIRE in order to be able to expand definitions.
 
 </dd></dl>
 
-<dl>
-<dt id="index-_0040clvariable">Command: <strong>@clvariable</strong> <em>variable-symbol &amp;rest args</em></dt>
+<dl class="def">
+<dt id="index-_0040clvariable"><span class="category">Command: </span><span><strong>@clvariable</strong> <em>variable-symbol &amp;rest args</em><a href='#index-_0040clvariable' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Expands definition for variable bound to <var>VARIABLE-SYMBOL</var>.
 </p>
@@ -293,8 +287,8 @@ A list of Lisp modules to REQUIRE in order to be able to expand definitions.
 <p>Expands to this:
 </p>
 <span id="index-COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a"></span>
-<span id="COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable"></span><dl>
-<dt id="index-_002aSTANDARD_002dOUTPUT_002a">COMMON-LISP: <strong>*STANDARD-OUTPUT*</strong></dt>
+<span id="COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable"></span><dl class="def">
+<dt id="index-_002aSTANDARD_002dOUTPUT_002a"><span class="category">COMMON-LISP: </span><span><strong>*STANDARD-OUTPUT*</strong><a href='#index-_002aSTANDARD_002dOUTPUT_002a' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>default output stream
 </p></dd></dl>
@@ -308,14 +302,14 @@ A list of Lisp modules to REQUIRE in order to be able to expand definitions.
 <p>expands to this:
 </p>
 <span id="index-COMMON_002dLISP_003a_002aCOMPILE_002dPRINT_002a"></span>
-<span id="COMMON_002dLISP_003a_002aCOMPILE_002dPRINT_002a-variable"></span><dl>
-<dt id="index-_002aCOMPILE_002dPRINT_002a">COMMON-LISP: <strong>*COMPILE-PRINT*</strong></dt>
+<span id="COMMON_002dLISP_003a_002aCOMPILE_002dPRINT_002a-variable"></span><dl class="def">
+<dt id="index-_002aCOMPILE_002dPRINT_002a"><span class="category">COMMON-LISP: </span><span><strong>*COMPILE-PRINT*</strong><a href='#index-_002aCOMPILE_002dPRINT_002a' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>The default for the <var>:PRINT</var> argument to <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a>.
 </p></dd></dl>
 <span id="index-COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a"></span>
-<span id="COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a-variable"></span><dl>
-<dt id="index-_002aCOMPILE_002dVERBOSE_002a">COMMON-LISP: <strong>*COMPILE-VERBOSE*</strong></dt>
+<span id="COMMON_002dLISP_003a_002aCOMPILE_002dVERBOSE_002a-variable"></span><dl class="def">
+<dt id="index-_002aCOMPILE_002dVERBOSE_002a"><span class="category">COMMON-LISP: </span><span><strong>*COMPILE-VERBOSE*</strong><a href='#index-_002aCOMPILE_002dVERBOSE_002a' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>The default for the <var>:VERBOSE</var> argument to <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a>.
 </p></dd></dl>
@@ -323,8 +317,8 @@ A list of Lisp modules to REQUIRE in order to be able to expand definitions.
 
 </dd></dl>
 
-<dl>
-<dt id="index-_0040clfunction">Command: <strong>@clfunction</strong> <em>function-symbol &amp;rest args</em></dt>
+<dl class="def">
+<dt id="index-_0040clfunction"><span class="category">Command: </span><span><strong>@clfunction</strong> <em>function-symbol &amp;rest args</em><a href='#index-_0040clfunction' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Expands definition for function bound to <var>FUNCTION-SYMBOL</var>.
 </p>
@@ -335,12 +329,12 @@ A list of Lisp modules to REQUIRE in order to be able to expand definitions.
 <p>Expands to this:
 </p>
 <span id="index-ALEXANDRIA_003aMAP_002dPERMUTATIONS"></span>
-<span id="ALEXANDRIA_003aMAP_002dPERMUTATIONS-function"></span><dl>
-<dt id="index-ALEXANDRIA_003aMAP_002dPERMUTATIONS-1">Function: <strong>ALEXANDRIA:MAP-PERMUTATIONS</strong> <em>(function sequence &amp;key (start 0) end length (copy t))</em></dt>
+<span id="ALEXANDRIA_003aMAP_002dPERMUTATIONS-function"></span><dl class="def">
+<dt id="index-ALEXANDRIA_003aMAP_002dPERMUTATIONS-1"><span class="category">Function: </span><span><strong>ALEXANDRIA:MAP-PERMUTATIONS</strong> <em>(function sequence &amp;key (start 0) end length (copy t))</em><a href='#index-ALEXANDRIA_003aMAP_002dPERMUTATIONS-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
-<p>Calls <var>function</var> with each permutation of <var>LENGTH</var> constructable
-from the subsequence of <var>SEQUENCE</var> delimited by <var>START</var> and <var>END</var>. <var>START</var>
-defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, and <var>LENGTH</var> to the
+<p>Calls <var>function</var> with each permutation of <var>LENGTH</var> constructable<br>
+from the subsequence of <var>SEQUENCE</var> delimited by <var>START</var> and <var>END</var>. <var>START</var><br>
+defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, and <var>LENGTH</var> to the<br>
 <var>length</var> of the delimited subsequence.
 </p></dd></dl>
 
@@ -348,8 +342,8 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </p>
 </dd></dl>
 
-<dl>
-<dt id="index-_0040clmacro">Command: <strong>@clmacro</strong> <em>macro-symbol &amp;rest args</em></dt>
+<dl class="def">
+<dt id="index-_0040clmacro"><span class="category">Command: </span><span><strong>@clmacro</strong> <em>macro-symbol &amp;rest args</em><a href='#index-_0040clmacro' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Expands definition for macro bound to <var>MACRO-SYMBOL</var>.
 </p>
@@ -360,11 +354,11 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 <p>Expands to this:
 </p>
 <span id="index-COMMON_002dLISP_003aPRINT_002dUNREADABLE_002dOBJECT"></span>
-<span id="COMMON_002dLISP_003aPRINT_002dUNREADABLE_002dOBJECT-macro"></span><dl>
-<dt id="index-COMMON_002dLISP_003aPRINT_002dUNREADABLE_002dOBJECT-1">Macro: <strong>COMMON-LISP:PRINT-UNREADABLE-OBJECT</strong> <em>((sb-impl::object stream &amp;key type identity) &amp;body sb-impl::body)</em></dt>
+<span id="COMMON_002dLISP_003aPRINT_002dUNREADABLE_002dOBJECT-macro"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aPRINT_002dUNREADABLE_002dOBJECT-1"><span class="category">Macro: </span><span><strong>COMMON-LISP:PRINT-UNREADABLE-OBJECT</strong> <em>((sb-impl::object stream &amp;key type identity) &amp;body sb-impl::body)</em><a href='#index-COMMON_002dLISP_003aPRINT_002dUNREADABLE_002dOBJECT-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
-<p>Output <var>OBJECT</var> to <var>STREAM</var> with &quot;#&lsquo;&lt;&rsquo;&quot; prefix, &quot;&lsquo;&gt;&rsquo;&quot; suffix, optionally
-  with object-type prefix and object-identity suffix, and executing the
+<p>Output <var>OBJECT</var> to <var>STREAM</var> with &quot;#&lsquo;&lt;&rsquo;&quot; prefix, &quot;&lsquo;&gt;&rsquo;&quot; suffix, optionally<br>
+  with object-type prefix and object-identity suffix, and executing the<br>
   code in <var>BODY</var> to provide possible further output.
 </p></dd></dl>
 
@@ -372,8 +366,8 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </p>
 </dd></dl>
 
-<dl>
-<dt id="index-_0040clclass">Command: <strong>@clclass</strong> <em>class-name &amp;rest args</em></dt>
+<dl class="def">
+<dt id="index-_0040clclass"><span class="category">Command: </span><span><strong>@clclass</strong> <em>class-name &amp;rest args</em><a href='#index-_0040clclass' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Expands definition of class with name <var>CLASS-NAME</var>.
 </p>
@@ -384,8 +378,8 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 <p>Expands to this:
 </p>
 <span id="index-ASDF_002fCOMPONENT_003aCOMPONENT"></span>
-<span id="ASDF_002fCOMPONENT_003aCOMPONENT-class"></span><dl>
-<dt id="index-ASDF_002fCOMPONENT_003aCOMPONENT-1">Class: <strong>ASDF/COMPONENT:COMPONENT</strong></dt>
+<span id="ASDF_002fCOMPONENT_003aCOMPONENT-class"></span><dl class="def">
+<dt id="index-ASDF_002fCOMPONENT_003aCOMPONENT-1"><span class="category">Class: </span><span><strong>ASDF/COMPONENT:COMPONENT</strong><a href='#index-ASDF_002fCOMPONENT_003aCOMPONENT-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Base class for all components of a build
 </p>
@@ -393,9 +387,41 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </p>
 <p>Slots:
 </p><ul>
-<li> <code>name</code> &mdash; initarg: <code>:name<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-name</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-name)</span><!-- /@w --></code>
+<li> <code>name</code> &mdash; type: <code>string<!-- /@w --></code>; initarg: <code>:name<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-name</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-name)</span><!-- /@w --></code>
 
-<p>Component name: designator for a string composed of portable pathname characters</p></li></ul>
+<p>Component name: designator for a string composed of portable pathname characters</p></li><li> <code>version</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code>:version<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-version</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-version)</span><!-- /@w --></code>
+
+</li><li> <code>description</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code>:description<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-description</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-description)</span><!-- /@w --></code>
+
+</li><li> <code>long-description</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code><span class="nolinebreak">:long-description</span><!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-long-description</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-long-description)</span><!-- /@w --></code>
+
+</li><li> <code>sideway-dependencies</code> &mdash; type: <code>t<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-sideway-dependencies</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-sideway-dependencies)</span><!-- /@w --></code>
+
+</li><li> <code>if-feature</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code><span class="nolinebreak">:if-feature</span><!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-if-feature</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-if-feature)</span><!-- /@w --></code>
+
+</li><li> <code>in-order-to</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code><span class="nolinebreak">:in-order-to</span><!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-in-order-to</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-in-order-to)</span><!-- /@w --></code>
+
+</li><li> <code>inline-methods</code> &mdash; type: <code>t<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-inline-methods</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-inline-methods)</span><!-- /@w --></code>
+
+</li><li> <code>relative-pathname</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code>:pathname<!-- /@w --></code>
+
+</li><li> <code>absolute-pathname</code> &mdash; type: <code>t<!-- /@w --></code>
+
+</li><li> <code>operation-times</code> &mdash; type: <code>t<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-operation-times</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-operation-times)</span><!-- /@w --></code>
+
+</li><li> <code>around-compile</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code><span class="nolinebreak">:around-compile</span><!-- /@w --></code>
+
+</li><li> <code>properties</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code>:properties<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-properties</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component:component-properties)</span><!-- /@w --></code>
+
+</li><li> <code>%encoding</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code>:encoding<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component::%component-encoding</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component::%component-encoding)</span><!-- /@w --></code>
+
+</li><li> <code>parent</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code>:parent<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-parent</span><!-- /@w --></code>
+
+</li><li> <code>build-operation</code> &mdash; type: <code>t<!-- /@w --></code>; initarg: <code><span class="nolinebreak">:build-operation</span><!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component:component-build-operation</span><!-- /@w --></code>
+
+</li><li> <code>additional-input-files</code> &mdash; type: <code>t<!-- /@w --></code>; reader: <code><span class="nolinebreak">asdf/component::%additional-input-files</span><!-- /@w --></code>; writer: <code>(setf&nbsp;<span class="nolinebreak">asdf/component::%additional-input-files)</span><!-- /@w --></code>
+
+</li></ul>
 
 </dd></dl>
 
@@ -403,8 +429,8 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </p>
 </dd></dl>
 
-<dl>
-<dt id="index-_0040clpackage">Command: <strong>@clpackage</strong> <em>package-name &amp;key (include-external-definitions t) include-internal-definitions (categorized t)</em></dt>
+<dl class="def">
+<dt id="index-_0040clpackage"><span class="category">Command: </span><span><strong>@clpackage</strong> <em>package-name &amp;key (include-external-definitions t) include-internal-definitions (categorized t)</em><a href='#index-_0040clpackage' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Expands definition for Common Lisp package named <var>PACKAGE-NAME</var>.
 </p>
@@ -426,8 +452,8 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </p>
 </dd></dl>
 
-<dl>
-<dt id="index-_0040clref">Command: <strong>@clref</strong> <em>symbol type</em></dt>
+<dl class="def">
+<dt id="index-_0040clref"><span class="category">Command: </span><span><strong>@clref</strong> <em>symbol type</em><a href='#index-_0040clref' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Creates a reference to <var>SYMBOL</var>. <var>TYPE</var> should be one of <code>variable</code>, <code>function</code>, <code>class</code>, etc.
 </p>
@@ -439,34 +465,35 @@ defaults to 0, <var>END</var> to <var>length</var> of the <var>sequence</var>, a
 </p>
 </dd></dl>
 
-<dl>
-<dt id="index-_0040cleval">Command: <strong>@cleval</strong> <em>expression</em></dt>
+<dl class="def">
+<dt id="index-_0040cleval"><span class="category">Command: </span><span><strong>@cleval</strong> <em>expression</em><a href='#index-_0040cleval' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Evaluates Lisp <var>EXPRESSION</var> and prints the result.
 </p>
 </dd></dl>
 
-<dl>
-<dt id="index-_0040clcapture_002doutput">Command: <strong>@clcapture-output</strong> <em>expression</em></dt>
+<dl class="def">
+<dt id="index-_0040clcapture_002doutput"><span class="category">Command: </span><span><strong>@clcapture-output</strong> <em>expression</em><a href='#index-_0040clcapture_002doutput' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Evaluates Lisp <var>EXPRESSION</var>, captures its output, and prints it to the document.
 </p>
 </dd></dl>
 
 <hr>
-<span id="Documentation-systems"></span><div class="header">
+</div>
+<div class="chapter" id="Documentation-systems">
+<div class="header">
 <p>
 Next: <a href="#Tips-and-tricks" accesskey="n" rel="next">Tips and tricks</a>, Previous: <a href="#Commands" accesskey="p" rel="prev">Commands</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Documentation-systems-1"></span><h2 class="chapter">5 Documentation systems</h2>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Texinfo" accesskey="1">Texinfo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
+<ul class="section-toc">
+<li><a href="#Texinfo" accesskey="1">Texinfo</a></li>
+</ul>
 <hr>
-<span id="Texinfo"></span><div class="header">
+<div class="section" id="Texinfo">
+<div class="header">
 <p>
 Up: <a href="#Documentation-systems" accesskey="u" rel="up">Documentation systems</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -482,13 +509,12 @@ Up: <a href="#Documentation-systems" accesskey="u" rel="up">Documentation system
 </p>
 <p>See <code>docs/Makefile</code> in <em>CL-DOCWEAVER</em> source for an example of how Texinfo tools should be used.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#common_002dlisp_002etexi" accesskey="1">common-lisp.texi</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
+<ul class="section-toc">
+<li><a href="#common_002dlisp_002etexi" accesskey="1">common-lisp.texi</a></li>
+</ul>
 <hr>
-<span id="common_002dlisp_002etexi"></span><div class="header">
+<div class="subsection" id="common_002dlisp_002etexi">
+<div class="header">
 <p>
 Up: <a href="#Texinfo" accesskey="u" rel="up">Texinfo</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -603,19 +629,22 @@ Traverses the @var{tree} in order, collecting non-null leaves into a list.
 <p>The <code>common-lisp.texi</code> file is required to be included in the file being weaved by CL-DOCWEAVER for the Texinfo documentation system, as the implementation expands to macros found in <code>common-lisp.texi</code>.
 </p>
 <hr>
-<span id="Tips-and-tricks"></span><div class="header">
+</div>
+</div>
+</div>
+<div class="chapter" id="Tips-and-tricks">
+<div class="header">
 <p>
 Next: <a href="#API" accesskey="n" rel="next">API</a>, Previous: <a href="#Documentation-systems" accesskey="p" rel="prev">Documentation systems</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Tips-and-tricks-1"></span><h2 class="chapter">6 Tips and tricks</h2>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Lisp-evaluation" accesskey="1">Lisp evaluation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
+<ul class="section-toc">
+<li><a href="#Lisp-evaluation" accesskey="1">Lisp evaluation</a></li>
+</ul>
 <hr>
-<span id="Lisp-evaluation"></span><div class="header">
+<div class="section" id="Lisp-evaluation">
+<div class="header">
 <p>
 Up: <a href="#Tips-and-tricks" accesskey="u" rel="up">Tips and tricks</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -624,8 +653,8 @@ Up: <a href="#Tips-and-tricks" accesskey="u" rel="up">Tips and tricks</a> &nbsp;
 <p>It is possible to take advantage of Lisp evaluation to handle the list of symbols to expand. As commands are parsed using standard <code>CL:READ</code> function, reader syntax <code>#.</code> can be used to evaluate arbitrary Lisp code.
 </p>
 <span id="index-COMMON_002dLISP_003aREAD"></span>
-<span id="COMMON_002dLISP_003aREAD-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aREAD-1">Function: <strong>COMMON-LISP:READ</strong> <em>(&amp;optional (stream *standard-input*) (sb-impl::eof-error-p t) (sb-impl::eof-value nil) (sb-impl::recursive-p nil))</em></dt>
+<span id="COMMON_002dLISP_003aREAD-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aREAD-1"><span class="category">Function: </span><span><strong>COMMON-LISP:READ</strong> <em>(&amp;optional (stream *standard-input*) (sb-impl::eof-error-p t) (sb-impl::eof-value nil) (sb-impl::recursive-p nil))</em><a href='#index-COMMON_002dLISP_003aREAD-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Read the next Lisp value from <var>STREAM</var>, and return it.
 </p></dd></dl>
@@ -640,109 +669,126 @@ Up: <a href="#Tips-and-tricks" accesskey="u" rel="up">Tips and tricks</a> &nbsp;
 </p>
 <p>Results in this expansion:
 </p>
-<span id="index-COMMON_002dLISP_003aPROBE_002dFILE"></span>
-<span id="COMMON_002dLISP_003aPROBE_002dFILE-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aPROBE_002dFILE-1">Function: <strong>COMMON-LISP:PROBE-FILE</strong> <em>(sb-impl::pathspec)</em></dt>
-<dd>
-<p>Return the truename of <var>PATHSPEC</var> if the truename can be found,
-or NIL otherwise.  See &lsquo;TRUENAME&rsquo; for more information.
-</p></dd></dl>
 <span id="index-COMMON_002dLISP_003aFILE_002dAUTHOR"></span>
-<span id="COMMON_002dLISP_003aFILE_002dAUTHOR-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aFILE_002dAUTHOR-1">Function: <strong>COMMON-LISP:FILE-AUTHOR</strong> <em>(sb-impl::pathspec)</em></dt>
+<span id="COMMON_002dLISP_003aFILE_002dAUTHOR-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aFILE_002dAUTHOR-1"><span class="category">Function: </span><span><strong>COMMON-LISP:FILE-AUTHOR</strong> <em>(sb-impl::pathspec)</em><a href='#index-COMMON_002dLISP_003aFILE_002dAUTHOR-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
-<p>Return the author of the file specified by <var>PATHSPEC</var>. Signal an
-error of type  if no such file exists, or if <var>PATHSPEC</var>
+<p>Return the author of the file specified by <var>PATHSPEC</var>. Signal an<br>
+error of type  if no such file exists, or if <var>PATHSPEC</var><br>
 is a wild pathname.
 </p></dd></dl>
-<span id="index-COMMON_002dLISP_003aRENAME_002dFILE"></span>
-<span id="COMMON_002dLISP_003aRENAME_002dFILE-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aRENAME_002dFILE-1">Function: <strong>COMMON-LISP:RENAME-FILE</strong> <em>(sb-impl::file sb-impl::new-name)</em></dt>
+<span id="index-COMMON_002dLISP_003aCOMPILE_002dFILE"></span>
+<span id="COMMON_002dLISP_003aCOMPILE_002dFILE-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aCOMPILE_002dFILE-1"><span class="category">Function: </span><span><strong>COMMON-LISP:COMPILE-FILE</strong> <em>(sb-c::input-file &amp;key (sb-c::output-file &quot;&quot; sb-c::output-file-p) ((:verbose *compile-verbose*) *compile-verbose*) ((:print *compile-print*) *compile-print*) (sb-c::external-format :default) ((:progress sb-ext:*compile-progress*) sb-ext:*compile-progress*) (sb-c::trace-file nil) ((:block-compile sb-c::*block-compile-argument*) sb-ext:*block-compile-default*) ((:entry-points sb-c::*entry-points-argument*) nil) (sb-c::emit-cfasl sb-c::*emit-cfasl*))</em><a href='#index-COMMON_002dLISP_003aCOMPILE_002dFILE-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
-<p>Rename <var>FILE</var> to have the specified <var>NEW-NAME</var>. If <var>FILE</var> is a stream open to a
-<var>file</var>, then the associated <var>file</var> is renamed.
+<p>Compile <var>INPUT-FILE</var>, producing a corresponding fasl file and<br>
+returning its filename.<br>
+<br>
+  <var>:OUTPUT-FILE</var><br>
+     The name of the FASL to output, NIL for none,  for the <var>default</var>.<br>
+     (Note the difference between the treatment of NIL <var>:OUTPUT-FILE</var><br>
+     here and in <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-function">COMPILE-FILE-PATHNAME</a>.)  The returned pathname of the<br>
+     output file may differ from the pathname of the <var>:OUTPUT-FILE</var><br>
+     parameter, e.g. when the latter is a designator for a directory.<br>
+<br>
+  <var>:VERBOSE</var><br>
+     If true, information indicating what file is being compiled is printed<br>
+     to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>.<br>
+<br>
+  <var>:PRINT</var><br>
+     If true, each top level form in the file is printed to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>.<br>
+<br>
+  <var>:EXTERNAL-FORMAT</var><br>
+     The external format to use when opening the source file.<br>
+<br>
+  <var>:BLOCK-COMPILE</var> {NIL | <var>:SPECIFIED</var> | }<br>
+     Determines whether multiple functions are compiled together as a unit,<br>
+     resolving function references at compile time.  NIL means that global<br>
+     function names are never resolved at compilation time.  <var>:SPECIFIED</var> means<br>
+     that names are resolved at compile-time when convenient (as in a<br>
+     self-recursive call), but the compiler doesn&rsquo;t combine top-level DEFUNs.<br>
+     With <var>:SPECIFIED</var>, an explicit START-BLOCK declaration will enable block<br>
+     compilation.  A value of  indicates that all forms in the file(s) should<br>
+     be compiled as a unit.  The <var>default</var> is the value of<br>
+     &lsquo;SB-EXT:*BLOCK-COMPILE-DEFAULT*&rsquo;, which is initially NIL.<br>
+<br>
+  <var>:ENTRY-POINTS</var><br>
+     This specifies a list of function names for functions in the file(s) that<br>
+     must be given global definitions.  This only applies to block<br>
+     compilation, and is useful mainly when <var>:BLOCK-COMPILE</var>  is specified on a<br>
+     file that lacks START-BLOCK declarations.  If the value is NIL (the<br>
+     <var>default</var>) then all functions will be globally defined.<br>
+<br>
+  <var>:TRACE-FILE</var><br>
+     If given, internal data structures are dumped to the specified<br>
+     file, or if a value of  is given, to a file of &lsquo;*&rsquo;.trace type<br>
+     derived from the input file name. (non-standard)<br>
+<br>
+  <var>:EMIT-CFASL</var><br>
+     (Experimental). If true, outputs the toplevel compile-time effects<br>
+     of this file into a separate .cfasl file.
 </p></dd></dl>
-<span id="index-COMMON_002dLISP_003aFILE_002dLENGTH"></span>
-<span id="COMMON_002dLISP_003aFILE_002dLENGTH-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aFILE_002dLENGTH-1">Function: <strong>COMMON-LISP:FILE-LENGTH</strong> <em>(stream)</em></dt>
+<span id="index-COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH"></span>
+<span id="COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH-1"><span class="category">Function: </span><span><strong>COMMON-LISP:FILE-STRING-LENGTH</strong> <em>(stream sb-impl::object)</em><a href='#index-COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH-1' class='copiable-anchor'> &para;</a></span></dt>
 </dl>
-<span id="index-COMMON_002dLISP_003aFILE_002dPOSITION"></span>
-<span id="COMMON_002dLISP_003aFILE_002dPOSITION-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aFILE_002dPOSITION-1">Function: <strong>COMMON-LISP:FILE-POSITION</strong> <em>(stream &amp;optional position)</em></dt>
-</dl>
+<span id="index-COMMON_002dLISP_003aFILE_002dWRITE_002dDATE"></span>
+<span id="COMMON_002dLISP_003aFILE_002dWRITE_002dDATE-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aFILE_002dWRITE_002dDATE-1"><span class="category">Function: </span><span><strong>COMMON-LISP:FILE-WRITE-DATE</strong> <em>(sb-impl::pathspec)</em><a href='#index-COMMON_002dLISP_003aFILE_002dWRITE_002dDATE-1' class='copiable-anchor'> &para;</a></span></dt>
+<dd>
+<p>Return the write date of the file specified by <var>PATHSPEC</var>.<br>
+An error of type  is signaled if no such file exists,<br>
+or if <var>PATHSPEC</var> is a wild pathname.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME"></span>
+<span id="COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-1"><span class="category">Function: </span><span><strong>COMMON-LISP:COMPILE-FILE-PATHNAME</strong> <em>(sb-c::input-file &amp;key (sb-c::output-file nil sb-c::output-file-p) &amp;allow-other-keys)</em><a href='#index-COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-1' class='copiable-anchor'> &para;</a></span></dt>
+<dd>
+<p>Return a pathname describing what file <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> would write to given<br>
+   these arguments.
+</p></dd></dl>
 <span id="index-COMMON_002dLISP_003aFILE_002dNAMESTRING"></span>
-<span id="COMMON_002dLISP_003aFILE_002dNAMESTRING-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aFILE_002dNAMESTRING-1">Function: <strong>COMMON-LISP:FILE-NAMESTRING</strong> <em>(pathname)</em></dt>
+<span id="COMMON_002dLISP_003aFILE_002dNAMESTRING-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aFILE_002dNAMESTRING-1"><span class="category">Function: </span><span><strong>COMMON-LISP:FILE-NAMESTRING</strong> <em>(pathname)</em><a href='#index-COMMON_002dLISP_003aFILE_002dNAMESTRING-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
 <p>Return a string representation of the name in <var>PATHNAME</var>.
 </p></dd></dl>
-<span id="index-COMMON_002dLISP_003aDELETE_002dFILE"></span>
-<span id="COMMON_002dLISP_003aDELETE_002dFILE-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aDELETE_002dFILE-1">Function: <strong>COMMON-LISP:DELETE-FILE</strong> <em>(sb-impl::file)</em></dt>
+<span id="index-COMMON_002dLISP_003aPROBE_002dFILE"></span>
+<span id="COMMON_002dLISP_003aPROBE_002dFILE-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aPROBE_002dFILE-1"><span class="category">Function: </span><span><strong>COMMON-LISP:PROBE-FILE</strong> <em>(sb-impl::pathspec)</em><a href='#index-COMMON_002dLISP_003aPROBE_002dFILE-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
-<p>Delete the specified <var>FILE</var>.
-</p>
-<p>If <var>FILE</var> is a stream, on Windows the stream is closed immediately. On Unix
-platforms the stream remains open, allowing IO to continue: the OS resources
-associated with the deleted <var>file</var> remain available till the stream is closed as
+<p>Return the truename of <var>PATHSPEC</var> if the truename can be found,<br>
+or NIL otherwise.  See &lsquo;TRUENAME&rsquo; for more information.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aRENAME_002dFILE"></span>
+<span id="COMMON_002dLISP_003aRENAME_002dFILE-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aRENAME_002dFILE-1"><span class="category">Function: </span><span><strong>COMMON-LISP:RENAME-FILE</strong> <em>(sb-impl::file sb-impl::new-name)</em><a href='#index-COMMON_002dLISP_003aRENAME_002dFILE-1' class='copiable-anchor'> &para;</a></span></dt>
+<dd>
+<p>Rename <var>FILE</var> to have the specified <var>NEW-NAME</var>. If <var>FILE</var> is a stream open to a<br>
+<var>file</var>, then the associated <var>file</var> is renamed.
+</p></dd></dl>
+<span id="index-COMMON_002dLISP_003aFILE_002dPOSITION"></span>
+<span id="COMMON_002dLISP_003aFILE_002dPOSITION-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aFILE_002dPOSITION-1"><span class="category">Function: </span><span><strong>COMMON-LISP:FILE-POSITION</strong> <em>(stream &amp;optional (position 0 sb-impl::suppliedp))</em><a href='#index-COMMON_002dLISP_003aFILE_002dPOSITION-1' class='copiable-anchor'> &para;</a></span></dt>
+</dl>
+<span id="index-COMMON_002dLISP_003aDELETE_002dFILE"></span>
+<span id="COMMON_002dLISP_003aDELETE_002dFILE-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aDELETE_002dFILE-1"><span class="category">Function: </span><span><strong>COMMON-LISP:DELETE-FILE</strong> <em>(sb-impl::file)</em><a href='#index-COMMON_002dLISP_003aDELETE_002dFILE-1' class='copiable-anchor'> &para;</a></span></dt>
+<dd>
+<p>Delete the specified <var>FILE</var>.<br>
+<br>
+If <var>FILE</var> is a stream, on Windows the stream is closed immediately. On Unix<br>
+platforms the stream remains open, allowing IO to continue: the OS resources<br>
+associated with the deleted <var>file</var> remain available till the stream is closed as<br>
 per standard Unix unlink() behaviour.
 </p></dd></dl>
-<span id="index-COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME"></span>
-<span id="COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aCOMPILE_002dFILE_002dPATHNAME-1">Function: <strong>COMMON-LISP:COMPILE-FILE-PATHNAME</strong> <em>(sb-c::input-file &amp;key (sb-c::output-file nil sb-c::output-file-p) &amp;allow-other-keys)</em></dt>
-<dd>
-<p>Return a pathname describing what file <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> would write to given
-   these arguments.
-</p></dd></dl>
-<span id="index-COMMON_002dLISP_003aCOMPILE_002dFILE"></span>
-<span id="COMMON_002dLISP_003aCOMPILE_002dFILE-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aCOMPILE_002dFILE-1">Function: <strong>COMMON-LISP:COMPILE-FILE</strong> <em>(sb-c::input-file &amp;key (sb-c::output-file (sb-c::cfp-output-file-default sb-c::input-file)) ((:verbose *compile-verbose*) *compile-verbose*) ((:print *compile-print*) *compile-print*) (sb-c::external-format :default) (sb-c::trace-file nil) ((:block-compile sb-c::*block-compile-arg*) nil) (sb-c::emit-cfasl sb-c::*emit-cfasl*))</em></dt>
-<dd>
-<p>Compile <var>INPUT-FILE</var>, producing a corresponding fasl file and
-returning its filename.
-</p>
-<p><var>:PRINT</var>
-     If true, a message per non-macroexpanded top level form is printed
-     to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>. Top level forms that whose subforms are
-     processed as top level forms (eg. &lsquo;EVAL-WHEN&rsquo;, &lsquo;MACROLET&rsquo;, &lsquo;PROGN&rsquo;) receive
-     no such message, but their subforms do.
-</p>
-<p>As an extension to ANSI, if <var>:PRINT</var> is <var>:top-level-forms</var>, a message
-     per top level form after macroexpansion is printed to <a href="#COMMON_002dLISP_003a_002aSTANDARD_002dOUTPUT_002a-variable">*STANDARD-OUTPUT*</a>.
-     For example, compiling an &lsquo;IN-PACKAGE&rsquo; form will result in a message about
-     a top level &lsquo;SETQ&rsquo; in addition to the message about the &lsquo;IN-PACKAGE&rsquo; form&rsquo;
-     itself.
-</p>
-<p>Both forms of reporting obey the &lsquo;SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*&rsquo;.
-</p>
-<p><var>:BLOCK-COMPILE</var>
-     Though <a href="#COMMON_002dLISP_003aCOMPILE_002dFILE-function">COMPILE-FILE</a> accepts an additional <var>:BLOCK-COMPILE</var>
-     argument, it is not currently supported. (non-standard)
-</p>
-<p><var>:TRACE-FILE</var>
-     If given, internal data structures are dumped to the specified
-     file, or if a value of  is given, to a file of &lsquo;*&rsquo;.trace type
-     derived from the input file name. (non-standard)
-</p>
-<p><var>:EMIT-CFASL</var>
-     (Experimental). If true, outputs the toplevel compile-time effects
-     of this file into a separate .cfasl file.
-</p></dd></dl>
 <span id="index-COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME"></span>
-<span id="COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME-1">Function: <strong>COMMON-LISP:FILE-ERROR-PATHNAME</strong> <em>(condition)</em></dt>
+<span id="COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME-1"><span class="category">Function: </span><span><strong>COMMON-LISP:FILE-ERROR-PATHNAME</strong> <em>(condition)</em><a href='#index-COMMON_002dLISP_003aFILE_002dERROR_002dPATHNAME-1' class='copiable-anchor'> &para;</a></span></dt>
 </dl>
-<span id="index-COMMON_002dLISP_003aFILE_002dWRITE_002dDATE"></span>
-<span id="COMMON_002dLISP_003aFILE_002dWRITE_002dDATE-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aFILE_002dWRITE_002dDATE-1">Function: <strong>COMMON-LISP:FILE-WRITE-DATE</strong> <em>(sb-impl::pathspec)</em></dt>
-<dd>
-<p>Return the write date of the file specified by <var>PATHSPEC</var>.
-An error of type  is signaled if no such file exists,
-or if <var>PATHSPEC</var> is a wild pathname.
-</p></dd></dl>
-<span id="index-COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH"></span>
-<span id="COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH-function"></span><dl>
-<dt id="index-COMMON_002dLISP_003aFILE_002dSTRING_002dLENGTH-1">Function: <strong>COMMON-LISP:FILE-STRING-LENGTH</strong> <em>(stream sb-impl::object)</em></dt>
+<span id="index-COMMON_002dLISP_003aFILE_002dLENGTH"></span>
+<span id="COMMON_002dLISP_003aFILE_002dLENGTH-function"></span><dl class="def">
+<dt id="index-COMMON_002dLISP_003aFILE_002dLENGTH-1"><span class="category">Function: </span><span><strong>COMMON-LISP:FILE-LENGTH</strong> <em>(stream)</em><a href='#index-COMMON_002dLISP_003aFILE_002dLENGTH-1' class='copiable-anchor'> &para;</a></span></dt>
 </dl>
 
 
@@ -756,82 +802,87 @@ or if <var>PATHSPEC</var> is a wild pathname.
 </p>
 <p>Expands the categorized functions:
 </p>
-<span id="index-DOCWEAVER_002fUTILS_003aBAR"></span>
-<span id="DOCWEAVER_002fUTILS_003aBAR-function"></span><dl>
-<dt id="index-DOCWEAVER_002fUTILS_003aBAR-1">Function: <strong>DOCWEAVER/UTILS:BAR</strong> <em>nil</em></dt>
-<dd>
-<p><a href="#DOCWEAVER_002fUTILS_003aBAR-function">BAR</a> function.
-</p>
-<p>Category: foobar.
-</p></dd></dl>
 <span id="index-DOCWEAVER_002fUTILS_003aFOO"></span>
-<span id="DOCWEAVER_002fUTILS_003aFOO-function"></span><dl>
-<dt id="index-DOCWEAVER_002fUTILS_003aFOO-1">Function: <strong>DOCWEAVER/UTILS:FOO</strong> <em>nil</em></dt>
+<span id="DOCWEAVER_002fUTILS_003aFOO-function"></span><dl class="def">
+<dt id="index-DOCWEAVER_002fUTILS_003aFOO-1"><span class="category">Function: </span><span><strong>DOCWEAVER/UTILS:FOO</strong> <em>nil</em><a href='#index-DOCWEAVER_002fUTILS_003aFOO-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
-<p><a href="#DOCWEAVER_002fUTILS_003aFOO-function">FOO</a> function.
-</p>
-<p>Category: foobar.
+<p><a href="#DOCWEAVER_002fUTILS_003aFOO-function">FOO</a> function.<br>
+<br>
+Category: foobar.
+</p></dd></dl>
+<span id="index-DOCWEAVER_002fUTILS_003aBAR"></span>
+<span id="DOCWEAVER_002fUTILS_003aBAR-function"></span><dl class="def">
+<dt id="index-DOCWEAVER_002fUTILS_003aBAR-1"><span class="category">Function: </span><span><strong>DOCWEAVER/UTILS:BAR</strong> <em>nil</em><a href='#index-DOCWEAVER_002fUTILS_003aBAR-1' class='copiable-anchor'> &para;</a></span></dt>
+<dd>
+<p><a href="#DOCWEAVER_002fUTILS_003aBAR-function">BAR</a> function.<br>
+<br>
+Category: foobar.
 </p></dd></dl>
 
 
 <hr>
-<span id="API"></span><div class="header">
+</div>
+</div>
+<div class="chapter" id="API">
+<div class="header">
 <p>
 Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#Tips-and-tricks" accesskey="p" rel="prev">Tips and tricks</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="API-1"></span><h2 class="chapter">7 API</h2>
 <span id="api"></span>
-<dl>
-<dt id="index-DOCWEAVER">PACKAGE: <strong>DOCWEAVER</strong></dt>
+<dl class="def">
+<dt id="index-DOCWEAVER"><span class="category">PACKAGE: </span><span><strong>DOCWEAVER</strong><a href='#index-DOCWEAVER' class='copiable-anchor'> &para;</a></span></dt>
 </dl>
 
 <span id="External-definitions"></span><h3 class="heading">External definitions</h3>
 
 <span id="Macros"></span><h4 class="subheading">Macros</h4>
 <span id="index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER"></span>
-<span id="DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-macro"></span><dl>
-<dt id="index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-1">Macro: <strong>DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER</strong> <em>(command-name args (&amp;key docsystem) &amp;body body)</em></dt>
+<span id="DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-macro"></span><dl class="def">
+<dt id="index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-1"><span class="category">Macro: </span><span><strong>DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER</strong> <em>(command-name args (&amp;key docsystem) &amp;body body)</em><a href='#index-DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
-<p>Define a weaver command handler.
-<var>COMMAND-NAME</var> is the name of the command, without the prefix (like &rsquo;clvariable&rsquo;, &rsquo;clfunction&rsquo;, etc.)
-<var>ARGS</var> is the list of arguments for that command in the <var>DOCSYSTEM</var> implementation.
-<var>DOCSYSTEM</var> is a specializer for the documentation system. For example, (eql <var>:texinfo</var>).
-<var>BODY</var> should write to an implicit  variable, to expand the command.
-</p>
-<p>This is implemented as a wraper over <a href="#DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function">PROCESS-WEAVER-COMMAND</a> .
+<p>Define a weaver command handler.<br>
+<var>COMMAND-NAME</var> is the name of the command, without the prefix (like &rsquo;clvariable&rsquo;, &rsquo;clfunction&rsquo;, etc.)<br>
+<var>ARGS</var> is the list of arguments for that command in the <var>DOCSYSTEM</var> implementation.<br>
+<var>DOCSYSTEM</var> is a specializer for the documentation system. For example, (eql <var>:texinfo</var>).<br>
+<var>BODY</var> should write to an implicit  variable, to expand the command.<br>
+<br>
+This is implemented as a wraper over <a href="#DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function">PROCESS-WEAVER-COMMAND</a> .
 </p></dd></dl>
 
 <span id="Generic-functions"></span><h4 class="subheading">Generic functions</h4>
 <span id="index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND"></span>
-<span id="DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function"></span><dl>
-<dt id="index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-1">Generic-Function: <strong>DOCWEAVER:PROCESS-WEAVER-COMMAND</strong> <em>(docsystem command args stream)</em></dt>
+<span id="DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-function"></span><dl class="def">
+<dt id="index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-1"><span class="category">Generic-Function: </span><span><strong>DOCWEAVER:PROCESS-WEAVER-COMMAND</strong> <em>(docsystem command args stream)</em><a href='#index-DOCWEAVER_003aPROCESS_002dWEAVER_002dCOMMAND-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
-<p>The generic function to specialize for implementing weaving commands for the different documentation systems.
-</p>
-<p>See: &lsquo;DEF-WEAVER-COMMAND-HANDLER&rsquo;
+<p>The generic function to specialize for implementing weaving commands for the different documentation systems.<br>
+<br>
+See: <a href="#DOCWEAVER_003aDEF_002dWEAVER_002dCOMMAND_002dHANDLER-macro">DEF-WEAVER-COMMAND-HANDLER</a>
 </p></dd></dl>
 
 <span id="Functions"></span><h4 class="subheading">Functions</h4>
 <span id="index-DOCWEAVER_003aWEAVE_002dFILE"></span>
-<span id="DOCWEAVER_003aWEAVE_002dFILE-function"></span><dl>
-<dt id="index-DOCWEAVER_003aWEAVE_002dFILE-1">Function: <strong>DOCWEAVER:WEAVE-FILE</strong> <em>(file output-file &amp;rest options &amp;key docsystem modules command-prefix (parse-docstrings t) (escape-docstrings t))</em></dt>
+<span id="DOCWEAVER_003aWEAVE_002dFILE-function"></span><dl class="def">
+<dt id="index-DOCWEAVER_003aWEAVE_002dFILE-1"><span class="category">Function: </span><span><strong>DOCWEAVER:WEAVE-FILE</strong> <em>(file output-file &amp;key docsystem modules command-prefix (parse-docstrings t) (escape-docstrings t))</em><a href='#index-DOCWEAVER_003aWEAVE_002dFILE-1' class='copiable-anchor'> &para;</a></span></dt>
 <dd>
-<p>Weaves documentation source in <var>FILE</var> and writes the result to <var>OUTPUT-FILE</var>.
-</p>
-<p>Arguments:
-</p>
-<p>- <var>DOCSYSTEM</var> <var>:</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).
-- <var>MODULES</var> <var>:</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.
-- <var>COMMAND-PREFIX</var> <var>:</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.
-- <var>PARSE-DOCSTRINGS</var> <var>:</var> if <var>T</var>, then docstrings are parsed and highlighted and references to code from it created.
-- ESCAPE-DOCSTRINGS: if <var>T</var>, then docstrings are escaped by the documentation system. Escaping allows the use of special documentation system characters in docstring sources. If the escaping of docstrings is turned off, then that allows to use documentation system markup in docstrings.
+<p>Weaves documentation source in <var>FILE</var> and writes the result to <var>OUTPUT-FILE</var>.<br>
+<br>
+Arguments:<br>
+<br>
+- <var>DOCSYSTEM</var> <var>:</var> specify the documentation tool that is being used (<var>:texinfo</var>, <var>:markdown</var>, etc.).<br>
+- <var>MODULES</var> <var>:</var> is the list of <var>modules</var> (or ASDF system names) that need to be loaded to be able to read definition descriptions.<br>
+- <var>COMMAND-PREFIX</var> <var>:</var> is the character to use as prefix for commands. The character &lsquo;at&lsquo; is the default.<br>
+- <var>PARSE-DOCSTRINGS</var> <var>:</var> if <var>T</var>, then docstrings are parsed and highlighted and references to code from it created.<br>
+- ESCAPE-DOCSTRINGS: if <var>T</var>, then docstrings are escaped by the documentation system. Escaping allows the use of special documentation system characters in docstring sources. If the escaping of docstrings is turned off, then that allows to use documentation system markup in docstrings.<br>
 Category: TopLevel
 </p></dd></dl>
 
 
 
 <hr>
-<span id="Index"></span><div class="header">
+</div>
+<div class="chapter" id="Index">
+<div class="header">
 <p>
 Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -967,7 +1018,8 @@ Previous: <a href="#API" accesskey="p" rel="prev">API</a>, Up: <a href="#Top" ac
  &nbsp; 
 </td></tr></table>
 
-<hr>
+</div>
+</div>
 
 
 

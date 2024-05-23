@@ -10,7 +10,7 @@
   (let (symbols)
     (do-symbols (symbol package)
       (when (eql (symbol-package symbol) package)
-	(push symbol symbols)))
+        (push symbol symbols)))
     symbols))
 
 (defun package-variables (package)
@@ -29,35 +29,35 @@
           while line
           do
              (process-weaver-commands docsystem line stream)
-	     (terpri stream))))
+             (terpri stream))))
 
 (defun peek-n-chars (number-of-chars stream)
   (loop with chars := '()
-	repeat number-of-chars
-	for char := (read-char stream nil nil)
-	while char
-	do (push char chars)
-	finally (let ((read-chars (nreverse (copy-list chars))))
-		  (dotimes (j (length chars))
-		    (unread-char (pop chars) stream))
-		  (return read-chars))))
+        repeat number-of-chars
+        for char := (read-char stream nil nil)
+        while char
+        do (push char chars)
+        finally (let ((read-chars (nreverse (copy-list chars))))
+                  (dotimes (j (length chars))
+                    (unread-char (pop chars) stream))
+                  (return read-chars))))
 
 (defun process-weaver-commands (docsystem line stream)
   (let ((command-prefix `(#\( ,(read-config :command-prefix))))
     (with-input-from-string (s line)
       (loop
-	while (peek-char nil s nil nil)
-	do
-	(let ((chars (peek-n-chars 2 s)))
-	  (if (equalp chars command-prefix)
-	      ;; a command invocation was found, use CL:READ function to read it
-	      (let ((command (read s)))
-		(destructuring-bind (command-name &rest args) command
-		  (process-weaver-command docsystem 
-		   (intern (subseq (symbol-name command-name) 1) :keyword)
-		   args stream)))
-	      ;; else, continue
-	      (write-char (read-char s) stream)))))))
+        while (peek-char nil s nil nil)
+        do
+           (let ((chars (peek-n-chars 2 s)))
+             (if (equalp chars command-prefix)
+                 ;; a command invocation was found, use CL:READ function to read it
+                 (let ((command (read s)))
+                   (destructuring-bind (command-name &rest args) command
+                     (process-weaver-command docsystem
+                                             (intern (subseq (symbol-name command-name) 1) :keyword)
+                                             args stream)))
+                 ;; else, continue
+                 (write-char (read-char s) stream)))))))
 
 (defgeneric process-weaver-command (docsystem command args stream)
   (:documentation "The generic function to specialize for implementing weaving commands for the different documentation systems.
@@ -73,10 +73,10 @@ BODY should write to an implicit STREAM variable, to expand the command.
 
 This is implemented as a wraper over PROCESS-WEAVER-COMMAND ."
   `(defmethod process-weaver-command ((docsystem ,(or docsystem 'T))
-				      (command (eql ,(intern (symbol-name command-name) :keyword)))
-				      args stream)
+                                      (command (eql ,(intern (symbol-name command-name) :keyword)))
+                                      args stream)
      (destructuring-bind ,args args
-       ,@body)))					       
+       ,@body)))
 
 ;; @clpackage-functions: Produce a Texinfo section with a package external function definitions.
 ;; @clpackage-variables: Same with variables.
@@ -96,8 +96,8 @@ This is implemented as a wraper over PROCESS-WEAVER-COMMAND ."
 
 (defvar +default-config+
   (list :docsystem :texinfo
-	:parse-docstrings t
-	:command-prefix #\@)
+        :parse-docstrings t
+        :command-prefix #\@)
   "Default configuration")
 
 (defun read-config (key)
@@ -106,13 +106,13 @@ This is implemented as a wraper over PROCESS-WEAVER-COMMAND ."
       (getf *config* key)
       (getf +default-config+ key)))
 
-(defun weave-file (file output-file &rest options
-		   &key
-		     docsystem
-		     modules
-		     command-prefix
-		     (parse-docstrings t)
-		     (escape-docstrings t))
+(defun weave-file (file output-file
+                   &key
+                     docsystem
+                     modules
+                     command-prefix
+                     (parse-docstrings t)
+                     (escape-docstrings t))
   "Weaves documentation source in FILE and writes the result to OUTPUT-FILE.
 
 Arguments:
@@ -128,9 +128,13 @@ Category: TopLevel"
                                       :external-format :utf-8
                                       :if-does-not-exist :create
                                       :if-exists :supersede)
-    (let ((*config* options))
-      (dolist (module-name (getf *config* :modules))
-	(require module-name))
+    (let ((*config* (list :docsystem docsystem
+                          :modules modules
+                          :command-prefix command-prefix
+                          :parse-docstrings parse-docstrings
+                          :escape-docstrings escape-docstrings)))
+      (dolist (module-name modules)
+        (require module-name))
       (docsystem-weave-file (or docsystem (read-config :docsystem)) file output))))
 
 (defmethod process-weaver-command (docsystem (command (eql :setup)) args stream)

@@ -17,7 +17,9 @@ index.html: cl-docweaver.weaved.texi
 	sbcl --eval '(require :hyperspec)' --load colorize-lisp-examples.lisp index.html
 
 cl-docweaver.weaved.texi:
-	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "cl-docweaver.texi" "cl-docweaver.weaved.texi" :docsystem :texinfo)' --quit
+	sbcl --eval '(ql:quickload :docweaver)' \
+	     --eval '(docweaver:weave-file "cl-docweaver.texi" "cl-docweaver.weaved.texi" :docsystem :texinfo :command-prefix #\$$)' \
+             --quit
 
 cl-docweaver-internals.info: cl-docweaver-internals.weaved.texi
 	makeinfo --no-validate cl-docweaver-internals.weaved.texi
@@ -33,7 +35,7 @@ cl-docweaver-internals.weaved.texi:
 
 
 ../README.md:
-	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "README.md" "../README.md" :docsystem :markdown)' --quit
+	sbcl --eval '(ql:quickload :docweaver)' --eval '(docweaver:weave-file "README.md" "../README.md" :docsystem :markdown :command-prefix #\$$)' --quit
 
 clean:
 	rm -f *.weaved*

@@ -1,5 +1,3 @@
-
-
 # CL-DOCWEAVER
 
 CL-DOCWEAVER is a document weaver for Common Lisp.
@@ -11,10 +9,6 @@ DOCWEAVER commands give the user control on how definitions are to be expanded, 
 CL-DOCWEAVER is easy to extend to support different documentation tools.
 
 Texinfo and Markdown are the ones with best support at this moment.
-
-## Install
-
-Depends on [cl-def-properties](https://github.com/mmontone/cl-def-properties). You need to install that first.
 
 ## Usage
 
@@ -72,6 +66,21 @@ Examples:
 
 ## DOCWEAVER
 
+- [function] **DOCWEAVER:WEAVE-FILE** *(file output-file &key docsystem modules command-prefix (parse-docstrings t) (escape-docstrings t))*
+
+    Weaves documentation source in FILE and writes the result to OUTPUT-FILE.
+    
+    Arguments:
+    
+    - DOCSYSTEM : specify the documentation tool that is being used (:texinfo, :markdown, etc.).
+    - MODULES : is the list of modules (or ASDF system names) that need to be loaded to be able to read definition descriptions.
+    - COMMAND-PREFIX : is the character to use as prefix for commands. The character `at` is the default.
+    - PARSE-DOCSTRINGS : if T, then docstrings are parsed and highlighted and references to code from it created.
+    - ESCAPE-DOCSTRINGS: if T, then docstrings are escaped by the documentation system. Escaping allows the use of special documentation system characters in docstring sources. If the escaping of docstrings is turned off, then that allows to use documentation system markup in docstrings.
+    Category: TopLevel
+
+
+
 - [function] **DOCWEAVER:DEF-WEAVER-COMMAND-HANDLER** *(command-name args (&key docsystem) &body body)*
 
     Define a weaver command handler.
@@ -89,21 +98,6 @@ Examples:
     The generic function to specialize for implementing weaving commands for the different documentation systems.
     
     See: DEF-WEAVER-COMMAND-HANDLER
-
-
-
-- [function] **DOCWEAVER:WEAVE-FILE** *(file output-file &rest options &key docsystem modules command-prefix (parse-docstrings t) (escape-docstrings t))*
-
-    Weaves documentation source in FILE and writes the result to OUTPUT-FILE.
-    
-    Arguments:
-    
-    - DOCSYSTEM : specify the documentation tool that is being used (:texinfo, :markdown, etc.).
-    - MODULES : is the list of modules (or ASDF system names) that need to be loaded to be able to read definition descriptions.
-    - COMMAND-PREFIX : is the character to use as prefix for commands. The character `at` is the default.
-    - PARSE-DOCSTRINGS : if T, then docstrings are parsed and highlighted and references to code from it created.
-    - ESCAPE-DOCSTRINGS: if T, then docstrings are escaped by the documentation system. Escaping allows the use of special documentation system characters in docstring sources. If the escaping of docstrings is turned off, then that allows to use documentation system markup in docstrings.
-    Category: TopLevel
 
 
 
