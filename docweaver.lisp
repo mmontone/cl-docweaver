@@ -138,10 +138,12 @@ Category: TopLevel"
       (docsystem-weave-file (or docsystem (read-config :docsystem)) file output))))
 
 (defmethod process-weaver-command (docsystem (command (eql :setup)) args stream)
-  "Configure cl-docweaver."
+  "Configure cl-docweaver.
+ARGS is a property-list with configuration options (:parse-docstrings, :escape-docstrings, ...)."
   (dolist (module-name (getf args :modules))
     (require module-name))
-  (setf *config* args))
+  (alexandria:doplist (key val args)
+    (setf (getf *config* key) val)))
 
 (defun maybe-escape (string function)
   "Escape STRING using FUNCTION, only if :ESCAPE-DOCSTRINGS option is enabled.
